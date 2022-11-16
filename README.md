@@ -1,10 +1,10 @@
 # Wiki - pAI Chrome Extension :space_invader:
 
-"Personalized AI" (PAI) repository for Google Chrome extension.
+*"Personalized AI" (pAI) repository for Google Chrome extension.*
 
 # Local Testing :microscope:
 
-To test the current version of the Google Chrome Extension **pAI**
+To locally test the current version of the Google Chrome Extension **pAI**
 
 * Download this repository
 * Type `chrome://extensions/` in your Chrome Browser
@@ -14,3 +14,7 @@ To test the current version of the Google Chrome Extension **pAI**
 * Enable the pAI extension
 
 ![](res/HowTo.png)
+
+# Documentation :notebook:
+
+Official Google Documentation: https://developer.chrome.com/docs/extensions/mv3/
