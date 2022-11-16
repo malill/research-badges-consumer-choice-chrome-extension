@@ -1,0 +1,19 @@
+{
+    "name": "pAI",
+    "description": "The Personalized AI Assistant 'pAI'",
+    "version": "0.0.1",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "src/hello.html",
+        "default_icon": "res/icon.png"
+    },
+    "icons": {
+        "16": "res/icon.png",
+        "32": "res/icon.png",
+        "48": "res/icon.png",
+        "128": "res/icon.png"
+    },
+    "permissions": [
+        "activeTab"
+    ]
+}
