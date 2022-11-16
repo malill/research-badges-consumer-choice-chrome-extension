@@ -13,7 +13,7 @@ To locally test the current version of the Google Chrome Extension **pAI**
 * Choose the currently downloaded repository
 * Enable the pAI extension
 
-![](res/HowTo.png)
+![](images/HowTo.png)
 
 # Documentation :notebook:
 

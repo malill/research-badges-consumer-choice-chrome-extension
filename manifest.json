@@ -4,16 +4,26 @@
     "version": "0.0.1",
     "manifest_version": 3,
     "action": {
-        "default_popup": "src/hello.html",
-        "default_icon": "res/icon.png"
+        "default_popup": "popup/popup.html",
+        "default_icon": "images/icon.png"
     },
     "icons": {
-        "16": "res/icon.png",
-        "32": "res/icon.png",
-        "48": "res/icon.png",
-        "128": "res/icon.png"
+        "16": "images/icon.png",
+        "32": "images/icon.png",
+        "48": "images/icon.png",
+        "128": "images/icon.png"
     },
     "permissions": [
         "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "js": [
+                "scripts/content.js"
+            ],
+            "matches": [
+                "https://*/*"
+            ]
+        }
     ]
 }
