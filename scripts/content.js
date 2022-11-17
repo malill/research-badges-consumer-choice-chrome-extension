@@ -1,1 +1,0 @@
-console.log("[From pAI] Hello, I take care of the content.")
