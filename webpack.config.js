@@ -1,13 +1,14 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    mode: "production",
     entry: {
-        background: path.resolve(__dirname, "..", "src", "background.ts"),
-        content: path.resolve(__dirname, "..", "src", "content.ts"),
+        background: path.resolve(__dirname, "src/background.ts"),
+        content: path.resolve(__dirname, "src/content.ts"),
     },
     output: {
-        path: path.join(__dirname, "../dist"),
+        path: path.resolve(__dirname, "dist"),
         filename: "[name].js",
     },
     resolve: {
@@ -23,8 +24,12 @@ module.exports = {
         ],
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, "src/popup.html"),
+            filename: 'popup.html'
+        }),
         new CopyPlugin({
-            patterns: [{ from: ".", to: ".", context: "public" }]
+            patterns: [{ from: "public" }]
         }),
     ]
 };
