@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        background: path.resolve(__dirname, "src/background.ts"),
-        content: path.resolve(__dirname, "src/content.ts"),
+        background: path.resolve(__dirname, "src/background/background.ts"),
+        content: path.resolve(__dirname, "src/content/content.ts"),
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -16,6 +16,7 @@ module.exports = {
     },
     module: {
         rules: [
+            { test: /\.css$/i, use: ["style-loader", "css-loader"] },
             {
                 test: /\.tsx?$/,
                 loader: "ts-loader",
@@ -25,11 +26,14 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "src/popup.html"),
+            template: path.resolve(__dirname, "src/html/popup.html"),
             filename: 'popup.html'
         }),
         new CopyPlugin({
-            patterns: [{ from: "public" }]
+            patterns: [
+                { from: "public" },
+                { from: path.resolve(__dirname, "src/style"), to: path.resolve(__dirname, "dist/style") }
+            ]
         }),
     ]
 };
