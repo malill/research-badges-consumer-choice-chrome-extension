@@ -2,11 +2,11 @@
 
 *"Personalized AI" (pAI) repository for Google Chrome extension.*
 
-# Local Testing :microscope:
+# Testing :microscope:
 
-To locally test the current version of the Google Chrome Extension **pAI**
+To locally test the current version of the Google Chrome Extension **pAI** in your Google Chrome Browser:
 
-* Download this repository
+* Download distribution files (provided by author)
 * Type `chrome://extensions/` in your Chrome Browser
 * Enable developer mode (top right corner)
 * Select "Entpackte Erweiterung laden" (top left corner)
@@ -14,6 +14,8 @@ To locally test the current version of the Google Chrome Extension **pAI**
 * Enable the pAI extension
 
 ![](assets/Wiki%20-%20Local%20Testing.png)
+
+> The above steps only need to be performed once. Whenever you synchronize the downloaded files with the current status you only need to hit **refresh** button on `chrome://extensions/` page.
 
 # Documentation :notebook:
 
