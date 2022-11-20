@@ -1,10 +1,10 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        background: path.resolve(__dirname, "src/background/background.ts"),
         content: path.resolve(__dirname, "src/content/content.ts"),
     },
     output: {
@@ -35,5 +35,9 @@ module.exports = {
                 { from: path.resolve(__dirname, "src/style"), to: path.resolve(__dirname, "dist/style") }
             ]
         }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
     ]
 };
