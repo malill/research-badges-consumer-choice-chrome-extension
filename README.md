@@ -13,7 +13,7 @@ To locally test the current version of the Google Chrome Extension **pAI** in yo
 * Choose the currently downloaded repository
 * Enable the pAI extension
 
-![](assets/Wiki%20-%20Local%20Testing.png)
+![](.readme/Wiki%20-%20Local%20Testing.png)
 
 > The above steps only need to be performed once. Whenever you synchronize the downloaded files with the current status you only need to hit **refresh** button on `chrome://extensions/` page.
 
