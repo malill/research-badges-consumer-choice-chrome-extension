@@ -4,10 +4,10 @@
 
 import { myText } from "./service_worker_utils"
 
-console.log("This prints to the console of the service worker (background script)")
+console.log("[pAI] This prints to the console of the service worker (background script)")
 
 // Importing and using functionality from external files is also possible.
-console.log(myText)
+console.log("[pAI]", myText)
 
 // If you want to import a file that is deeper in the file hierarchy of your
 // extension, simply do `importScripts('path/to/file.js')`.

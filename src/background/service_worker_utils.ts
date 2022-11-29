@@ -3,6 +3,6 @@
 // inside the service worker.
 // The importation is done in the file `service-worker.js`.
 
-console.log("External file is also loaded!")
+console.log("[pAI] External file is also loaded!")
 
 export const myText = "Here the background magic happens..."
