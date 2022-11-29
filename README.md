@@ -10,7 +10,7 @@ To locally test the current version of the Google Chrome Extension **pAI** in yo
 * Type `chrome://extensions/` in your Chrome Browser
 * Enable developer mode (top right corner)
 * Select "Entpackte Erweiterung laden" (top left corner)
-* Choose the currently downloaded repository
+* Choose the folder of the downloaded distribution files
 * Enable the pAI extension
 
 ![](.readme/Wiki%20-%20Local%20Testing.png)
@@ -20,3 +20,7 @@ To locally test the current version of the Google Chrome Extension **pAI** in yo
 # Documentation :notebook:
 
 Official Google Documentation: https://developer.chrome.com/docs/extensions/mv3/
+
+## Development 
+
+> Check https://github.com/SimGus/chrome-extension-v3-starter for a Chrome Extension (V3) project setup

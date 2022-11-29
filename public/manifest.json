@@ -4,7 +4,7 @@
     "version": "0.0.1",
     "description": "The Personalized AI Assistant 'pAI'",
     "action": {
-        "default_icon": "images/icon.png",
+        "default_icon": "img/icon.png",
         "default_popup": "popup.html"
     },
     "content_scripts": [
@@ -13,15 +13,16 @@
                 "content.js"
             ],
             "matches": [
+                "http://*/*",
                 "https://*/*"
             ]
         }
     ],
     "icons": {
-        "16": "images/icon.png",
-        "32": "images/icon.png",
-        "48": "images/icon.png",
-        "128": "images/icon.png"
+        "16": "img/icon.png",
+        "32": "img/icon.png",
+        "48": "img/icon.png",
+        "128": "img/icon.png"
     },
     "permissions": [
         "activeTab",
