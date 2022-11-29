@@ -5,7 +5,11 @@
     "description": "The Personalized AI Assistant 'pAI'",
     "action": {
         "default_icon": "img/icon.png",
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_title": "pAI"
+    },
+    "background": {
+        "service_worker": "service_worker.js"
     },
     "content_scripts": [
         {
@@ -24,8 +28,12 @@
         "48": "img/icon.png",
         "128": "img/icon.png"
     },
+    "options_page": "settings.html",
     "permissions": [
         "activeTab",
         "scripting"
+    ],
+    "host_permissions": [
+        "*://*/*"
     ]
 }
