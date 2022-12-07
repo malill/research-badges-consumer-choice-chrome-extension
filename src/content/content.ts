@@ -8,10 +8,5 @@ console.log("[pAI] Hello, I am pAI!");
 
 const url = window.location.href
 console.log("[pAI]", "You are visiting:", url)
-if (url.includes("https://")) {
-    console.log("[pAI] Your data is safe!");
-} else {
-    console.log("[pAI] Be careful! Your data won't be encrypted!")
-}
 
 // $("body").css("background-color", "red");
