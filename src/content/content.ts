@@ -4,7 +4,7 @@
 
 var $ = require("jquery");
 
-console.log("[pAI] Hello, I am pAI!");
+console.log("[pAI] Hello! I am pAI!");
 
 const url = window.location.href
 console.log("[pAI]", "You are visiting:", url)
