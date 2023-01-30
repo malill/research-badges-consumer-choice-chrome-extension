@@ -4,9 +4,15 @@
 
 var $ = require("jquery");
 
-console.log("[pAI] Hello, I am pAI!");
+// Remove Amazon highlights
+const AMAZON_BAGE_CLASS = "a-badge"
+const AMAZON_BAGE_REGION_CLASS = "a-badge-region"
 
+$(`.${AMAZON_BAGE_CLASS}`).css("opacity", "0");
+// $(`.${AMAZON_BAGE_REGION_CLASS}`).css("background-color", "#26c6da");
+
+
+// Do other stuff
+console.log("[pAI] Hello, I am pAI!!!!");
 const url = window.location.href
 console.log("[pAI]", "You are visiting:", url)
-
-// $("body").css("background-color", "red");
