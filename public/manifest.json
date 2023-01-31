@@ -20,6 +20,15 @@
                 "http://*/*",
                 "https://*/*"
             ]
+        },
+        {
+            "js": [
+                "amazon.js"
+            ],
+            "matches": [
+                "http://www.amazon.de/*",
+                "https://www.amazon.de/*"
+            ]
         }
     ],
     "icons": {
