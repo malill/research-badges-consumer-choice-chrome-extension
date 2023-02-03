@@ -5,25 +5,20 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        amazon: path.resolve(__dirname, "src/content/amazon.ts"),
-        core: path.resolve(__dirname, "src/content/core.ts"),
-        service_worker: path.resolve(__dirname, "src/background/service_worker.ts")
+        amazon: path.resolve(__dirname, "src/content/amazon.js"),
+        core: path.resolve(__dirname, "src/content/core.js"),
+        service_worker: path.resolve(__dirname, "src/background/service_worker.js")
     },
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[name].js",
     },
     resolve: {
-        extensions: [".ts", ".js"],
+        extensions: [".js"],
     },
     module: {
         rules: [
-            { test: /\.css$/i, use: ["style-loader", "css-loader"] },
-            {
-                test: /\.tsx?$/,
-                loader: "ts-loader",
-                exclude: /node_modules/,
-            },
+            { test: /\.css$/i, use: ["style-loader", "css-loader"] }
         ],
     },
     plugins: [
