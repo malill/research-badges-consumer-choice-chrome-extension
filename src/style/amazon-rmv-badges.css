@@ -1,3 +1,28 @@
+/*Highlight Griddarstellung*/
 .a-badge {
     opacity: 0;
+}
+
+/*Highlight Spaltendarstellung*/
+.a-badge-region {
+    opacity: 0;
+}
+
+/*"Spare x%" unter Artikelpreis*/
+span[data-component-type="s-coupon-component"] {
+    display: none;
+}
+
+/*Prime (Lieferung) Logo an Artikel*/
+/* .aok-inline-block {
+    display: none !important;
+} */
+
+.a-icon-prime {
+    display: none !important;
+}
+
+/*"Gesponsort" über Artikelname*/
+.puis-sponsored-label-text {
+    display: none !important;
 }
