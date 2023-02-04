@@ -1,0 +1,1 @@
+export const REST_API_URL = "https://ecm-pai.herokuapp.com/"
