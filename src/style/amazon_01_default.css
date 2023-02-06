@@ -1,16 +1,19 @@
+/*Default Amazon style*/
+
+
 /*Highlight Griddarstellung*/
 .a-badge {
-    display: none !important;
+    display: inline-block !important;
 }
 
 /*Highlight Spaltendarstellung*/
 .a-badge-region {
-    display: none !important;
+    display: inline-block !important;
 }
 
 /*"Spare x%" unter Artikelpreis*/
 span[data-component-type="s-coupon-component"] {
-    display: none !important;
+    display: inline-block !important;
 }
 
 /*Prime (Lieferung) Logo an Artikel*/
@@ -19,10 +22,10 @@ span[data-component-type="s-coupon-component"] {
 } */
 
 .a-icon-prime {
-    display: none !important;
+    display: inline-block !important;
 }
 
 /*"Gesponsort" über Artikelname*/
 .puis-sponsored-label-text {
-    display: none !important;
+    display: inline-block !important;
 }

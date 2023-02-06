@@ -15,16 +15,16 @@ console.log("[pAI]", myText)
 
 chrome.runtime.onInstalled.addListener(() => {
     chrome.action.setBadgeText({
-        text: "OFF",
+        text: "ON",
     });
 });
 
-const extensions = 'https://www.amazon.'
+const AMAZON_URL = 'https://www.amazon.'
 
 // When the user clicks on the extension action
 chrome.action.onClicked.addListener(async (tab) => {
     if (tab.url != undefined) {
-        if (tab.url.startsWith(extensions)) {
+        if (tab.url.startsWith(AMAZON_URL)) {
             // We retrieve the action badge to check if the extension is 'ON' or 'OFF'
             const prevState = await chrome.action.getBadgeText({ tabId: tab.id });
             // Next state will always be the opposite
@@ -36,16 +36,16 @@ chrome.action.onClicked.addListener(async (tab) => {
                 text: nextState,
             });
 
-            if (nextState === "ON") {
+            if (nextState === "OFF") {
                 // Insert the CSS file when the user turns the extension on
                 chrome.scripting.insertCSS({
-                    files: ["style/amazon-rmv-badges.css"],
+                    files: ["style/amazon_2.css"],
                     target: { tabId: tab.id },
                 });
-            } else if (nextState === "OFF") {
+            } else if (nextState === "ON") {
                 // Remove the CSS file when the user turns the extension off
                 chrome.scripting.removeCSS({
-                    files: ["style/amazon-rmv-badges.css"],
+                    files: ["style/amazon_2.css"],
                     target: { tabId: tab.id },
                 });
             }
