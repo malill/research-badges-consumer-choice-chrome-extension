@@ -2,7 +2,9 @@
 // (see "content_script" key). Several foreground scripts can be declared
 // and injected into the same or different pages.
 
+import { CORE_SHORT_NAME } from "../config/constants"
+
 // Do other stuff
-console.log("[pAI] Hello, I am pAI!!!!");
+console.log(`[${CORE_SHORT_NAME}] Hello, I am a Bot!!!!`);
 const url = window.location.href
-console.log("[pAI]", "You are visiting:", url)
+console.log(`[${CORE_SHORT_NAME}]`, "You are visiting:", url)

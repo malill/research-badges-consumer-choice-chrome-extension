@@ -1,11 +1,11 @@
 {
     "manifest_version": 3,
-    "name": "pAI",
+    "name": "ECM Bot",
     "version": "0.0.1",
-    "description": "The Personalized AI Assistant 'pAI'",
+    "description": "The Browser Companion ECM Bot",
     "action": {
         "default_icon": "img/icon.png",
-        "default_title": "pAI"
+        "default_title": "ECM Bot"
     },
     "background": {
         "service_worker": "service_worker.js"
