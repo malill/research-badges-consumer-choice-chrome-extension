@@ -6,6 +6,6 @@ var badgeClasses = $(`.${AMA_CSS_BAGE_CLASS}`)
 
 console.log(`[${CORE_SHORT_NAME}] Removed badges from ${badgeClasses.length} products`)
 
-$.get(REST_API_URL, (res) => {
+$.get(REST_API_URL + "info", (res) => {
     console.log(res);
 })

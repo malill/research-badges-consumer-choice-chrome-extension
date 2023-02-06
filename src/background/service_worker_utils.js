@@ -3,6 +3,8 @@
 // inside the service worker.
 // The importation is done in the file `service-worker.js`.
 
-console.log("[pAI] External file is also loaded!")
+import { CORE_SHORT_NAME } from "../config/constants"
+
+console.log(`[${CORE_SHORT_NAME}] External file is also loaded!`)
 
 export const myText = "Here the background magic happens..."
