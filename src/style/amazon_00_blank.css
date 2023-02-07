@@ -2,7 +2,7 @@
 * Extension sets all styling initially to blank. This prevents
 * flickering, i.e. users seeing the default style first.*/
 
-
+/* SEARCH PAGE (START)*/
 /*Highlight grid style*/
 .a-badge {
     display: none !important;
@@ -19,15 +19,24 @@ span[data-component-type="s-coupon-component"] {
 }
 
 /*Prime (Lieferung) Logo an Artikel*/
-/* .aok-inline-block {
-    display: none !important;
-} */
-
 .a-icon-prime {
     display: none !important;
 }
 
 /*"Gesponsort" above product*/
 .puis-sponsored-label-text {
+    display: none !important;
+}
+
+/* SEARCH PAGE (END)*/
+
+/*PRODUCT DETAILS PAGE (START)*/
+/*"Amazons Tipp" below star rating*/
+#acBadge_feature_div {
+    display: none !important;
+}
+
+/*"Bestseller" below star rating*/
+#zeitgeistBadge_feature_div {
     display: none !important;
 }

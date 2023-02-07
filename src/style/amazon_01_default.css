@@ -1,31 +1,40 @@
 /*Default Amazon style*/
 
-
-/*Highlight Griddarstellung*/
+/* SEARCH PAGE (START)*/
+/*Highlight grid style*/
 .a-badge {
     display: inline-block !important;
 }
 
-/*Highlight Spaltendarstellung*/
+/*Highlight list style*/
 .a-badge-region {
     display: inline-block !important;
 }
 
-/*"Spare x%" unter Artikelpreis*/
+/*"Spare x%" below product price*/
 span[data-component-type="s-coupon-component"] {
     display: inline-block !important;
 }
 
 /*Prime (Lieferung) Logo an Artikel*/
-/* .aok-inline-block {
-    display: none !important;
-} */
-
 .a-icon-prime {
     display: inline-block !important;
 }
 
-/*"Gesponsort" über Artikelname*/
+/*"Gesponsort" above product*/
 .puis-sponsored-label-text {
     display: inline-block !important;
+}
+
+/* SEARCH PAGE (END)*/
+
+/*PRODUCT DETAILS PAGE (START)*/
+/*"Amazons Tipp" below star rating*/
+#acBadge_feature_div {
+    display: block !important;
+}
+
+/*"Bestseller" below star rating*/
+#zeitgeistBadge_feature_div {
+    display: block !important;
 }
