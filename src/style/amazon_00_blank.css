@@ -13,17 +13,17 @@
     display: none !important;
 }
 
-/*"Spare x%" below product price*/
+/*"Save x%" below product price*/
 span[data-component-type="s-coupon-component"] {
     display: none !important;
 }
 
-/*Prime (Lieferung) Logo an Artikel*/
+/*Prime (Delivery) Icon at product*/
 .a-icon-prime {
     display: none !important;
 }
 
-/*"Gesponsort" above product*/
+/*"Sponsored (i)" above product*/
 .puis-sponsored-label-text {
     display: none !important;
 }
@@ -31,7 +31,7 @@ span[data-component-type="s-coupon-component"] {
 /* SEARCH PAGE (END)*/
 
 /*PRODUCT DETAILS PAGE (START)*/
-/*"Amazons Tipp" below star rating*/
+/*"Amazon's Choice" below star rating*/
 #acBadge_feature_div {
     display: none !important;
 }
