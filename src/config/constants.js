@@ -1,5 +1,25 @@
 // Core Constants
-export const CORE_SHORT_NAME = "ECMBot"
+export const CORE_SHORT_NAME = "ECM-BOT"
+
+// Core Constants | Platforms
+export const PLATFORM_DICT = {
+    "AMA": 1
+}
+
+// Core Constants | Locations
+export const LOCATION_AMA_DICT = {
+    "SEARCH_GRID": 1,
+    "SEARCH_LIST": 2,
+    "PDP": 3
+}
+
+// Core Constants | Types
+export const TYPES_AMA_DICT = {
+    "VISIT": 1,
+    "VIEW": 2,
+    "CLICK": 3,
+    "ADD_TO_CART": 4
+}
 
 // Platform | Amazon
 export const AMA_URL = 'https://www.amazon'
