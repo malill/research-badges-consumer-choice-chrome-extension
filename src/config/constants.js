@@ -6,14 +6,19 @@ export const PLATFORM_DICT = {
     "AMA": 1
 }
 
-// Core Constants | Locations
+// Platform Constants | Amazon Basics
+export const AMA_URL = 'https://www.amazon'
+export const AMA_CSS_BAGE_CLASS = "a-badge"
+export const AMA_CSS_BAGE_REGION_CLASS = "a-badge-region"
+
+// Platform Constants | Amazon Locations
 export const LOCATION_AMA_DICT = {
     "SEARCH_GRID": 1,
     "SEARCH_LIST": 2,
     "PDP": 3
 }
 
-// Core Constants | Types
+// Platform Constants | Amazon Types
 export const TYPES_AMA_DICT = {
     "VISIT": 1,
     "VIEW": 2,
@@ -21,11 +26,8 @@ export const TYPES_AMA_DICT = {
     "ADD_TO_CART": 4
 }
 
-// Platform | Amazon
-export const AMA_URL = 'https://www.amazon'
-export const AMA_CSS_BAGE_CLASS = "a-badge"
-export const AMA_CSS_BAGE_REGION_CLASS = "a-badge-region"
-
-// REST API
-export const REST_API_URL = "https://ecm-pai.herokuapp.com/api/v1"
-// export const REST_API_URL = "http://localhost:8000/api/v1/"
+// ECM BOT REST API
+// export const REST_API_URL = "https://ecm-pai.herokuapp.com/api/v1"
+export const REST_API_URL = "http://localhost:8000/api/v1/"
+// Routes
+export const REST_API_EVENTS_URL = REST_API_URL + "event/"

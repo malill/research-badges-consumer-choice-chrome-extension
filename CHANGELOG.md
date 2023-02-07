@@ -2,3 +2,4 @@
 * Initial project setup
 * Add styling that removes all **Amazon** digital nudges on extension installation 
 * Remove Amazon nudges on search and product detail pages
+* Send user requested URL in ECM Bot API request into header `ecm-bot-req-url`
