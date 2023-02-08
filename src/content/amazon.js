@@ -38,6 +38,12 @@ if (URL.includes("/s?k")) {
     let ratingStr = ratingTitle.slice(0, 3)
     let ratingInt = parseInt(ratingStr.replaceAll(',', ''))
 
+    // Count of Reviews
+    let reviewText = document.getElementById("acrCustomerReviewText").textContent
+    let nReviewsStr = reviewText.slice(0, reviewText.indexOf(" "))
+    let nReviewInt = parseInt(nReviewsStr.replaceAll('.', ''))
+
+
     // Item name
     // name = $("#productTitle").textContent.trim() // slow, jQuery needs page content
     // name = document.title // fast, no need to wait for page to be loaded
@@ -51,6 +57,7 @@ if (URL.includes("/s?k")) {
         location: LOCATION_AMA_DICT["PDP"],
         price: parseInt(document.getElementById("twister-plus-price-data-price").getAttribute("value")),
         avg_rating: ratingInt,
+        n_reviews: nReviewInt,
         timestamp: Date.now()
     }
 }
