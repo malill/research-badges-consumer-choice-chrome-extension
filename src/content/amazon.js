@@ -46,17 +46,21 @@ if (URL.includes("/s?k")) {
     // Avg. rating | Event data
     let ratingTitle = document.getElementById("acrPopover").getAttribute("title")
     let ratingStr = ratingTitle.slice(0, 3)
-    let ratingInt = parseInt(ratingStr.replaceAll(',', ''))
+    const ratingInt = parseInt(ratingStr.replaceAll(',', ''))
 
     // Count of reviews | Event data
     let reviewText = document.getElementById("acrCustomerReviewText").textContent
     let nReviewsStr = reviewText.slice(0, reviewText.indexOf(" "))
-    let nReviewInt = parseInt(nReviewsStr.replaceAll('.', ''))
+    const nReviewInt = parseInt(nReviewsStr.replaceAll('.', ''))
 
     // Item name | Item data
-    let itemName = document.getElementById("productTitle").textContent.trim() // faster, no jQuery
+    const itemName = document.getElementById("productTitle").textContent.trim() // faster, no jQuery
+
+    // Item name len | Event data
+    const itemNameLen = itemName.length
 
     ecmData["item_id"] = asin
+    ecmData["item_name_len"] = itemNameLen
     ecmData["price"] = itemPrice
     ecmData["avg_rating"] = ratingInt
     ecmData["n_reviews"] = nReviewInt
