@@ -26,6 +26,16 @@ span[data-component-type="s-coupon-component"] {
     display: inline-block !important;
 }
 
+/*Delivery info*/
+div.a-row.a-size-base.a-color-secondary.s-align-children-center {
+    display: block !important;
+}
+
+/*"Only x left"*/
+div.a-row.a-size-base.a-color-secondary {
+    display: block !important;
+}
+
 /* SEARCH PAGE (END)*/
 
 /*PRODUCT DETAILS PAGE (START)*/

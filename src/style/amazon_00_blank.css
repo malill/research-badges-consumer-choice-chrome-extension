@@ -28,6 +28,16 @@ span[data-component-type="s-coupon-component"] {
     display: none !important;
 }
 
+/*Delivery info*/
+div.a-row.a-size-base.a-color-secondary.s-align-children-center {
+    display: none !important;
+}
+
+/*"Only x left"*/
+div.a-row.a-size-base.a-color-secondary {
+    display: none !important;
+}
+
 /* SEARCH PAGE (END)*/
 
 /*PRODUCT DETAILS PAGE (START)*/
