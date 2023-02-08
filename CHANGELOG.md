@@ -6,3 +6,4 @@
 * [AMA] PDP, get price from HTML hidden input field
 * [AMA] PDP, get avg. rating from HTML popover 
 * [AMA] PDP, get count of reviews from HTML review text
+* [AMA] Search Page, remove UVP and delivery options

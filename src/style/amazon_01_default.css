@@ -36,6 +36,16 @@ div.a-row.a-size-base.a-color-secondary {
     display: block !important;
 }
 
+/*UVP text*/
+span.a-size-base.a-color-secondary {
+    display: block !important;
+}
+
+/*UVP Price*/
+span.a-price.a-text-price {
+    display: block !important;
+}
+
 /* SEARCH PAGE (END)*/
 
 /*PRODUCT DETAILS PAGE (START)*/
