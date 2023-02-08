@@ -53,6 +53,11 @@ div._bGlmZ_container_GMk6b.sbx-desktop {
     display: none !important;
 }
 
+/*Other disturbing carousels*/
+[data-asin=""] {
+    display: none !important
+}
+
 /* SEARCH PAGE (END)*/
 
 /*PRODUCT DETAILS PAGE (START)*/

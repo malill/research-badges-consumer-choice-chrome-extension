@@ -9,3 +9,4 @@
 * [AMA] Search Page, remove UVP and delivery options
 * [AMA] Search Page, remove ad card on top of search results
 * [AMA] send event and item data together
+* [AMA] Search Page, remove other carousels (partner companies, ads, best seller etc.)
