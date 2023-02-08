@@ -1,4 +1,4 @@
-# Wiki - pAI Chrome Extension :space_invader:
+# Wiki - pAI Chrome Extension :computer:
 
 *"Personalized AI" (pAI) repository for Google Chrome extension.*
 
@@ -20,6 +20,8 @@ To locally test the current version of the Google Chrome Extension **pAI** in yo
 > The above steps only need to be performed once. Whenever you synchronize the downloaded files with the current status you only need to hit **refresh** :arrows_counterclockwise: button on [chrome://extensions/](chrome://extensions/) page.
 
 # Documentation :notebook:
+
+The Chrome Extension uses *Manifest V3*.
 
 Official Google Documentation: https://developer.chrome.com/docs/extensions/mv3/
 

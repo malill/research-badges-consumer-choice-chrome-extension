@@ -1,11 +1,6 @@
 // Core Constants
 export const CORE_SHORT_NAME = "ECM-BOT"
 
-// Core Constants | Platforms
-export const PLATFORM_DICT = {
-    "AMA": 1
-}
-
 // Platform Constants | Amazon Basics
 export const AMA_URL = 'https://www.amazon'
 export const AMA_CSS_BAGE_CLASS = "a-badge"
