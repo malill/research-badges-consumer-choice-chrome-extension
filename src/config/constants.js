@@ -17,8 +17,9 @@ export const LOCATION_AMA_DICT = {
 export const TYPES_AMA_DICT = {
     "VISIT": 1,
     "VIEW": 2,
-    "CLICK": 3,
-    "ADD_TO_CART": 4
+    "INSPECT": 3,
+    "CLICK": 4,
+    "ADD_TO_CART": 5
 }
 
 // ECM BOT REST API
