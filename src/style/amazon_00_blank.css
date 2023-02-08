@@ -48,6 +48,11 @@ span.a-price.a-text-price {
     display: none !important;
 }
 
+/*Top banner ad*/
+div._bGlmZ_container_GMk6b.sbx-desktop {
+    display: none !important;
+}
+
 /* SEARCH PAGE (END)*/
 
 /*PRODUCT DETAILS PAGE (START)*/

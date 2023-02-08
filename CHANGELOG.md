@@ -7,3 +7,4 @@
 * [AMA] PDP, get avg. rating from HTML popover 
 * [AMA] PDP, get count of reviews from HTML review text
 * [AMA] Search Page, remove UVP and delivery options
+* [AMA] Search Page, remove ad card on top of search results

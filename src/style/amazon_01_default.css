@@ -3,27 +3,27 @@
 /* SEARCH PAGE (START)*/
 /*Highlight grid style*/
 .a-badge {
-    display: inline-block !important;
+    display: block !important;
 }
 
 /*Highlight list style*/
 .a-badge-region {
-    display: inline-block !important;
+    display: block !important;
 }
 
 /*"Save x%" below product price*/
 span[data-component-type="s-coupon-component"] {
-    display: inline-block !important;
+    display: block !important;
 }
 
 /*Prime (Delivery) Icon at product*/
 .a-icon-prime {
-    display: inline-block !important;
+    display: block !important;
 }
 
 /*"Sponsored (i)" above product*/
 .puis-sponsored-label-text {
-    display: inline-block !important;
+    display: block !important;
 }
 
 /*Delivery info*/
@@ -43,6 +43,11 @@ span.a-size-base.a-color-secondary {
 
 /*UVP Price*/
 span.a-price.a-text-price {
+    display: block !important;
+}
+
+/*Top banner ad*/
+div._bGlmZ_container_GMk6b.sbx-desktop {
     display: block !important;
 }
 
