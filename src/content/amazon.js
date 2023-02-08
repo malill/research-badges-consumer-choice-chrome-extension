@@ -18,6 +18,13 @@ let ecmData = {
     timestamp: ecmDataTimestamp
 }
 
+// Item Mock
+let ecmItemData = {
+    id: "mockID",
+    hostname: ecmDataHostname,
+    name: "mockName"
+}
+
 var badgeClasses = $(`.${AMA_CSS_BAGE_CLASS}`)
 cl(`Removed badges from ${badgeClasses.length} products`)
 
@@ -34,6 +41,7 @@ if (URL.includes("/s?k")) {
     // Product detail page
     // TODO: check if this is really a good condition
     // TODO: not all PDPs have the below HTML tags, check when not (e.g. apparel seems to be differnt)
+    // TODO: all get attribute functions (code parts) should be inside a try and catch clause
 
     // Item ID | Event & Item data
     const i_dp = URL.indexOf("/dp/")
@@ -43,7 +51,7 @@ if (URL.includes("/s?k")) {
     // Item price | Event data
     const itemPrice = parseInt(document.getElementById("twister-plus-price-data-price").getAttribute("value"))
 
-    // Avg. rating | Event data
+    // Avg. rating | Event data (TODO: THERE ARE PRODUCTS WITHOUT RATINGS AND THIS WILL FAIL)
     let ratingTitle = document.getElementById("acrPopover").getAttribute("title")
     let ratingStr = ratingTitle.slice(0, 3)
     const ratingInt = parseInt(ratingStr.replaceAll(',', ''))
@@ -66,6 +74,9 @@ if (URL.includes("/s?k")) {
     ecmData["n_reviews"] = nReviewInt
     ecmData["event_type"] = TYPES_AMA_DICT["INSPECT"]
     ecmData["location"] = LOCATION_AMA_DICT["PDP"]
+
+    ecmItemData["id"] = asin
+    ecmItemData["name"] = itemName
 }
 
 $.ajax({
@@ -75,7 +86,7 @@ $.ajax({
         'ecm-bot-req-url': URL
     },
     type: "POST",
-    data: JSON.stringify(ecmData),
+    data: JSON.stringify({ event_create: ecmData, item_create: ecmItemData }),
     contentType: "application/json",
     dataType: "json"
 });
