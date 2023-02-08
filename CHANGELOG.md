@@ -4,3 +4,4 @@
 * Remove Amazon nudges on search and product detail pages
 * Send user requested URL in ECM Bot API request into header `ecm-bot-req-url`
 * [AMA] PDP, get price from HTML hidden input field
+* [AMA] PDP, get avg. rating from popover 

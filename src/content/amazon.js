@@ -33,6 +33,11 @@ if (URL.includes("/s?k")) {
     let asin = URL.substring(i_dp + 4)
     asin = asin.substring(0, asin.indexOf("/"))
 
+    // Avg. Rating
+    let ratingTitle = document.getElementById("acrPopover").getAttribute("title")
+    let ratingStr = ratingTitle.slice(0, 3)
+    let ratingInt = parseInt(ratingStr.replaceAll(',', ''))
+
     // Item name
     // name = $("#productTitle").textContent.trim() // slow, jQuery needs page content
     // name = document.title // fast, no need to wait for page to be loaded
@@ -45,11 +50,7 @@ if (URL.includes("/s?k")) {
         event_type: TYPES_AMA_DICT["VISIT"],
         location: LOCATION_AMA_DICT["PDP"],
         price: parseInt(document.getElementById("twister-plus-price-data-price").getAttribute("value")),
-        avg_rating: 35,
-        n_reviews: 1000,
-        badge_type: 1,
-        dlv_time_days: 1,
-        dlv_time_range: 1,
+        avg_rating: ratingInt,
         timestamp: Date.now()
     }
 }
