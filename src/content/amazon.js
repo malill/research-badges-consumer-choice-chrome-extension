@@ -51,7 +51,7 @@ if (URL.includes("/s?k")) {
     // Item price | Event data
     let itemPrice = undefined
     try {
-        itemPrice = parseInt(document.getElementById("twister-plus-price-data-price").getAttribute("value"))
+        itemPrice = parseInt(document.getElementById("twister-plus-price-data-price").getAttribute("value").replaceAll('.', ''))
     } catch (error) {
         cl("No price for item found")
     }
@@ -61,7 +61,7 @@ if (URL.includes("/s?k")) {
     try {
         let ratingTitle = document.getElementById("acrPopover").getAttribute("title")
         let ratingStr = ratingTitle.slice(0, 3)
-        ratingInt = parseInt(ratingStr.replaceAll(',', ''))
+        ratingInt = parseInt(ratingStr.replaceAll(',', '').replaceAll('.', ''))
     } catch (error) {
         cl("No rating for item found")
     }
@@ -71,7 +71,7 @@ if (URL.includes("/s?k")) {
     try {
         let reviewText = document.getElementById("acrCustomerReviewText").textContent
         let nReviewsStr = reviewText.slice(0, reviewText.indexOf(" "))
-        nReviewInt = parseInt(nReviewsStr.replaceAll('.', ''))
+        nReviewInt = parseInt(nReviewsStr.replaceAll('.', '').replaceAll(',', ''))
     } catch (error) {
         cl("No number of reviews for item found")
     }

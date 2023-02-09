@@ -29,7 +29,9 @@
             ],
             "matches": [
                 "http://www.amazon.de/*",
-                "https://www.amazon.de/*"
+                "https://www.amazon.de/*",
+                "http://www.amazon.co.uk/*",
+                "https://www.amazon.co.uk/*"
             ]
         }
     ],
