@@ -49,17 +49,32 @@ if (URL.includes("/s?k")) {
     asin = asin.substring(0, asin.indexOf("/"))
 
     // Item price | Event data
-    const itemPrice = parseInt(document.getElementById("twister-plus-price-data-price").getAttribute("value"))
+    let itemPrice = undefined
+    try {
+        itemPrice = parseInt(document.getElementById("twister-plus-price-data-price").getAttribute("value"))
+    } catch (error) {
+        cl("No price for item found")
+    }
 
     // Avg. rating | Event data (TODO: THERE ARE PRODUCTS WITHOUT RATINGS AND THIS WILL FAIL)
-    let ratingTitle = document.getElementById("acrPopover").getAttribute("title")
-    let ratingStr = ratingTitle.slice(0, 3)
-    const ratingInt = parseInt(ratingStr.replaceAll(',', ''))
+    let ratingInt = undefined
+    try {
+        let ratingTitle = document.getElementById("acrPopover").getAttribute("title")
+        let ratingStr = ratingTitle.slice(0, 3)
+        ratingInt = parseInt(ratingStr.replaceAll(',', ''))
+    } catch (error) {
+        cl("No rating for item found")
+    }
 
     // Count of reviews | Event data
-    let reviewText = document.getElementById("acrCustomerReviewText").textContent
-    let nReviewsStr = reviewText.slice(0, reviewText.indexOf(" "))
-    const nReviewInt = parseInt(nReviewsStr.replaceAll('.', ''))
+    let nReviewInt = undefined
+    try {
+        let reviewText = document.getElementById("acrCustomerReviewText").textContent
+        let nReviewsStr = reviewText.slice(0, reviewText.indexOf(" "))
+        nReviewInt = parseInt(nReviewsStr.replaceAll('.', ''))
+    } catch (error) {
+        cl("No number of reviews for item found")
+    }
 
     // Item name | Item data
     const itemName = document.getElementById("productTitle").textContent.trim() // faster, no jQuery

@@ -11,3 +11,4 @@
 * [AMA] send event and item data together
 * [AMA] Search Page, remove other carousels (partner companies, ads, best seller etc.)
 * FIX: [AMA] remove tab title and URL from header request, since leads to error "Failed to execute 'setRequestHeader' on 'XMLHttpRequest': String contains non ISO-8859-1 code point."
+* [AMA] Catch errors when retrieving information from PDP
