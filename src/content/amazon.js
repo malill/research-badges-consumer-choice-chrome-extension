@@ -82,8 +82,6 @@ if (URL.includes("/s?k")) {
 $.ajax({
     url: REST_API_EVENTS_URL,
     headers: {
-        'ecm-bot-tab-title': document.title,
-        'ecm-bot-req-url': URL
     },
     type: "POST",
     data: JSON.stringify({ event_create: ecmData, item_create: ecmItemData }),
