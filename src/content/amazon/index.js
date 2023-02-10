@@ -43,7 +43,7 @@ if (URL.includes("/s?k")) {
 
     // TODO: Iterate over elements in the viewport
     // This here is only for development, functions should be moved to files
-    let testBadge = 2
+    let testBadge = 4
 
     if (testBadge === 1) {
         // HERE: For development use https://www.amazon.co.uk/s?k=dart+board&crid=1IDRISXAYGU4M&sprefix=dart+board%2Caps%2C100&ref=nb_sb_noss_1
@@ -64,19 +64,42 @@ if (URL.includes("/s?k")) {
         console.log("Badge1:", badge1)
     }
 
-    if (testBadge === 2) {
+    if (testBadge === 2 || testBadge === 3) {
         // HERE: For development use https://www.amazon.co.uk/s?k=dart+board&crid=1IDRISXAYGU4M&sprefix=dart+board%2Caps%2C100&ref=nb_sb_noss_1
-        // None: B07MD92L57 / Limited Time Deal: B07YRGFQHY // Save X%: B08L4QV6ZH
+        // None: B07MD92L57 / Save X%: B08L4QV6ZH / Limited Time Deal: B07YRGFQHY
         let el = document.querySelector('[data-asin=B08L4QV6ZH]') // el should come from iterator
-        let badge2 = undefined
+        let badge2, badge3 = undefined
 
         let priceEl = el.querySelector("div.s-price-instructions-style")
         let dealEl = priceEl.querySelector("[data-a-badge-color='sx-lightning-deal-red']")
+
         if (dealEl) {
-            // This could be "Limited time deal" or "Save X%"
-            badge2 = dealEl.textContent
+            let couponText = dealEl.textContent
+            if (couponText.includes("%")) {
+                badge2 = 1
+            } else {
+                badge3 = 1
+            }
         }
         console.log("Badge2:", badge2)
+        console.log("Badge3:", badge3)
+    }
+
+    if (testBadge === 4 || testBadge === 5) {
+        // HERE: For development use https://www.amazon.co.uk/s?k=dart+board+set&sprefix=dart+%2Caps%2C98&ref=nb_sb_ss_ts-doa-p_2_5
+        // None: B07XL9FS37  / Voucher %: B091KFR3BV / Voucher Total Amount: B0BQMJLVML
+        let el = document.querySelector('[data-asin=B091KFR3BV]') // el should come from iterator
+        let badge4, badge5 = undefined
+
+        let couponEl = el.querySelector("span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-coupon-highlight-color")
+        let couponText = couponEl.textContent
+        if (couponText.includes("%")) {
+            badge4 = 1
+        } else {
+            badge5 = 1
+        }
+        console.log("Badge4:", badge4)
+        console.log("Badge5:", badge5)
     }
 
 
