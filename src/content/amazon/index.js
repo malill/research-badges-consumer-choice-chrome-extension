@@ -43,12 +43,12 @@ if (URL.includes("/s?k")) {
 
     // TODO: Iterate over elements in the viewport
     // This here is only for development, functions should be moved to files
-    let testBadge = 0
+    let testBadge = 2
 
     if (testBadge === 1) {
         // HERE: For development use https://www.amazon.co.uk/s?k=dart+board&crid=1IDRISXAYGU4M&sprefix=dart+board%2Caps%2C100&ref=nb_sb_noss_1
         // None: B09BFPG9YY / Ama Choice: B08CXP8KK1 / Best Seller: B0018D69TE
-        let el = document.querySelectorAll('[data-asin=B0018D69TE]')[0] // should come from iterator
+        let el = document.querySelector('[data-asin=B0018D69TE]') // el should come from iterator
         let badge1 = undefined
 
         const badgeEl = el.querySelector("span.rush-component [data-component-type='s-status-badge-component']")
@@ -62,6 +62,21 @@ if (URL.includes("/s?k")) {
             }
         }
         console.log("Badge1:", badge1)
+    }
+
+    if (testBadge === 2) {
+        // HERE: For development use https://www.amazon.co.uk/s?k=dart+board&crid=1IDRISXAYGU4M&sprefix=dart+board%2Caps%2C100&ref=nb_sb_noss_1
+        // None: B07MD92L57 / Limited Time Deal: B07YRGFQHY // Save X%: B08L4QV6ZH
+        let el = document.querySelector('[data-asin=B08L4QV6ZH]') // el should come from iterator
+        let badge2 = undefined
+
+        let priceEl = el.querySelector("div.s-price-instructions-style")
+        let dealEl = priceEl.querySelector("[data-a-badge-color='sx-lightning-deal-red']")
+        if (dealEl) {
+            // This could be "Limited time deal" or "Save X%"
+            badge2 = dealEl.textContent
+        }
+        console.log("Badge2:", badge2)
     }
 
 
