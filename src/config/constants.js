@@ -10,8 +10,6 @@ export const REST_API_EVENTS_URL = REST_API_URL + "event/"
 /* AMAZON */
 // Platform Constants | Amazon Basics
 export const AMA_URL = 'https://www.amazon'
-export const AMA_CSS_BAGE_CLASS = "a-badge"
-export const AMA_CSS_BAGE_REGION_CLASS = "a-badge-region"
 
 // Platform Constants | Amazon Locations
 export const AMA_LOCATION_DICT = {

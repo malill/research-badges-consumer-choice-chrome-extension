@@ -1,45 +1,68 @@
-import { AMA_LOCATION_DICT, AMA_EVENT_TYPES_DICT, AMA_CSS_BAGE_CLASS, REST_API_EVENTS_URL } from "../../config/constants"
+// This script gets loaded on amazon.de & amazon.co.uk
+
+
+import { AMA_LOCATION_DICT, AMA_EVENT_TYPES_DICT, REST_API_EVENTS_URL } from "../../config/constants"
 import { cl } from "../util";
+import { getBadge1Info } from "./badges/badge1";
+import { get_product_details } from "./pages/search_page"
 
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
 
-const ecmDataUserId = 1
-const ecmDataHostname = window.location.hostname
-const ecmDataTabTitle = document.title
-const ecmDataGroup = 1
-const ecmDataTimestamp = Date.now()
+const ecmEventDataUserId = 1
+const ecmEventDataHostname = window.location.hostname
+const ecmEventDataTabTitle = document.title
+const ecmEventDataGroup = 1
+const ecmEventDataTimestamp = Date.now()
 
-let ecmData = {
-    user_id: ecmDataUserId,
-    hostname: ecmDataHostname,
-    tab_title: ecmDataTabTitle,
-    group: ecmDataGroup,
+let ecmEventData = {
+    user_id: ecmEventDataUserId,
+    hostname: ecmEventDataHostname,
+    tab_title: ecmEventDataTabTitle,
+    group: ecmEventDataGroup,
     logged_in: 0,
-    timestamp: ecmDataTimestamp
+    timestamp: ecmEventDataTimestamp
 }
 
 // Item Mock
 let ecmItemData = {
     id: "mockID",
-    hostname: ecmDataHostname,
+    hostname: ecmEventDataHostname,
     name: "mockName"
 }
-
-var badgeClasses = $(`.${AMA_CSS_BAGE_CLASS}`)
-cl(`Removed badges from ${badgeClasses.length} products`)
 
 if (URL.includes("/s?k")) {
     // Search page
     // TODO: check if this is really a good condition
 
-    ecmData["event_type"] = AMA_EVENT_TYPES_DICT["VIEW"]
+    ecmEventData["event_type"] = AMA_EVENT_TYPES_DICT["VIEW"]
     // TODO: distinguish grid and list layout -> I think best is to check the item component style class
-    ecmData["location"] = AMA_LOCATION_DICT["SEARCH_GRID"]
+    ecmEventData["location"] = AMA_LOCATION_DICT["SEARCH_GRID"]
 
-    // DEV https://www.amazon.co.uk/s?k=dart+flight&crid=34YQUY7R2JUHI&sprefix=dart+flight%2Caps%2C178&ref=nb_sb_noss_2
-    let el = document.querySelectorAll('[data-asin=B01C08VD7I]')[0]
-    cl(el)
+
+
+    // TODO: Iterate over elements in the viewport
+    // This here is only for development, functions should be moved to files
+    let testBadge = 0
+
+    if (testBadge === 1) {
+        // HERE: For development use https://www.amazon.co.uk/s?k=dart+board&crid=1IDRISXAYGU4M&sprefix=dart+board%2Caps%2C100&ref=nb_sb_noss_1
+        // None: B09BFPG9YY / Ama Choice: B08CXP8KK1 / Best Seller: B0018D69TE
+        let el = document.querySelectorAll('[data-asin=B0018D69TE]')[0] // should come from iterator
+        let badge1 = undefined
+
+        const badgeEl = el.querySelector("span.rush-component [data-component-type='s-status-badge-component']")
+        if (badgeEl) {
+            const badgeCompProps = badgeEl.getAttribute("data-component-props")
+            const jsonProps = JSON.parse(badgeCompProps)
+            if (jsonProps["asin"] === "B0018D69TE") {
+                badge1 = jsonProps["badgeType"]
+            } else {
+                console.log("Something went wrong. Badge type and corresponding ASIN do not match")
+            }
+        }
+        console.log("Badge1:", badge1)
+    }
 
 
 } else if (URL.includes("/ref=")) {
@@ -87,13 +110,13 @@ if (URL.includes("/s?k")) {
     // Item name len | Event data
     const itemNameLen = itemName.length
 
-    ecmData["item_id"] = asin
-    ecmData["item_name_len"] = itemNameLen
-    ecmData["price"] = itemPrice
-    ecmData["avg_rating"] = ratingInt
-    ecmData["n_reviews"] = nReviewInt
-    ecmData["event_type"] = AMA_EVENT_TYPES_DICT["INSPECT"]
-    ecmData["location"] = AMA_LOCATION_DICT["PDP"]
+    ecmEventData["item_id"] = asin
+    ecmEventData["item_name_len"] = itemNameLen
+    ecmEventData["price"] = itemPrice
+    ecmEventData["avg_rating"] = ratingInt
+    ecmEventData["n_reviews"] = nReviewInt
+    ecmEventData["event_type"] = AMA_EVENT_TYPES_DICT["INSPECT"]
+    ecmEventData["location"] = AMA_LOCATION_DICT["PDP"]
 
     ecmItemData["id"] = asin
     ecmItemData["name"] = itemName
@@ -104,7 +127,7 @@ $.ajax({
     headers: {
     },
     type: "POST",
-    data: JSON.stringify({ event_create: ecmData, item_create: ecmItemData }),
+    data: JSON.stringify({ event_create: ecmEventData, item_create: ecmItemData }),
     contentType: "application/json",
     dataType: "json"
 });
