@@ -1,4 +1,4 @@
-import { LOCATION_AMA_DICT, TYPES_AMA_DICT, AMA_CSS_BAGE_CLASS, REST_API_EVENTS_URL } from "../../config/constants"
+import { AMA_LOCATION_DICT, AMA_EVENT_TYPES_DICT, AMA_CSS_BAGE_CLASS, REST_API_EVENTS_URL } from "../../config/constants"
 import { cl } from "../util";
 
 var $ = require("jquery"); // only use for $.ajax(...)
@@ -33,9 +33,9 @@ if (URL.includes("/s?k")) {
     // Search page
     // TODO: check if this is really a good condition
 
-    ecmData["event_type"] = TYPES_AMA_DICT["VIEW"]
+    ecmData["event_type"] = AMA_EVENT_TYPES_DICT["VIEW"]
     // TODO: distinguish grid and list layout -> I think best is to check the item component style class
-    ecmData["location"] = LOCATION_AMA_DICT["SEARCH_GRID"]
+    ecmData["location"] = AMA_LOCATION_DICT["SEARCH_GRID"]
 
     // DEV https://www.amazon.co.uk/s?k=dart+flight&crid=34YQUY7R2JUHI&sprefix=dart+flight%2Caps%2C178&ref=nb_sb_noss_2
     let el = document.querySelectorAll('[data-asin=B01C08VD7I]')[0]
@@ -92,8 +92,8 @@ if (URL.includes("/s?k")) {
     ecmData["price"] = itemPrice
     ecmData["avg_rating"] = ratingInt
     ecmData["n_reviews"] = nReviewInt
-    ecmData["event_type"] = TYPES_AMA_DICT["INSPECT"]
-    ecmData["location"] = LOCATION_AMA_DICT["PDP"]
+    ecmData["event_type"] = AMA_EVENT_TYPES_DICT["INSPECT"]
+    ecmData["location"] = AMA_LOCATION_DICT["PDP"]
 
     ecmItemData["id"] = asin
     ecmItemData["name"] = itemName
