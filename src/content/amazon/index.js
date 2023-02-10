@@ -33,10 +33,14 @@ if (URL.includes("/s?k")) {
     // Search page
     // TODO: check if this is really a good condition
 
-    ecmData["event_type"] = TYPES_AMA_DICT["VISIT"]
-
+    ecmData["event_type"] = TYPES_AMA_DICT["VIEW"]
     // TODO: distinguish grid and list layout -> I think best is to check the item component style class
     ecmData["location"] = LOCATION_AMA_DICT["SEARCH_GRID"]
+
+    // DEV https://www.amazon.co.uk/s?k=dart+flight&crid=34YQUY7R2JUHI&sprefix=dart+flight%2Caps%2C178&ref=nb_sb_noss_2
+    let el = document.querySelectorAll('[data-asin=B01C08VD7I]')[0]
+    cl(el)
+
 
 } else if (URL.includes("/ref=")) {
     // Product detail page

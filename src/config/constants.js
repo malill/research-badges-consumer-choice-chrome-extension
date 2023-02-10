@@ -17,8 +17,8 @@ export const LOCATION_AMA_DICT = {
 export const TYPES_AMA_DICT = {
     "VISIT": 1,
     "VIEW": 2,
-    "INSPECT": 3,
-    "CLICK": 4,
+    "CLICK": 3,
+    "INSPECT": 4,
     "ADD_TO_CART": 5
 }
 
