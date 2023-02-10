@@ -1,5 +1,5 @@
-import { LOCATION_AMA_DICT, TYPES_AMA_DICT, AMA_CSS_BAGE_CLASS, REST_API_EVENTS_URL } from "../config/constants"
-import { cl } from "./util";
+import { LOCATION_AMA_DICT, TYPES_AMA_DICT, AMA_CSS_BAGE_CLASS, REST_API_EVENTS_URL } from "../../config/constants"
+import { cl } from "../util";
 
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
@@ -15,6 +15,7 @@ let ecmData = {
     hostname: ecmDataHostname,
     tab_title: ecmDataTabTitle,
     group: ecmDataGroup,
+    logged_in: 0,
     timestamp: ecmDataTimestamp
 }
 

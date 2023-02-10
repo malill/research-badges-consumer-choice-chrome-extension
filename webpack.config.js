@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        amazon: path.resolve(__dirname, "src/content/amazon.js"),
+        amazon: path.resolve(__dirname, "src/content/amazon/index.js"),
         core: path.resolve(__dirname, "src/content/core.js"),
         service_worker: path.resolve(__dirname, "src/background/service_worker.js")
     },
