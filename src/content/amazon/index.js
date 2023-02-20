@@ -40,9 +40,31 @@ if (URL.includes("/s?k")) {
     // TODO: distinguish grid and list layout -> I think best is to check the item component style class
     ecmEventData["location"] = AMA_LOCATION_DICT["SEARCH_GRID"]
 
+    const searchResults = document.querySelectorAll(`[data-component-type="s-search-result"]`)
+    searchResults.forEach((searchResultElement) => {
+        let amazonSearchItem = new AmazonSearchItem()
+        amazonSearchItem.asin = searchResultElement.getAttribute("data-asin")
+        amazonSearchItem.position = searchResultElement.getAttribute("data-index")
+        try {
+            const ratingEl = searchResultElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0]
+            amazonSearchItem.avgRating = parseFloat(ratingEl.getElementsByClassName("a-size-base")[0].textContent)
+            amazonSearchItem.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},]/g, ''))
+
+
+        } catch (error) {
+            cl("No rating element found")
+        }
+
+
+        // Badges
+        amazonSearchItem.badge1 = getBadge1Info(searchResultElement)
+
+
+        console.log(amazonSearchItem)
+    })
+
+
     let amazonSearchItem = new AmazonSearchItem()
-
-
     // TODO: Iterate over elements in the viewport
     // This here is only for development, functions should be moved to files
     let testBadge = 1
