@@ -41,9 +41,12 @@ if (URL.includes("/s?k")) {
     ecmEventData["location"] = AMA_LOCATION_DICT["SEARCH_GRID"]
 
     const searchResults = document.querySelectorAll(`[data-component-type="s-search-result"]`)
+
     searchResults.forEach((searchResultElement) => {
 
         let amazonSearchItem = new AmazonSearchItem()
+
+        // Basic attributes
         amazonSearchItem.asin = searchResultElement.getAttribute("data-asin")
         amazonSearchItem.position = parseInt(searchResultElement.getAttribute("data-index"))
         try {
@@ -54,9 +57,8 @@ if (URL.includes("/s?k")) {
             cl("No rating element found")
         }
 
-        // Badges
+        // Badge attributes
         [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = getBadge1Info(searchResultElement)
-
 
         console.log(amazonSearchItem)
     })
