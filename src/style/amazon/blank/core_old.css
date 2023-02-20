@@ -1,0 +1,72 @@
+/*BLANK STYLE 
+* Extension sets all styling initially to blank. This prevents
+* flickering, i.e. users seeing the default style first.*/
+
+/* SEARCH PAGE (START)*/
+/*Highlight grid style*/
+.a-badge {
+    display: none !important;
+}
+
+/*Highlight list style*/
+.a-badge-region {
+    display: none !important;
+}
+
+/*"Save x%" below product price*/
+span[data-component-type="s-coupon-component"] {
+    display: none !important;
+}
+
+/*Prime (Delivery) Icon at product*/
+.a-icon-prime {
+    display: none !important;
+}
+
+/*"Sponsored (i)" above product*/
+.puis-sponsored-label-text {
+    display: none !important;
+}
+
+/*Delivery info*/
+div.a-row.a-size-base.a-color-secondary.s-align-children-center {
+    display: none !important;
+}
+
+/*"Only x left"*/
+div.a-row.a-size-base.a-color-secondary {
+    display: none !important;
+}
+
+/*UVP text*/
+span.a-size-base.a-color-secondary {
+    display: none !important;
+}
+
+/*UVP Price*/
+span.a-price.a-text-price {
+    display: none !important;
+}
+
+/*Top banner ad*/
+div._bGlmZ_container_GMk6b.sbx-desktop {
+    display: none !important;
+}
+
+/*Other disturbing carousels*/
+[data-asin=""] {
+    display: none !important
+}
+
+/* SEARCH PAGE (END)*/
+
+/*PRODUCT DETAILS PAGE (START)*/
+/*"Amazon's Choice" below star rating*/
+#acBadge_feature_div {
+    display: none !important;
+}
+
+/*"Bestseller" below star rating*/
+#zeitgeistBadge_feature_div {
+    display: none !important;
+}

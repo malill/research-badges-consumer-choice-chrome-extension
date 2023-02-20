@@ -42,22 +42,20 @@ if (URL.includes("/s?k")) {
 
     const searchResults = document.querySelectorAll(`[data-component-type="s-search-result"]`)
     searchResults.forEach((searchResultElement) => {
+
         let amazonSearchItem = new AmazonSearchItem()
         amazonSearchItem.asin = searchResultElement.getAttribute("data-asin")
-        amazonSearchItem.position = searchResultElement.getAttribute("data-index")
+        amazonSearchItem.position = parseInt(searchResultElement.getAttribute("data-index"))
         try {
             const ratingEl = searchResultElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0]
             amazonSearchItem.avgRating = parseFloat(ratingEl.getElementsByClassName("a-size-base")[0].textContent)
             amazonSearchItem.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},]/g, ''))
-
-
         } catch (error) {
             cl("No rating element found")
         }
 
-
         // Badges
-        amazonSearchItem.badge1 = getBadge1Info(searchResultElement)
+        [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = getBadge1Info(searchResultElement)
 
 
         console.log(amazonSearchItem)

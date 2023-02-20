@@ -1,0 +1,70 @@
+/*Default Amazon style*/
+
+/* SEARCH PAGE (START)*/
+/*Highlight grid style*/
+.a-badge {
+    display: block !important;
+}
+
+/*Highlight list style*/
+.a-badge-region {
+    display: block !important;
+}
+
+/*"Save x%" below product price*/
+span[data-component-type="s-coupon-component"] {
+    display: block !important;
+}
+
+/*Prime (Delivery) Icon at product*/
+.a-icon-prime {
+    display: block !important;
+}
+
+/*"Sponsored (i)" above product*/
+.puis-sponsored-label-text {
+    display: block !important;
+}
+
+/*Delivery info*/
+div.a-row.a-size-base.a-color-secondary.s-align-children-center {
+    display: block !important;
+}
+
+/*"Only x left"*/
+div.a-row.a-size-base.a-color-secondary {
+    display: block !important;
+}
+
+/*UVP text*/
+span.a-size-base.a-color-secondary {
+    display: block !important;
+}
+
+/*UVP Price*/
+span.a-price.a-text-price {
+    display: block !important;
+}
+
+/*Top banner ad*/
+div._bGlmZ_container_GMk6b.sbx-desktop {
+    display: block !important;
+}
+
+/*Other disturbing carousels*/
+[data-asin=""] {
+    display: block !important
+}
+
+/* SEARCH PAGE (END)*/
+
+/*PRODUCT DETAILS PAGE (START)*/
+/*"Amazon's Choice" below star rating*/
+#acBadge_feature_div {
+    display: block !important;
+}
+
+/*"Bestseller" below star rating*/
+#zeitgeistBadge_feature_div {
+    display: block !important;
+}
