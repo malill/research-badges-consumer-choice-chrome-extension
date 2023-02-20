@@ -12,9 +12,6 @@
     },
     "content_scripts": [
         {
-            "css": [
-                "/style/amazon_00_blank.css"
-            ],
             "js": [
                 "core.js"
             ],
@@ -24,6 +21,9 @@
             ]
         },
         {
+            "css": [
+                "/style/amazon/blank/core.css"
+            ],
             "js": [
                 "amazon.js"
             ],
