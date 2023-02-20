@@ -52,7 +52,8 @@
     "options_page": "settings.html",
     "permissions": [
         "activeTab",
-        "scripting"
+        "scripting",
+        "storage"
     ],
     "host_permissions": [
         "*://*/*"

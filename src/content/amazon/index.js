@@ -10,11 +10,14 @@ import { get_product_details } from "./pages/search_page"
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
 
+const USER_GROUP = 3 // THIS NEEDS TO COME FROM BACKEND! (or browser storage)
+
 const ecmEventDataUserId = 1
 const ecmEventDataHostname = window.location.hostname
 const ecmEventDataTabTitle = document.title
 const ecmEventDataGroup = 1
 const ecmEventDataTimestamp = Date.now()
+
 
 let ecmEventData = {
     user_id: ecmEventDataUserId,
@@ -51,14 +54,14 @@ if (URL.includes("/s?k")) {
         amazonSearchItem.position = parseInt(searchResultElement.getAttribute("data-index"))
         try {
             const ratingEl = searchResultElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0]
-            amazonSearchItem.avgRating = parseFloat(ratingEl.getElementsByClassName("a-size-base")[0].textContent)
-            amazonSearchItem.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},]/g, ''))
+            amazonSearchItem.avgRating = parseFloat(ratingEl.getElementsByClassName("a-size-base")[0].textContent.replace(/[{()},.]/g, ''))
+            amazonSearchItem.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},.]/g, ''))
         } catch (error) {
             cl("No rating element found")
         }
 
         // Badge attributes
-        [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = getBadge1Info(searchResultElement)
+        [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = getBadge1Info(searchResultElement, amazonSearchItem, USER_GROUP)
 
         console.log(amazonSearchItem)
     })

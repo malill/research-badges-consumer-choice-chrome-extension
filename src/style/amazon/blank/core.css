@@ -1,4 +1,4 @@
 /*Highlight grid style*/
 span.rush-component [data-component-type='s-status-badge-component'] {
-    display: none !important;
+    display: none;
 }
