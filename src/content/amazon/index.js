@@ -3,6 +3,7 @@
 
 import { AMA_LOCATION_DICT, AMA_EVENT_TYPES_DICT, REST_API_EVENTS_URL } from "../../config/constants"
 import { cl } from "../util";
+import { AmazonSearchItem } from "./AmazonSearchItem";
 import { getBadge1Info } from "./badges/badge1";
 import { get_product_details } from "./pages/search_page"
 
@@ -39,30 +40,26 @@ if (URL.includes("/s?k")) {
     // TODO: distinguish grid and list layout -> I think best is to check the item component style class
     ecmEventData["location"] = AMA_LOCATION_DICT["SEARCH_GRID"]
 
+    let amazonSearchItem = new AmazonSearchItem()
 
 
     // TODO: Iterate over elements in the viewport
     // This here is only for development, functions should be moved to files
-    let testBadge = 4
+    let testBadge = 1
 
-    if (testBadge === 1) {
-        // HERE: For development use https://www.amazon.co.uk/s?k=dart+board&crid=1IDRISXAYGU4M&sprefix=dart+board%2Caps%2C100&ref=nb_sb_noss_1
-        // None: B09BFPG9YY / Ama Choice: B08CXP8KK1 / Best Seller: B0018D69TE
-        let el = document.querySelector('[data-asin=B0018D69TE]') // el should come from iterator
-        let badge1 = undefined
+    // BADGE TYPE 1
+    // dev_page: https://www.amazon.co.uk/s?k=dart+board&crid=1IDRISXAYGU4M&sprefix=dart+board%2Caps%2C100&ref=nb_sb_noss_1
+    // badges: None: B09BFPG9YY / Ama Choice: B08CXP8KK1 / Best Seller: B0018D69TE
+    amazonSearchItem.asin = 'B0018D69TE'
 
-        const badgeEl = el.querySelector("span.rush-component [data-component-type='s-status-badge-component']")
-        if (badgeEl) {
-            const badgeCompProps = badgeEl.getAttribute("data-component-props")
-            const jsonProps = JSON.parse(badgeCompProps)
-            if (jsonProps["asin"] === "B0018D69TE") {
-                badge1 = jsonProps["badgeType"]
-            } else {
-                console.log("Something went wrong. Badge type and corresponding ASIN do not match")
-            }
-        }
-        console.log("Badge1:", badge1)
+
+    let el = document.querySelector(`[data-asin=${amazonSearchItem.asin}]`)
+
+    switch (testBadge) {
+        case 1:
+            amazonSearchItem.badge1 = getBadge1Info(el)
     }
+    console.log(amazonSearchItem)
 
     if (testBadge === 2 || testBadge === 3) {
         // HERE: For development use https://www.amazon.co.uk/s?k=dart+board&crid=1IDRISXAYGU4M&sprefix=dart+board%2Caps%2C100&ref=nb_sb_noss_1
