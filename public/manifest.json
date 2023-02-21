@@ -1,6 +1,6 @@
 {
+    "name": "ECM Bot - BETA",
     "manifest_version": 3,
-    "name": "ECM Bot",
     "version": "0.0.1",
     "description": "The Browser Companion ECM Bot",
     "action": {
