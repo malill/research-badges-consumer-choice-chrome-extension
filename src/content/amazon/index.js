@@ -60,12 +60,28 @@ function getAmazonInfo(userInfo) {
             // Basic attributes
             amazonSearchItem.asin = searchResultElement.getAttribute("data-asin")
             amazonSearchItem.position = parseInt(searchResultElement.getAttribute("data-index"))
+
+            try {
+                const nameEl = searchResultElement.querySelector("h2")
+                amazonSearchItem.name = nameEl.textContent.trim()
+            } catch (error) {
+                // cl("Item name could not be found")
+            }
+
             try {
                 const ratingEl = searchResultElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0]
                 amazonSearchItem.avgRating = parseFloat(ratingEl.getElementsByClassName("a-size-base")[0].textContent.replace(/[{()},.]/g, ''))
                 amazonSearchItem.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},.]/g, ''))
             } catch (error) {
                 // cl("No rating element found")
+            }
+
+            try {
+                const priceEl = searchResultElement.querySelector("span.a-price > span.a-offscreen")
+                const priceValue = parseFloat(priceEl.textContent.replace(/\D/g, ''))
+                amazonSearchItem.price = priceValue
+            } catch (error) {
+                // cl("No price element found")
             }
 
             // Badge attributes
