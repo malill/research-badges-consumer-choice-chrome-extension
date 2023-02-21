@@ -14,10 +14,29 @@ console.log(`[${CORE_SHORT_NAME}]`, myText)
 // extension, simply do `importScripts('path/to/file.js')`.
 // The path should be relative to the file `manifest.json`.
 
+
 chrome.runtime.onInstalled.addListener(() => {
+    // Get the user ID (and group for ProLific participants) from backend
+    const userInfo = { userId: 1, userGroup: 1, environment: 1 } // Should come from backend
+
+    // userGroup values
+    // 1:   Blank style (default CE style)
+    // 2:   Platform style
+    // 3-x: Custom style
+
+    // environment values
+    // 1:   Productive
+    // 2-x: Lab Experiment
+
+    chrome.storage.local.set(userInfo).then(() => {
+        console.log("Values are set to " + userInfo);
+    });
+
+
     chrome.action.setBadgeText({
         text: "ON",
     });
+
 });
 
 // When the user clicks on the extension action
