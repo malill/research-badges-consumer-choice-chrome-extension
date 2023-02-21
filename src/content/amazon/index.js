@@ -4,8 +4,7 @@
 import { AMA_LOCATION_DICT, AMA_EVENT_TYPES_DICT, REST_API_EVENTS_URL } from "../../config/constants"
 import { cl } from "../util";
 import { AmazonSearchItem } from "./AmazonSearchItem";
-import { getBadge1Info } from "./badges/badge1";
-import { get_product_details } from "./pages/search_page"
+import { Badge1 } from "./badges/Badge1";
 
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
@@ -93,10 +92,17 @@ function getAmazonInfo(userInfo) {
 
             // BADGES
             // 1
-            [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = getBadge1Info(searchResultElement, amazonSearchItem, ecmEventDataGroup)
+            const badge1 = new Badge1(searchResultElement, amazonSearchItem, ecmEventDataGroup)
+            // [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = badge1.getBadgeTypes()
+            // [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = getBadge1Info(searchResultElement, amazonSearchItem, ecmEventDataGroup)
+            badge1.getBadgeTypes()
+            amazonSearchItem.badge1Platform = badge1.platformBadge
+            amazonSearchItem.badge1Ecm = badge1.ecmBadge
 
             console.log(amazonSearchItem)
         })
+
+        return
 
 
         let amazonSearchItem = new AmazonSearchItem()

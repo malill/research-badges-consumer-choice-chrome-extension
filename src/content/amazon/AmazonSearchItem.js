@@ -6,7 +6,7 @@ export class AmazonSearchItem {
         this.price = price
         this.avgRating = avgRating
         this.nReviews = nReviews
-        this.defaultBadge1 = defaultBadge1
-        this.ecmBadge1 = ecmBadge1
+        this.badge1Ecm = ecmBadge1
+        this.badge1Platform = defaultBadge1
     }
 }

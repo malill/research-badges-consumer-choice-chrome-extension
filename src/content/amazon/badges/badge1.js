@@ -1,66 +1,76 @@
-export function getBadge1Info(el, amazonSearchItem, userGroup) {
-    // Take this function as an instruction (make class??) for other badges
-    let defaultBadge1 = undefined
-    let ecmBadge1 = undefined
+export class Badge1 {
+    // Take this as inspiration for other Badge classes
 
-    if (el) {
-        const defaultBadgeEl = el.querySelector("span.rush-component [data-component-type='s-status-badge-component']")
+    constructor(htmlItemElement, amazonSearchItem, userGroup) {
+        this.htmlItemElement = htmlItemElement
+        this.amazonSearchItem = amazonSearchItem
+        this.userGroup = userGroup
 
-        if (defaultBadgeEl) {
+        this.ecmBadge = undefined
+        this.platformBadge = undefined
+    }
+
+    getEcmBadgeHTMLElement() {
+        const p = document.createElement('p');
+        p.innerText = 'Your Selection';
+        return p
+    }
+
+    getBadgeTypes() {
+        const platformBadgeEl = this.htmlItemElement.querySelector("span.rush-component [data-component-type='s-status-badge-component']")
+
+        if (platformBadgeEl) {
             // There is a badge element present by default
 
-            const badgeCompProps = defaultBadgeEl.getAttribute("data-component-props")
+            const badgeCompProps = platformBadgeEl.getAttribute("data-component-props")
 
             const jsonProps = JSON.parse(badgeCompProps)
-            defaultBadge1 = jsonProps["badgeType"]
+            this.platformBadge = jsonProps["badgeType"]
 
-            // What now? Was the badge
-            //  Hidden (default behavior of blank css)
-            //  Shown
-            //  Replaced
+            const platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display
 
-            const defaultBadge1DisplayStyle = window.getComputedStyle(defaultBadgeEl, null).display
-
-            if (defaultBadge1DisplayStyle === 'none') {
+            if (platformBadgeDisplayStyle === 'none') {
                 // This should always be 'true', since 'display: none', i.e. the blank style is the default styling for the CE
 
-                switch (userGroup) {
+                switch (this.userGroup) {
                     case 1:
                         // Blank Style, do nothing, keep the badge hidden
-                        ecmBadge1 = "removed-platform"
+                        this.ecmBadge = "removed-platform"
                         break;
 
                     case 2:
                         // Platform style, do not hide the badge and display the "normal" (platform default) badge
-                        defaultBadgeEl.style.display = "block"
+                        platformBadgeEl.style.display = "block"
                         break;
 
                     case 3:
                         // Custom style
 
                         // Option 1, modify an existing badge
-                        defaultBadgeEl.style.display = "block"
-                        defaultBadgeEl.querySelector("span.a-badge-text").textContent = "My Choice"
-                        defaultBadgeEl.querySelector("span.a-badge-label").setAttribute("data-a-badge-color", "sx-purple")
-                        ecmBadge1 = "ecm-style-1"
+                        platformBadgeEl.style.display = "block"
+                        platformBadgeEl.querySelector("span.a-badge-label-inner").textContent = "My Choice"
+                        platformBadgeEl.querySelector("span.a-badge-label").setAttribute("data-a-badge-color", "sx-purple")
 
-                        // Option 2, insert a custom badge (not done here)
+                        // Option 2, insert a custom badge
+                        // this.htmlItemElement.insertBefore(this.getEcmBadgeHTMLElement(), this.htmlItemElement.firstChild)
+
+                        this.ecmBadge = "my-choice"
                         break;
 
                     default:
                         // No Style (if userGroup is unknown apply the blank style)
-                        ecmBadge1 = "removed-platform"
+                        this.ecmBadge = "removed-platform"
                         break;
                 }
             }
         } else {
             // There is no bade element present by default
 
-            switch (userGroup) {
+            switch (this.userGroup) {
                 case 3:
                     // Custom style, insert a custom badge
-                    if (amazonSearchItem.avgRating > 45) {
-                        el.style.background = "lightblue"
+                    if (this.amazonSearchItem.avgRating > 45) {
+                        this.htmlItemElement.insertBefore(this.getEcmBadgeHTMLElement(), this.htmlItemElement.firstChild)
                     }
                     break;
 
@@ -70,5 +80,5 @@ export function getBadge1Info(el, amazonSearchItem, userGroup) {
             }
         }
     }
-    return [defaultBadge1, ecmBadge1]
-} 
+
+}
