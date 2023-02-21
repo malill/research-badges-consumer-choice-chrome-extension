@@ -10,10 +10,10 @@ import { get_product_details } from "./pages/search_page"
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
 
-// Mock data (start)
+// Mock event data (start)
 const ecmEventDataUserId = 1
 const ecmEventDataGroup = 1 // NEEDS TO COME FROM BACKEND OR STORED IN LOCAL STORAGE!
-// Mock data (end)
+// Mock event data (end)
 const ecmEventDataHostname = window.location.hostname
 const ecmEventDataTabTitle = document.title
 const ecmEventDataTimestamp = Date.now()
@@ -28,7 +28,7 @@ let ecmEventData = {
     timestamp: ecmEventDataTimestamp
 }
 
-// Item Mock
+// Item mock data
 let ecmItemData = {
     id: "mockID",
     hostname: ecmEventDataHostname,
