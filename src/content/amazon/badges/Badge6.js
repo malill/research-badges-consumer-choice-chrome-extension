@@ -16,7 +16,18 @@ export class Badge6 {
             const platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display
 
             if (platformBadgeDisplayStyle === 'none') {
-                this.ecmBadge = "removed-platform"
+                switch (this.userGroup) {
+                    case 1:
+                        this.ecmBadge = "removed-platform"
+                        break;
+                    case 2:
+                        // Platform style, do not hide the badge and display the "normal" (platform default) badge
+                        platformBadgeEl.style.display = "block"
+                        break;
+                    default:
+                        this.ecmBadge = "removed-platform"
+                        break;
+                }
             }
         }
     }

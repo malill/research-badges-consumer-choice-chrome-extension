@@ -94,8 +94,6 @@ function getAmazonInfo(userInfo) {
             // BADGES
             // 1
             const badge1 = new Badge1(searchResultElement, amazonSearchItem, ecmEventDataGroup)
-            // [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = badge1.getBadgeTypes()
-            // [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = getBadge1Info(searchResultElement, amazonSearchItem, ecmEventDataGroup)
             badge1.getBadgeTypes()
             amazonSearchItem.badge1Platform = badge1.platformBadge
             amazonSearchItem.badge1Ecm = badge1.ecmBadge
