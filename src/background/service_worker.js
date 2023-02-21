@@ -17,7 +17,7 @@ console.log(`[${CORE_SHORT_NAME}]`, myText)
 
 chrome.runtime.onInstalled.addListener(() => {
     // Get the user ID (and group for ProLific participants) from backend
-    const userInfo = { userId: 1, userGroup: 3, environment: 1 } // Should come from backend
+    const userInfo = { userId: 1, userGroup: 1, environment: 1 } // Should come from backend
 
     // userGroup values
     // 1:   Blank style (default CE style)
@@ -57,13 +57,13 @@ chrome.action.onClicked.addListener(async (tab) => {
             if (nextState === "OFF") {
                 // Insert the CSS file when the user turns the extension on
                 chrome.scripting.insertCSS({
-                    files: ["style/amazon/default/core.css"],
+                    files: ["style/amazon/platform/core.css"],
                     target: { tabId: tab.id },
                 });
             } else if (nextState === "ON") {
                 // Remove the CSS file when the user turns the extension off
                 chrome.scripting.removeCSS({
-                    files: ["style/amazon/default/core.css"],
+                    files: ["style/amazon/platform/core.css"],
                     target: { tabId: tab.id },
                 });
             }

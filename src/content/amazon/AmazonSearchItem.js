@@ -8,5 +8,7 @@ export class AmazonSearchItem {
         this.nReviews = nReviews
         this.badge1Ecm = ecmBadge1
         this.badge1Platform = defaultBadge1
+        this.badge6Ecm = ecmBadge1
+        this.badge6Platform = defaultBadge1
     }
 }
