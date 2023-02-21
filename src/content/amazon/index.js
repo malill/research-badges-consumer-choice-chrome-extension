@@ -48,10 +48,12 @@ function getAmazonInfo(userInfo) {
         // TODO: check if this is really a good condition
 
         ecmEventData["event_type"] = AMA_EVENT_TYPES_DICT["VIEW"]
-        // TODO: distinguish grid and list layout -> I think best is to check the item component style class
+        // TODO: distinguish grid and list layout -> I think best is to check the item component style class OR the div in which the search results are shown
         ecmEventData["location"] = AMA_LOCATION_DICT["SEARCH_GRID"]
 
-        const searchResults = document.querySelectorAll(`[data-component-type="s-search-result"]`)
+        const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
+        // const searchResults = document.querySelectorAll(`div.s-search-results`)
+
 
         searchResults.forEach((searchResultElement) => {
 

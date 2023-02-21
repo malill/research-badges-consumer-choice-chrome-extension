@@ -1,12 +1,12 @@
 # Wiki - ECM Bot Chrome Extension :computer:
 
-*Repository for Google Chrome extension to personalize web experience. The CE modifies existing web  badges on online platforms.*
+*The repository for a Google Chrome Extension (=CE) to personalize web experience. The CE modifies existing web badges on online platforms and allows users to interact with the CE to modify its behavior.*
 
 GDrive Folder: [GDrive | Dokumentation](https://drive.google.com/drive/folders/1pBqIvvLfcEXKi-nHX2-tu_SYiqeCzyYE?usp=share_link)
 
 # Testing :microscope:
 
-To locally test the current version of the Google Chrome Extension (=CE) in your Google Chrome Browser:
+To locally test the current version of the Google CE in your Google Chrome Browser:
 
 1. Download/Synchronize the latest distribution files ([GDrive | Software](https://drive.google.com/drive/u/0/folders/1hdiES6ifBHH_qJaHyJeREKVJokeppcb9))
 2. Open [chrome://extensions/](chrome://extensions/) in your Google Chrome Browser
@@ -27,19 +27,27 @@ Official Google Documentation: https://developer.chrome.com/docs/extensions/mv3/
 
 ## Concept
 
-> **The default styling for a user that has the CE installed is a "blank" styling, i.e. all platform specific badges are set to `display: none` . This is needed since otherwise, flickering would happen and users could see the inital platform's styling (for a few miliseconds). The default styling is set in the `manifest.json` .**
+The basic concepts how the CE works are explained in this chapter.
 
-The personalization steps can always be narrowed down to the following cases/decision:
+### User Identification & Group Assignment
 
-1. There is a platform badge
-   1. Hide the platform badge. This is the default behavior of the CE (see note above)
-   2. Show (unhide) the platform badge. 
-   3. Replace the plaform badge with a custom ECM badge. This means 
-      1. Modify the present badge (e.g. add classes, create styling, insert custom text/HTML tags etc. to existing HTML badge element) and show (unhide) the modified platform badge OR 
-      2. Keep the plaform badge hidden and create a new HTML component for the ECM badge (would make case 2.2 easier)
-2. There is no platform badge
-   1. Do nothing 
-   2. Show a ECM badge. Depending on the platform the respective HTML element might be missing at this point and needs to be inserted (what is not the case in 1.3.1 since there is already a hidden platform badge)
+### Displaying Badges
+
+The rules and behavior how badges are displayed are explained in this section.
+
+> **The default styling for a user that has the CE installed is a "blank" styling, i.e. all platform specific badges are set to `display: none` and are therefore not displayed. This is needed since otherwise, flickering would happen and users could see the inital platform's styling (for a few miliseconds). The default styling is set in the `manifest.json` .**
+
+The personalization steps can always be narrowed down to the following cases/decision. Given an item from a platform:
+
+1. There is a platform badge attached to the item
+   1. **Blank Style.** Hide the platform badge. This is the default behavior of the CE (see note above)
+   2. **Platform Style.** Show (unhide) the platform badge. 
+   3. **Custom Style.** Replace the plaform badge with a custom ECM badge. This means 
+      1. Modify the platform badge (e.g. add classes, create styling, insert custom text/HTML tags etc. to existing HTML badge element) and show (unhide) the modified platform badge OR 
+      2. Keep the platform badge hidden and create & insert a new HTML component for the ECM badge (would make case 2.2 easier, i.e. "reusability")
+2. There is no platform badge attached to the item
+   1. **Blank/Platform Style.** Do nothing. Neither a platform nor a custom badge will be shown.
+   2. **Custom Style.** Show a ECM badge. Depending on the platform the respective HTML element might be missing at this point and needs to be inserted (what is not the case in 1.3.1 since there is already a hidden platform badge)
 
 ## Development 
 
