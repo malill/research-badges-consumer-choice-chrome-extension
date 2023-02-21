@@ -69,9 +69,13 @@ export class Badge1 {
             switch (this.userGroup) {
                 case 3:
                     // Custom style, insert a custom badge
-                    if (this.amazonSearchItem.avgRating > 45) {
-                        this.htmlItemElement.insertBefore(this.getEcmBadgeHTMLElement(), this.htmlItemElement.firstChild)
-                    }
+                    // if (this.amazonSearchItem.avgRating > 45) {
+                    //     // this.htmlItemElement.insertBefore(this.getEcmBadgeHTMLElement(), this.htmlItemElement.firstChild)
+                    //     const html = `<span style="display: block" data-component-type="s-status-badge-component" class="rush-component" data-component-props="{&quot;badgeType&quot;:&quot;best-seller&quot;,&quot;asin&quot;:&quot;B000G2Z4VW&quot;}" data-component-id="19"><div class="a-row a-badge-region"><span id="B000G2Z4VW-best-seller" class="a-badge" aria-labelledby="B000G2Z4VW-best-seller-label B000G2Z4VW-best-seller-supplementary" data-a-badge-supplementary-position="right" tabindex="0" data-a-badge-type="status"><span id="B000G2Z4VW-best-seller-label" class="a-badge-label" data-a-badge-color="sx-purple" aria-hidden="true"><span class="a-badge-label-inner a-text-ellipsis"><span class="a-badge-text" data-a-badge-color="sx-cloud">High Rating</span></span></span></span></div></span>`
+                    //     const node = new DOMParser().parseFromString(html, "text/html").body.firstElementChild
+                    //     this.htmlItemElement.insertBefore(node, this.htmlItemElement.children[0])
+                    // }
+                    // this.ecmBadge = "high-rating"
                     break;
 
                 default:
