@@ -10,12 +10,12 @@ import { get_product_details } from "./pages/search_page"
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
 
-const USER_GROUP = 3 // THIS NEEDS TO COME FROM BACKEND! (or browser storage)
-
+// Mock data (start)
 const ecmEventDataUserId = 1
+const ecmEventDataGroup = 1 // NEEDS TO COME FROM BACKEND OR STORED IN LOCAL STORAGE!
+// Mock data (end)
 const ecmEventDataHostname = window.location.hostname
 const ecmEventDataTabTitle = document.title
-const ecmEventDataGroup = 1
 const ecmEventDataTimestamp = Date.now()
 
 
@@ -61,7 +61,7 @@ if (URL.includes("/s?k")) {
         }
 
         // Badge attributes
-        [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = getBadge1Info(searchResultElement, amazonSearchItem, USER_GROUP)
+        [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = getBadge1Info(searchResultElement, amazonSearchItem, ecmEventDataGroup)
 
         console.log(amazonSearchItem)
     })
