@@ -58,9 +58,12 @@ function getAmazonInfo(userInfo) {
             let amazonSearchItem = new AmazonSearchItem()
 
             // Basic attributes
+            // ID
             amazonSearchItem.asin = searchResultElement.getAttribute("data-asin")
+            // POSITION
             amazonSearchItem.position = parseInt(searchResultElement.getAttribute("data-index"))
 
+            // NAME
             try {
                 const nameEl = searchResultElement.querySelector("h2")
                 amazonSearchItem.name = nameEl.textContent.trim()
@@ -68,6 +71,7 @@ function getAmazonInfo(userInfo) {
                 // cl("Item name could not be found")
             }
 
+            // AVG RATING & NUMBER OF REVIEWS
             try {
                 const ratingEl = searchResultElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0]
                 amazonSearchItem.avgRating = parseFloat(ratingEl.getElementsByClassName("a-size-base")[0].textContent.replace(/[{()},.]/g, ''))
@@ -76,6 +80,7 @@ function getAmazonInfo(userInfo) {
                 // cl("No rating element found")
             }
 
+            // PRICE
             try {
                 const priceEl = searchResultElement.querySelector("span.a-price > span.a-offscreen")
                 const priceValue = parseFloat(priceEl.textContent.replace(/\D/g, ''))
@@ -84,7 +89,8 @@ function getAmazonInfo(userInfo) {
                 // cl("No price element found")
             }
 
-            // Badge attributes
+            // BADGES
+            // 1
             [amazonSearchItem.defaultBadge1, amazonSearchItem.ecmBadge1] = getBadge1Info(searchResultElement, amazonSearchItem, ecmEventDataGroup)
 
             console.log(amazonSearchItem)
