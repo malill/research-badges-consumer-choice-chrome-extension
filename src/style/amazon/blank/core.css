@@ -18,6 +18,11 @@ a.puis-sponsored-label-text {
     display: none;
 }
 
+/*Badge7, strice price*/
+span.a-text-price[data-a-strike='true'] {
+    display: none !important;
+}
+
 /*Badge8, Prime (Delivery) Icon at product*/
 i.a-icon-prime {
     display: none;
