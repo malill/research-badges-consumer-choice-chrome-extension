@@ -94,6 +94,10 @@ function getAmazonInfo(userInfo) {
                 // cl("No price element found")
             }
 
+            // DELIVERY TIME
+            const dlvTimeString = searchResultElement.querySelector("div.a-row.a-size-base.a-color-secondary.s-align-children-center")
+            amazonSearchItem.deliveryInfo = dlvTimeString.textContent.trim()
+
             // BADGES
             // 1
             const badge1 = new Badge1(searchResultElement, amazonSearchItem, ecmEventDataGroup)
