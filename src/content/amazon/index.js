@@ -61,6 +61,8 @@ function getAmazonInfo(userInfo) {
 
         searchResults.forEach((searchResultElement) => {
 
+            console.log(searchResultElement)
+
             let amazonSearchItem = new AmazonSearchItem()
 
             // Basic attributes
@@ -96,8 +98,12 @@ function getAmazonInfo(userInfo) {
             }
 
             // DELIVERY TIME
-            const dlvTimeString = searchResultElement.querySelector("div.a-row.a-size-base.a-color-secondary.s-align-children-center")
-            amazonSearchItem.deliveryInfo = dlvTimeString.textContent.trim()
+            try {
+                const dlvTimeString = searchResultElement.querySelector("div.a-row.a-size-base.a-color-secondary.s-align-children-center")
+                amazonSearchItem.deliveryInfo = dlvTimeString.textContent.trim()
+            } catch (error) {
+                // cl("No delivery info present")
+            }
 
             // BADGES
             // 1
