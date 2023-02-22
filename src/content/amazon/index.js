@@ -6,6 +6,7 @@ import { cl } from "../util";
 import { AmazonSearchItem } from "./AmazonSearchItem";
 import { Badge1 } from "./badges/Badge1";
 import { Badge2 } from "./badges/Badge2";
+import { Badge4 } from "./badges/Badge4";
 import { Badge6 } from "./badges/Badge6";
 
 var $ = require("jquery"); // only use for $.ajax(...)
@@ -106,6 +107,14 @@ function getAmazonInfo(userInfo) {
             amazonSearchItem.badge3Platform = badge2.platformBadge3
             amazonSearchItem.badge2Ecm = badge2.ecmBadge2
             amazonSearchItem.badge3Ecm = badge2.ecmBadge3
+
+            // 4 & 5
+            const badge4 = new Badge4(searchResultElement, amazonSearchItem, ecmEventDataGroup)
+            badge4.getBadgeTypes()
+            amazonSearchItem.badge4Platform = badge4.platformBadge4
+            amazonSearchItem.badge5Platform = badge4.platformBadge5
+            amazonSearchItem.badge4Ecm = badge4.ecmBadge4
+            amazonSearchItem.badge5Ecm = badge4.ecmBadge5
 
             // 6
             const badge6 = new Badge6(searchResultElement, amazonSearchItem, ecmEventDataGroup)

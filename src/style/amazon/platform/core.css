@@ -8,6 +8,11 @@ span[data-a-badge-color='sx-lightning-deal-red'] {
     display: block;
 }
 
+/*Badge4 "Save x%" below product price*/
+span[data-component-type="s-coupon-component"] {
+    display: block;
+}
+
 /*Badge6, "Sponsored (i)" above product*/
 .puis-sponsored-label-text {
     display: block;
