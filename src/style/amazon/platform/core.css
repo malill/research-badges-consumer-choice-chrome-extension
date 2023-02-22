@@ -3,6 +3,11 @@ span.rush-component [data-component-type='s-status-badge-component'] {
     display: block;
 }
 
+/*Badge2, Save X%*/
+span[data-a-badge-color='sx-lightning-deal-red'] {
+    display: block;
+}
+
 /*Badge6, "Sponsored (i)" above product*/
 .puis-sponsored-label-text {
     display: block;
