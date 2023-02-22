@@ -3,7 +3,7 @@ span.rush-component [data-component-type='s-status-badge-component'] {
     display: block;
 }
 
-/*Badge2, Save X%*/
+/*Badge2 & 3, Save X%, Limited Time Deal*/
 span[data-a-badge-color='sx-lightning-deal-red'] {
     display: block;
 }
@@ -11,4 +11,15 @@ span[data-a-badge-color='sx-lightning-deal-red'] {
 /*Badge6, "Sponsored (i)" above product*/
 .puis-sponsored-label-text {
     display: block;
+}
+
+/*OTHER STUFF*/
+/*Top banner ad*/
+div._bGlmZ_container_GMk6b.sbx-desktop {
+    display: block !important;
+}
+
+/*Other disturbing carousels*/
+[data-asin=""] {
+    display: block !important;
 }

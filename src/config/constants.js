@@ -7,6 +7,9 @@ export const REST_API_URL = "http://localhost:8000/api/v1/"
 // Routes
 export const REST_API_EVENTS_URL = REST_API_URL + "event/"
 
+// ECM BADGES
+export const ECM_BADGE_TYPE_REMOVED_PLATFORM = "removed-platform"
+
 /* AMAZON */
 // Platform Constants | Amazon Basics
 export const AMA_URL = 'https://www.amazon'

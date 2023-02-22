@@ -1,3 +1,5 @@
+import { ECM_BADGE_TYPE_REMOVED_PLATFORM } from "../../../config/constants"
+
 export class Badge1 {
     // Take this as inspiration for other Badge classes
 
@@ -5,9 +7,6 @@ export class Badge1 {
         this.htmlItemElement = htmlItemElement
         this.amazonSearchItem = amazonSearchItem
         this.userGroup = userGroup
-
-        this.ecmBadge = undefined
-        this.platformBadge = undefined
     }
 
     getEcmBadgeHTMLElement() {
@@ -35,7 +34,7 @@ export class Badge1 {
                 switch (this.userGroup) {
                     case 1:
                         // Blank Style, do nothing, keep the badge hidden
-                        this.ecmBadge = "removed-platform"
+                        this.ecmBadge = ECM_BADGE_TYPE_REMOVED_PLATFORM
                         break;
 
                     case 2:
@@ -59,7 +58,7 @@ export class Badge1 {
 
                     default:
                         // No Style (if userGroup is unknown apply the blank style)
-                        this.ecmBadge = "removed-platform"
+                        this.ecmBadge = ECM_BADGE_TYPE_REMOVED_PLATFORM
                         break;
                 }
             }
