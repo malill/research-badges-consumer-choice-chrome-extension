@@ -3,12 +3,12 @@ span.rush-component [data-component-type='s-status-badge-component'] {
     display: block;
 }
 
-/*Badge2 & 3, Save X%, Limited Time Deal*/
+/*Badge2 & 3, lightning red, Save X% OR Limited Time Deal*/
 span[data-a-badge-color='sx-lightning-deal-red'] {
     display: block;
 }
 
-/*Badge4 "Save x%" below product price*/
+/*Badge4 & 5, green voucher, "Save x%" OR "Save x$" below product price*/
 span[data-component-type="s-coupon-component"] {
     display: block;
 }
