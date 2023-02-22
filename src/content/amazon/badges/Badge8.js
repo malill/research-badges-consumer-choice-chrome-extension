@@ -1,6 +1,6 @@
-import { ECM_BADGE_TYPE_REMOVED_PLATFORM, ECM_BADGE_TYPE_SPONSORED } from "../../../config/constants"
+import { ECM_BADGE_TYPE_PRIME_ICON, ECM_BADGE_TYPE_REMOVED_PLATFORM } from "../../../config/constants"
 
-export class Badge6 {
+export class Badge8 {
     constructor(htmlItemElement, amazonSearchItem, userGroup) {
         this.htmlItemElement = htmlItemElement
         this.amazonSearchItem = amazonSearchItem
@@ -8,9 +8,9 @@ export class Badge6 {
     }
 
     getBadgeTypes() {
-        const platformBadgeEl = this.htmlItemElement.querySelector("a.puis-sponsored-label-text")
+        const platformBadgeEl = this.htmlItemElement.querySelector("i.a-icon-prime")
         if (platformBadgeEl) {
-            this.platformBadge = ECM_BADGE_TYPE_SPONSORED
+            this.platformBadge = ECM_BADGE_TYPE_PRIME_ICON
 
             const platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display
 

@@ -14,7 +14,12 @@ span[data-component-type="s-coupon-component"] {
 }
 
 /*Badge6, "Sponsored (i)" above product*/
-.puis-sponsored-label-text {
+a.puis-sponsored-label-text {
+    display: block;
+}
+
+/*Badge8, Prime (Delivery) Icon at product*/
+i.a-icon-prime {
     display: block;
 }
 

@@ -8,6 +8,7 @@ import { Badge1 } from "./badges/Badge1";
 import { Badge2 } from "./badges/Badge2";
 import { Badge4 } from "./badges/Badge4";
 import { Badge6 } from "./badges/Badge6";
+import { Badge8 } from "./badges/Badge8";
 
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
@@ -121,6 +122,12 @@ function getAmazonInfo(userInfo) {
             badge6.getBadgeTypes()
             amazonSearchItem.badge6Platform = badge6.platformBadge
             amazonSearchItem.badge6Ecm = badge6.ecmBadge
+
+            // 8
+            const badge8 = new Badge8(searchResultElement, amazonSearchItem, ecmEventDataGroup)
+            badge8.getBadgeTypes()
+            amazonSearchItem.badge8Platform = badge8.platformBadge
+            amazonSearchItem.badge8Ecm = badge8.ecmBadge
 
 
             console.log(amazonSearchItem)
