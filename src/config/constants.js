@@ -9,7 +9,7 @@ export const REST_API_EVENTS_URL = REST_API_URL + "event/"
 
 // ECM BADGES
 export const ECM_BADGE_TYPE_PRIME_ICON = "prime-icon"
-export const ECM_BADGE_TYPE_REMOVED_PLATFORM = "removed-platform"
+export const ECM_BADGE_TYPE_REMOVED_PLATFORM = "blank"
 export const ECM_BADGE_TYPE_SPONSORED = "sponsored"
 
 /* AMAZON */

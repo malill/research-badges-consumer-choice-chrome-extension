@@ -29,15 +29,8 @@ function getAmazonInfo(userInfo) {
     const ecmEventDataTabTitle = document.title
     const ecmEventDataTimestamp = Date.now()
 
+    let ecmEventDataList = []
 
-    let ecmEventData = {
-        user_id: ecmEventDataUserId,
-        hostname: ecmEventDataHostname,
-        tab_title: ecmEventDataTabTitle,
-        group: ecmEventDataGroup,
-        logged_in: 0,
-        timestamp: ecmEventDataTimestamp
-    }
 
     // Item mock data
     let ecmItemData = {
@@ -48,12 +41,6 @@ function getAmazonInfo(userInfo) {
 
 
     if (URL.includes("/s?k")) {
-        // Search page
-        // TODO: check if this is really a good condition
-
-        ecmEventData["event_type"] = AMA_EVENT_TYPES_DICT["VIEW"]
-        // TODO: distinguish grid and list layout -> I think best is to check the item component style class OR the div in which the search results are shown
-        ecmEventData["location"] = AMA_LOCATION_DICT["SEARCH_GRID"]
 
         const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
         // const searchResults = document.querySelectorAll(`div.s-search-results`)
@@ -61,7 +48,22 @@ function getAmazonInfo(userInfo) {
 
         searchResults.forEach((searchResultElement) => {
 
-            console.log(searchResultElement)
+            var ecmEventData = {}
+            ecmEventData.user_id = ecmEventDataUserId
+            ecmEventData.hostname = ecmEventDataHostname
+            ecmEventData.tab_title = ecmEventDataTabTitle
+            ecmEventData.group = ecmEventDataGroup
+            ecmEventData.logged_in = 0
+            ecmEventData.window_inner_width = window.innerWidth
+            ecmEventData.window_inner_height = window.innerHeight
+            ecmEventData.timestamp = ecmEventDataTimestamp
+
+            // Search page
+            // TODO: check if this is really a good condition
+
+            ecmEventData["event_type"] = AMA_EVENT_TYPES_DICT["VIEW"]
+            // TODO: distinguish grid and list layout -> I think best is to check the item component style class OR the div in which the search results are shown
+            ecmEventData["location"] = AMA_LOCATION_DICT["SEARCH_GRID"]
 
             let amazonSearchItem = new AmazonSearchItem()
 
@@ -146,9 +148,45 @@ function getAmazonInfo(userInfo) {
             amazonSearchItem.badge8Platform = badge8.platformBadge
             amazonSearchItem.badge8Ecm = badge8.ecmBadge
 
+            // console.log(amazonSearchItem)
 
-            console.log(amazonSearchItem)
+            ecmEventData.item_id = amazonSearchItem.asin
+            ecmEventData.item_name = amazonSearchItem.name
+            ecmEventData.item_position = amazonSearchItem.position
+            ecmEventData.price = amazonSearchItem.price
+            ecmEventData.avg_rating = amazonSearchItem.avgRating
+            ecmEventData.n_reviews = amazonSearchItem.nReviews
+            ecmEventData.badge1_platform = amazonSearchItem.badge1Platform
+            ecmEventData.badge1_ecm = amazonSearchItem.badge1Ecm
+            ecmEventData.badge2_platform = amazonSearchItem.badge2Platform
+            ecmEventData.badge2_ecm = amazonSearchItem.badge2Ecm
+            ecmEventData.badge3_platform = amazonSearchItem.badge3Platform
+            ecmEventData.badge3_ecm = amazonSearchItem.badge3Ecm
+            ecmEventData.badge4_platform = amazonSearchItem.badge4Platform
+            ecmEventData.badge4_ecm = amazonSearchItem.badge4Ecm
+            ecmEventData.badge5_platform = amazonSearchItem.badge5Platform
+            ecmEventData.badge5_ecm = amazonSearchItem.badge5Ecm
+            ecmEventData.badge6_platform = amazonSearchItem.badge6Platform
+            ecmEventData.badge6_ecm = amazonSearchItem.badge6Ecm
+            ecmEventData.badge7_platform = amazonSearchItem.badge7Platform
+            ecmEventData.badge7_ecm = amazonSearchItem.badge7Ecm
+            ecmEventData.badge8_platform = amazonSearchItem.badge8Platform
+            ecmEventData.badge8_ecm = amazonSearchItem.badge8Ecm
+
+            ecmEventDataList.push(ecmEventData)
         })
+
+        console.log(ecmEventDataList)
+
+        $.ajax({
+            url: REST_API_EVENTS_URL,
+            headers: {
+            },
+            type: "POST",
+            data: JSON.stringify({ event_create_list: ecmEventDataList, item_create_list: [] }),
+            contentType: "application/json",
+            dataType: "json"
+        });
 
         return
 
