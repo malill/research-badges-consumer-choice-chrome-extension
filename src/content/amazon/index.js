@@ -10,6 +10,7 @@ import { Badge4 } from "./badges/Badge4";
 import { Badge6 } from "./badges/Badge6";
 import { Badge7 } from "./badges/Badge7";
 import { Badge8 } from "./badges/Badge8";
+import { User } from "./User";
 
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
@@ -23,11 +24,10 @@ chrome.storage.local.get(["userId", "userGroup", "environment"]).then((userInfo)
 
 function getAmazonInfo(userInfo) {
 
-    const ecmEventDataUserId = userInfo.userId
     const ecmEventDataGroup = userInfo.userGroup
     const ecmEventDataHostname = window.location.hostname
     const ecmEventDataTabTitle = document.title
-    const ecmEventDataTimestamp = Date.now()
+    const ecmEventDataTimestamp = new Date().toJSON();
 
     let ecmEventDataList = []
 
@@ -49,17 +49,15 @@ function getAmazonInfo(userInfo) {
             // TODO: check if this is really a good condition
 
             var ecmEventData = {}
-            ecmEventData.user_id = ecmEventDataUserId
             ecmEventData.hostname = ecmEventDataHostname
             ecmEventData.tab_title = ecmEventDataTabTitle
-            ecmEventData.group = ecmEventDataGroup
-            ecmEventData.logged_in = 0
-            ecmEventData.window_inner_width = window.innerWidth
-            ecmEventData.window_inner_height = window.innerHeight
             ecmEventData.timestamp = ecmEventDataTimestamp
             ecmEventData.event_type = AMA_EVENT_TYPES_DICT["LOADED"]
             // TODO: distinguish grid and list layout -> I think best is to check the item component style class OR the div in which the search results are shown
             ecmEventData.location = AMA_LOCATION_DICT["SEARCH_GRID"]
+
+            // Create User instance
+            let user = new User(userInfo) // TODO: user is redundant in loop (--> put outside of loop)
 
             // Create AmazonSearchItem instance
             let amazonSearchItem = new AmazonSearchItem(searchResultElement)
@@ -107,6 +105,7 @@ function getAmazonInfo(userInfo) {
 
             // console.log(amazonSearchItem)
 
+            ecmEventData.user = user
             ecmEventData.item = amazonSearchItem
 
             ecmEventDataList.push(ecmEventData)
