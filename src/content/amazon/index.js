@@ -34,19 +34,19 @@ function getAmazonInfo(userInfo) {
 
     // Item mock data
     let ecmItemData = {
-        id: "mockID",
-        hostname: ecmEventDataHostname,
-        name: "mockName"
+        hostname: ecmEventDataHostname
     }
 
 
     if (URL.includes("/s?k")) {
 
         const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
-        // const searchResults = document.querySelectorAll(`div.s-search-results`)
 
 
         searchResults.forEach((searchResultElement) => {
+
+            // Search page
+            // TODO: check if this is really a good condition
 
             var ecmEventData = {}
             ecmEventData.user_id = ecmEventDataUserId
@@ -57,55 +57,12 @@ function getAmazonInfo(userInfo) {
             ecmEventData.window_inner_width = window.innerWidth
             ecmEventData.window_inner_height = window.innerHeight
             ecmEventData.timestamp = ecmEventDataTimestamp
-
-            // Search page
-            // TODO: check if this is really a good condition
-
-            ecmEventData["event_type"] = AMA_EVENT_TYPES_DICT["VIEW"]
+            ecmEventData.event_type = AMA_EVENT_TYPES_DICT["VIEW"]
             // TODO: distinguish grid and list layout -> I think best is to check the item component style class OR the div in which the search results are shown
-            ecmEventData["location"] = AMA_LOCATION_DICT["SEARCH_GRID"]
+            ecmEventData.location = AMA_LOCATION_DICT["SEARCH_GRID"]
 
-            let amazonSearchItem = new AmazonSearchItem()
-
-            // Basic attributes
-            // ID
-            amazonSearchItem.asin = searchResultElement.getAttribute("data-asin")
-            // POSITION
-            amazonSearchItem.position = parseInt(searchResultElement.getAttribute("data-index"))
-
-            // NAME
-            try {
-                const nameEl = searchResultElement.querySelector("h2")
-                amazonSearchItem.name = nameEl.textContent.trim()
-            } catch (error) {
-                // cl("Item name could not be found")
-            }
-
-            // AVG RATING & NUMBER OF REVIEWS
-            try {
-                const ratingEl = searchResultElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0]
-                amazonSearchItem.avgRating = parseFloat(ratingEl.getElementsByClassName("a-size-base")[0].textContent.replace(/[{()},.]/g, ''))
-                amazonSearchItem.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},.]/g, ''))
-            } catch (error) {
-                // cl("No rating element found")
-            }
-
-            // PRICE
-            try {
-                const priceEl = searchResultElement.querySelector("span.a-price > span.a-offscreen")
-                const priceValue = parseFloat(priceEl.textContent.replace(/\D/g, ''))
-                amazonSearchItem.price = priceValue
-            } catch (error) {
-                // cl("No price element found")
-            }
-
-            // DELIVERY TIME
-            try {
-                const dlvTimeString = searchResultElement.querySelector("div.a-row.a-size-base.a-color-secondary.s-align-children-center")
-                amazonSearchItem.deliveryInfo = dlvTimeString.textContent.trim()
-            } catch (error) {
-                // cl("No delivery info present")
-            }
+            // Create AmazonSearchItem instance
+            let amazonSearchItem = new AmazonSearchItem(searchResultElement)
 
             // BADGES
             // 1
