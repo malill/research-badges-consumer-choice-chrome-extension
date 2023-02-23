@@ -14,6 +14,7 @@ import { User } from "./User";
 
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
+let ecmDataLayer = {}
 
 
 chrome.storage.local.get(["userId", "userGroup", "environment"]).then((userInfo) => {
@@ -25,6 +26,9 @@ chrome.storage.local.get(["userId", "userGroup", "environment"]).then((userInfo)
 // TODO: Do the datalayer stuff, i.e. create an ECM datalayer
 
 function getAmazonInfo(userInfo) {
+
+    // Create User instance
+    let user = new User(userInfo)
 
     const ecmEventDataGroup = userInfo.userGroup
     const ecmEventDataHostname = window.location.hostname
@@ -58,8 +62,7 @@ function getAmazonInfo(userInfo) {
             // TODO: distinguish grid and list layout -> I think best is to check the item component style class OR the div in which the search results are shown
             ecmEventData.location = AMA_LOCATION_DICT["SEARCH_GRID"]
 
-            // Create User instance
-            let user = new User(userInfo) // TODO: user is redundant in loop (--> put outside of loop)
+
 
             // Create AmazonSearchItem instance
             let amazonSearchItem = new AmazonSearchItem(searchResultElement)
@@ -107,12 +110,15 @@ function getAmazonInfo(userInfo) {
 
             // console.log(amazonSearchItem)
 
-            ecmEventData.user = user
             ecmEventData.item = amazonSearchItem
 
             ecmEventDataList.push(ecmEventData)
         })
 
+        ecmDataLayer.events = ecmEventDataList
+        ecmDataLayer.user = user
+
+        console.log(ecmDataLayer)
         console.log(ecmEventDataList)
 
         $.ajax({
