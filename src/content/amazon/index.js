@@ -22,6 +22,8 @@ chrome.storage.local.get(["userId", "userGroup", "environment"]).then((userInfo)
     // TODO: behavior when no user info present?
 });
 
+// TODO: Do the datalayer stuff, i.e. create an ECM datalayer
+
 function getAmazonInfo(userInfo) {
 
     const ecmEventDataGroup = userInfo.userGroup
