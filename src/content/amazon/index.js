@@ -29,6 +29,7 @@ function getAmazonInfo(userInfo) {
     // Create User instance
     let user = new User(userInfo)
     user.getLocation()
+    user.getBattery()
 
     const ecmEventDataGroup = userInfo.userGroup
     const ecmEventDataHostname = window.location.hostname
