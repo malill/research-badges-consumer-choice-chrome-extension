@@ -18,7 +18,6 @@ let ecmDataLayer = {}
 
 
 chrome.storage.local.get(["userId", "userGroup", "environment"]).then((userInfo) => {
-    console.log(userInfo)
     getAmazonInfo(userInfo)
     // TODO: behavior when no user info present?
 });
@@ -29,6 +28,7 @@ function getAmazonInfo(userInfo) {
 
     // Create User instance
     let user = new User(userInfo)
+    user.getLocation()
 
     const ecmEventDataGroup = userInfo.userGroup
     const ecmEventDataHostname = window.location.hostname
@@ -119,7 +119,6 @@ function getAmazonInfo(userInfo) {
         ecmDataLayer.user = user
 
         console.log(ecmDataLayer)
-        console.log(ecmEventDataList)
 
         $.ajax({
             url: REST_API_EVENTS_URL,
