@@ -57,7 +57,7 @@ function getAmazonInfo(userInfo) {
             ecmEventData.window_inner_width = window.innerWidth
             ecmEventData.window_inner_height = window.innerHeight
             ecmEventData.timestamp = ecmEventDataTimestamp
-            ecmEventData.event_type = AMA_EVENT_TYPES_DICT["VIEW"]
+            ecmEventData.event_type = AMA_EVENT_TYPES_DICT["LOADED"]
             // TODO: distinguish grid and list layout -> I think best is to check the item component style class OR the div in which the search results are shown
             ecmEventData.location = AMA_LOCATION_DICT["SEARCH_GRID"]
 
@@ -107,28 +107,7 @@ function getAmazonInfo(userInfo) {
 
             // console.log(amazonSearchItem)
 
-            ecmEventData.item_id = amazonSearchItem.asin
-            ecmEventData.item_name = amazonSearchItem.name
-            ecmEventData.item_position = amazonSearchItem.position
-            ecmEventData.price = amazonSearchItem.price
-            ecmEventData.avg_rating = amazonSearchItem.avgRating
-            ecmEventData.n_reviews = amazonSearchItem.nReviews
-            ecmEventData.badge1_platform = amazonSearchItem.badge1Platform
-            ecmEventData.badge1_ecm = amazonSearchItem.badge1Ecm
-            ecmEventData.badge2_platform = amazonSearchItem.badge2Platform
-            ecmEventData.badge2_ecm = amazonSearchItem.badge2Ecm
-            ecmEventData.badge3_platform = amazonSearchItem.badge3Platform
-            ecmEventData.badge3_ecm = amazonSearchItem.badge3Ecm
-            ecmEventData.badge4_platform = amazonSearchItem.badge4Platform
-            ecmEventData.badge4_ecm = amazonSearchItem.badge4Ecm
-            ecmEventData.badge5_platform = amazonSearchItem.badge5Platform
-            ecmEventData.badge5_ecm = amazonSearchItem.badge5Ecm
-            ecmEventData.badge6_platform = amazonSearchItem.badge6Platform
-            ecmEventData.badge6_ecm = amazonSearchItem.badge6Ecm
-            ecmEventData.badge7_platform = amazonSearchItem.badge7Platform
-            ecmEventData.badge7_ecm = amazonSearchItem.badge7Ecm
-            ecmEventData.badge8_platform = amazonSearchItem.badge8Platform
-            ecmEventData.badge8_ecm = amazonSearchItem.badge8Ecm
+            ecmEventData.item = amazonSearchItem
 
             ecmEventDataList.push(ecmEventData)
         })

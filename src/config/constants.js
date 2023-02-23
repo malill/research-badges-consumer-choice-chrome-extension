@@ -18,16 +18,17 @@ export const AMA_URL = 'https://www.amazon'
 
 // Platform Constants | Amazon Locations
 export const AMA_LOCATION_DICT = {
-    "SEARCH_GRID": 1,
-    "SEARCH_LIST": 2,
-    "PDP": 3
+    "SEARCH_GRID": "search-grid",
+    "SEARCH_LIST": "search-list",
+    "PDP": "product-details"
 }
 
 // Platform Constants | Amazon Types
 export const AMA_EVENT_TYPES_DICT = {
-    "VISIT": 1,
-    "VIEW": 2,
-    "CLICK": 3,
-    "INSPECT": 4,
-    "ADD_TO_CART": 5
+    "LOADED": "loaded",
+    "VISIT": "visit",
+    "VIEW": "view",
+    "CLICK": "click",
+    "INSPECT": "inspect",
+    "ADD_TO_CART": "add-to-cart"
 }
