@@ -11,6 +11,7 @@ export class User {
         this.window_outer_width = window.outerWidth
         this.window_outer_height = window.outerHeight
         this.connection = window.navigator.connection
+        this.getLocation()
     }
 
     getLocation() {

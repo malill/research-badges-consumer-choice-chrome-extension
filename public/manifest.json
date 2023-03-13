@@ -12,15 +12,6 @@
     },
     "content_scripts": [
         {
-            "js": [
-                "core.js"
-            ],
-            "matches": [
-                "http://*/*",
-                "https://*/*"
-            ]
-        },
-        {
             "css": [
                 "/style/amazon/blank/core.css"
             ],

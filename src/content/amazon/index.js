@@ -1,20 +1,15 @@
-// This script gets loaded on amazon.de & amazon.co.uk
-
+// This script gets loaded on amazon.de & amazon.co.uk (--> see manifest.json)
 
 import { AMA_LOCATION_DICT, AMA_EVENT_TYPES_DICT, REST_API_EVENTS_URL } from "../../config/constants"
 import { cl } from "../util";
-import { AmazonSearchItem } from "./AmazonSearchItem";
-import { Badge1 } from "./badges/Badge1";
-import { Badge2 } from "./badges/Badge2";
-import { Badge4 } from "./badges/Badge4";
-import { Badge6 } from "./badges/Badge6";
-import { Badge7 } from "./badges/Badge7";
-import { Badge8 } from "./badges/Badge8";
-import { User } from "./User";
+import { User } from "./model/User";
+import { Platform } from "./model/Platform";
+import { get_search_item_details } from "./page/search_page";
 
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
 let ecmDataLayer = {}
+ecmDataLayer.events = []
 
 
 chrome.storage.local.get(["userId", "userGroup", "environment"]).then((userInfo) => {
@@ -26,98 +21,22 @@ chrome.storage.local.get(["userId", "userGroup", "environment"]).then((userInfo)
 
 async function getAmazonInfo(userInfo) {
 
-    // Create User instance
+    // Create User instance & attach to datalayer
     let user = new User(userInfo)
-    user.getLocation()
     await user.getBattery()
+    ecmDataLayer.user = user
 
-    const ecmEventDataGroup = userInfo.userGroup
-    const ecmEventDataHostname = window.location.hostname
-    const ecmEventDataTabTitle = document.title
-    const ecmEventDataTimestamp = new Date().toJSON();
-
-    let ecmEventDataList = []
-
-
-    // Item mock data
-    let ecmItemData = {
-        hostname: ecmEventDataHostname
-    }
+    // Create platform instance & attach to datalayer
+    let platform = new Platform()
+    ecmDataLayer.platform = platform
 
 
     if (URL.includes("/s?k")) {
+        // Search page
+        // TODO: check if this is really a good condition
 
         const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
-
-
-        searchResults.forEach((searchResultElement) => {
-
-            // Search page
-            // TODO: check if this is really a good condition
-
-            // console.log(searchResultElement.classList.contains(".sg-col-20-of-24"))
-
-            var ecmEventData = {}
-            ecmEventData.hostname = ecmEventDataHostname
-            ecmEventData.tab_title = ecmEventDataTabTitle
-            ecmEventData.timestamp = ecmEventDataTimestamp
-            ecmEventData.event_type = AMA_EVENT_TYPES_DICT["LOADED"]
-            // TODO: distinguish grid and list layout -> I think best is to check the item component style class OR the div in which the search results are shown
-            ecmEventData.location = AMA_LOCATION_DICT["SEARCH_GRID"]
-
-            // Create AmazonSearchItem instance
-            let amazonSearchItem = new AmazonSearchItem(searchResultElement)
-
-            // BADGES
-            // 1
-            const badge1 = new Badge1(searchResultElement, amazonSearchItem, ecmEventDataGroup)
-            badge1.getBadgeTypes()
-            amazonSearchItem.badge1Platform = badge1.platformBadge
-            amazonSearchItem.badge1Ecm = badge1.ecmBadge
-
-            // 2 & 3
-            const badge2 = new Badge2(searchResultElement, amazonSearchItem, ecmEventDataGroup)
-            badge2.getBadgeTypes()
-            amazonSearchItem.badge2Platform = badge2.platformBadge2
-            amazonSearchItem.badge3Platform = badge2.platformBadge3
-            amazonSearchItem.badge2Ecm = badge2.ecmBadge2
-            amazonSearchItem.badge3Ecm = badge2.ecmBadge3
-
-            // 4 & 5
-            const badge4 = new Badge4(searchResultElement, amazonSearchItem, ecmEventDataGroup)
-            badge4.getBadgeTypes()
-            amazonSearchItem.badge4Platform = badge4.platformBadge4
-            amazonSearchItem.badge5Platform = badge4.platformBadge5
-            amazonSearchItem.badge4Ecm = badge4.ecmBadge4
-            amazonSearchItem.badge5Ecm = badge4.ecmBadge5
-
-            // 6
-            const badge6 = new Badge6(searchResultElement, amazonSearchItem, ecmEventDataGroup)
-            badge6.getBadgeTypes()
-            amazonSearchItem.badge6Platform = badge6.platformBadge
-            amazonSearchItem.badge6Ecm = badge6.ecmBadge
-
-            // 7
-            const badge7 = new Badge7(searchResultElement, amazonSearchItem, ecmEventDataGroup)
-            badge7.getBadgeTypes()
-            amazonSearchItem.badge7Platform = badge7.platformBadge
-            amazonSearchItem.badge7Ecm = badge7.ecmBadge
-
-            // 8
-            const badge8 = new Badge8(searchResultElement, amazonSearchItem, ecmEventDataGroup)
-            badge8.getBadgeTypes()
-            amazonSearchItem.badge8Platform = badge8.platformBadge
-            amazonSearchItem.badge8Ecm = badge8.ecmBadge
-
-            // console.log(amazonSearchItem)
-
-            ecmEventData.item = amazonSearchItem
-
-            ecmEventDataList.push(ecmEventData)
-        })
-
-        ecmDataLayer.events = ecmEventDataList
-        ecmDataLayer.user = user
+        get_search_item_details(ecmDataLayer, userInfo.userGroup, searchResults)
 
         console.log(ecmDataLayer)
 
@@ -130,67 +49,6 @@ async function getAmazonInfo(userInfo) {
             contentType: "application/json",
             dataType: "json"
         });
-
-        return
-
-
-        let amazonSearchItem = new AmazonSearchItem()
-        // TODO: Iterate over elements in the viewport
-        // This here is only for development, functions should be moved to files
-        let testBadge = 1
-
-        // BADGE TYPE 1
-        // dev_page: https://www.amazon.co.uk/s?k=dart+board&crid=1IDRISXAYGU4M&sprefix=dart+board%2Caps%2C100&ref=nb_sb_noss_1
-        // badges: None: B09BFPG9YY / Ama Choice: B08CXP8KK1 / Best Seller: B0018D69TE
-        amazonSearchItem.asin = 'B0018D69TE'
-
-
-        let el = document.querySelector(`[data-asin=${amazonSearchItem.asin}]`)
-
-        switch (testBadge) {
-            case 1:
-                amazonSearchItem.badge1 = getBadge1Info(el)
-        }
-        console.log(amazonSearchItem)
-
-        if (testBadge === 2 || testBadge === 3) {
-            // HERE: For development use https://www.amazon.co.uk/s?k=dart+board&crid=1IDRISXAYGU4M&sprefix=dart+board%2Caps%2C100&ref=nb_sb_noss_1
-            // None: B07MD92L57 / Save X%: B08L4QV6ZH / Limited Time Deal: B07YRGFQHY
-            let el = document.querySelector('[data-asin=B08L4QV6ZH]') // el should come from iterator
-            let badge2, badge3 = undefined
-
-            let priceEl = el.querySelector("div.s-price-instructions-style")
-            let dealEl = priceEl.querySelector("[data-a-badge-color='sx-lightning-deal-red']")
-
-            if (dealEl) {
-                let couponText = dealEl.textContent
-                if (couponText.includes("%")) {
-                    badge2 = 1
-                } else {
-                    badge3 = 1
-                }
-            }
-            console.log("Badge2:", badge2)
-            console.log("Badge3:", badge3)
-        }
-
-        if (testBadge === 4 || testBadge === 5) {
-            // HERE: For development use https://www.amazon.co.uk/s?k=dart+board+set&sprefix=dart+%2Caps%2C98&ref=nb_sb_ss_ts-doa-p_2_5
-            // None: B07XL9FS37  / Voucher %: B091KFR3BV / Voucher Total Amount: B0BQMJLVML
-            let el = document.querySelector('[data-asin=B091KFR3BV]') // el should come from iterator
-            let badge4, badge5 = undefined
-
-            let couponEl = el.querySelector("span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-coupon-highlight-color")
-            let couponText = couponEl.textContent
-            if (couponText.includes("%")) {
-                badge4 = 1
-            } else {
-                badge5 = 1
-            }
-            console.log("Badge4:", badge4)
-            console.log("Badge5:", badge5)
-        }
-
 
     } else if (URL.includes("/ref=")) {
         // Product detail page
@@ -237,6 +95,7 @@ async function getAmazonInfo(userInfo) {
         // Item name len | Event data
         const itemNameLen = itemName.length
 
+        let ecmEventData = {}
         ecmEventData["item_id"] = asin
         ecmEventData["item_name_len"] = itemNameLen
         ecmEventData["price"] = itemPrice
@@ -245,17 +104,16 @@ async function getAmazonInfo(userInfo) {
         ecmEventData["event_type"] = AMA_EVENT_TYPES_DICT["INSPECT"]
         ecmEventData["location"] = AMA_LOCATION_DICT["PDP"]
 
-        ecmItemData["id"] = asin
-        ecmItemData["name"] = itemName
+        $.ajax({
+            url: REST_API_EVENTS_URL,
+            headers: {
+            },
+            type: "POST",
+            data: JSON.stringify({ event_create: ecmEventData }),
+            contentType: "application/json",
+            dataType: "json"
+        });
     }
 
-    $.ajax({
-        url: REST_API_EVENTS_URL,
-        headers: {
-        },
-        type: "POST",
-        data: JSON.stringify({ event_create: ecmEventData, item_create: ecmItemData }),
-        contentType: "application/json",
-        dataType: "json"
-    });
+
 }
