@@ -7,7 +7,11 @@ import { Badge7 } from "../badges/Badge7";
 import { Badge8 } from "../badges/Badge8";
 import { AmazonSearchItem } from "../model/AmazonSearchItem";
 
-export function get_search_item_details(ecmDataLayer, userGroup, searchResults) {
+export function attach_search_event_data_to_datalayer(ecmDataLayer, userGroup, searchResults) {
+    /* PARAMETERS
+    ecmDataLayer    - data object to store event data
+    userGroup       - group user belongs to (e.g. control, treatment)
+    searchResults   - HTML query result*/
     searchResults.forEach((searchResultElement) => {
 
         let ecmEventData = {}

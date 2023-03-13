@@ -4,7 +4,7 @@ import { AMA_LOCATION_DICT, AMA_EVENT_TYPES_DICT, REST_API_EVENTS_URL } from "..
 import { cl } from "../util";
 import { User } from "./model/User";
 import { Platform } from "./model/Platform";
-import { get_search_item_details } from "./page/search_page";
+import { attach_search_event_data_to_datalayer } from "./page/search_page";
 
 var $ = require("jquery"); // only use for $.ajax(...)
 const URL = window.location.href
@@ -36,7 +36,7 @@ async function getAmazonInfo(userInfo) {
         // TODO: check if this is really a good condition
 
         const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
-        get_search_item_details(ecmDataLayer, userInfo.userGroup, searchResults)
+        attach_search_event_data_to_datalayer(ecmDataLayer, userInfo.userGroup, searchResults)
 
         console.log(ecmDataLayer)
 
