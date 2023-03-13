@@ -12,11 +12,16 @@ export function attach_search_event_data_to_datalayer(ecmDataLayer, userGroup, s
     ecmDataLayer    - data object to store event data
     userGroup       - group user belongs to (e.g. control, treatment)
     searchResults   - HTML query result*/
+
+    let ecmEventData = {}
+    ecmEventData.timestamp = new Date().toJSON();
     searchResults.forEach((searchResultElement) => {
 
-        let ecmEventData = {}
-        ecmEventData.timestamp = new Date().toJSON();
-        ecmEventData.event_type = AMA_EVENT_TYPES_DICT["LOADED"]
+        if (!isInViewport(searchResultElement)) {
+            // TODO: set a listener to scroll into view and make ajax call (only once!)
+            return
+        }
+        ecmEventData.event_type = AMA_EVENT_TYPES_DICT["VIEW"]
         // TODO: distinguish grid and list layout -> I think best is to check the item component style class OR the div in which the search results are shown
         ecmEventData.location = AMA_LOCATION_DICT["SEARCH_GRID"]
 
@@ -68,4 +73,14 @@ export function attach_search_event_data_to_datalayer(ecmDataLayer, userGroup, s
 
         ecmDataLayer.events.push(ecmEventData)
     })
+}
+
+function isInViewport(htmlElement) {
+    const rect = htmlElement.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
 }
