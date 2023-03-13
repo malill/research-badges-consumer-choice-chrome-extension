@@ -18,7 +18,7 @@ export const AMA_URL = 'https://www.amazon'
 
 // Platform Constants | Amazon Locations
 export const AMA_LOCATION_DICT = {
-    "SEARCH_GRID": "search-grid",
+    "SEARCH_GRID": "search",
     "SEARCH_LIST": "search-list",
     "PDP": "product-details"
 }

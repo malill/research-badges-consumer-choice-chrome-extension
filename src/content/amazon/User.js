@@ -8,19 +8,21 @@ export class User {
         this.userAgentData = window.navigator.userAgentData
         this.window_inner_width = window.innerWidth
         this.window_inner_height = window.innerHeight
+        this.window_outer_width = window.outerWidth
+        this.window_outer_height = window.outerHeight
         this.connection = window.navigator.connection
     }
 
-    async getLocation() {
+    getLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(pos => { this.geolocation = pos });
+            navigator.geolocation.getCurrentPosition(pos => this.geolocation = pos);
         } else {
             console.log("Geolocation is not supported by this browser");
         }
     }
 
     async getBattery() {
-        window.navigator.getBattery().then(battery => this.battery = battery)
+        await window.navigator.getBattery().then(battery => this.battery = battery)
     }
 
 }

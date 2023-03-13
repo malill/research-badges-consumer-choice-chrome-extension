@@ -24,12 +24,12 @@ chrome.storage.local.get(["userId", "userGroup", "environment"]).then((userInfo)
 
 // TODO: Do the datalayer stuff, i.e. create an ECM datalayer
 
-function getAmazonInfo(userInfo) {
+async function getAmazonInfo(userInfo) {
 
     // Create User instance
     let user = new User(userInfo)
     user.getLocation()
-    user.getBattery()
+    await user.getBattery()
 
     const ecmEventDataGroup = userInfo.userGroup
     const ecmEventDataHostname = window.location.hostname
@@ -55,6 +55,8 @@ function getAmazonInfo(userInfo) {
             // Search page
             // TODO: check if this is really a good condition
 
+            // console.log(searchResultElement.classList.contains(".sg-col-20-of-24"))
+
             var ecmEventData = {}
             ecmEventData.hostname = ecmEventDataHostname
             ecmEventData.tab_title = ecmEventDataTabTitle
@@ -62,8 +64,6 @@ function getAmazonInfo(userInfo) {
             ecmEventData.event_type = AMA_EVENT_TYPES_DICT["LOADED"]
             // TODO: distinguish grid and list layout -> I think best is to check the item component style class OR the div in which the search results are shown
             ecmEventData.location = AMA_LOCATION_DICT["SEARCH_GRID"]
-
-
 
             // Create AmazonSearchItem instance
             let amazonSearchItem = new AmazonSearchItem(searchResultElement)
@@ -126,7 +126,7 @@ function getAmazonInfo(userInfo) {
             headers: {
             },
             type: "POST",
-            data: JSON.stringify({ event_create_list: ecmEventDataList, item_create_list: [] }),
+            data: JSON.stringify(ecmDataLayer),
             contentType: "application/json",
             dataType: "json"
         });
