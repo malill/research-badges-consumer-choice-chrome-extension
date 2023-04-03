@@ -13,9 +13,10 @@ export function attach_search_event_data_to_datalayer(ecmDataLayer, userGroup, s
     userGroup       - group user belongs to (e.g. control, treatment)
     searchResults   - HTML query result*/
 
-    let ecmEventData = {}
-    ecmEventData.timestamp = new Date().toJSON();
     searchResults.forEach((searchResultElement) => {
+
+        let ecmEventData = {}
+        ecmEventData.timestamp = new Date().toJSON();
 
         if (!isInViewport(searchResultElement)) {
             // TODO: set a listener to scroll into view and make ajax call (only once!)
