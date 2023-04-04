@@ -31,6 +31,4 @@ if (productNavigatorData.page.queryString.includes("?k=")) {
 
     console.log(productNavigatorData);
 
-    productNavigatorData.send();
-
 }

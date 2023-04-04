@@ -15,6 +15,7 @@ export class ProductNavigatorData {
 
     pushEvent(e) {
         this.events.push(e);
+        console.log(this);
     }
 
     attachEventsfromSearchResults(searchResults) {
@@ -38,14 +39,12 @@ export class ProductNavigatorData {
                 let item = new AmazonSearchItem(el);
                 let event = new AmazonEvent(item, "view");
                 this.pushEvent(event);
-                console.log(this);
             }
         });
     }
 
     send() {
         // Send ProductNavigatorData to backend
-        console.log("Sending data to backend");
         $.ajax({
             url: "http://localhost:8000/api/v1/",
             headers: {
