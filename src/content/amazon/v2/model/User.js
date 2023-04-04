@@ -1,22 +1,69 @@
+import { getCookie, setCookie } from "../util/cookie";
+
 export class User {
+
+    static prolificID = 'prolificID';
+    static prolificGroup = 'prolificGroup';
+
     constructor() {
-        this.id = null;
-        this.group = null;
-        this.login = null; // TODO: where fetch this info (cookie?)
-        this.getLocation();
+        this.setLocation();
+        [this.id, this.group] = this.setProlificDetails();
     }
 
-    getLocation() {
+    setLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
                 const geoCoords = pos.coords;
+                this.geoAccuracy = geoCoords.accuracy;
                 this.geoLatitude = geoCoords.latitude;
                 this.geoLongitude = geoCoords.longitude;
-                this.geoAccuracy = geoCoords.accuracy;
             });
         } else {
             console.log("Geolocation is not supported by this browser");
         }
+    }
+
+    setProlificDetails() {
+        // Info is stored in (1) searchQuery OR (2) cookie OR (3) both
+        let id = null;
+        let group = null;
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const idQueryValue = urlParams.get(User.prolificID);
+        const groupQueryValue = urlParams.get(User.prolificGroup);
+
+        const idCookieValue = getCookie(User.prolificID);
+        const groupCookieValue = getCookie(User.prolificGroup);
+
+        id = this.checkQueryCookieValues(idQueryValue, idCookieValue, User.prolificID)
+        group = this.checkQueryCookieValues(groupQueryValue, groupCookieValue, User.prolificGroup);
+
+        return [id, group];
+    }
+
+    checkQueryCookieValues(queryValue, cookieValue, cookieName) {
+        // Compares two values, and updates cookie if necessary
+        let res = null;
+        if ((queryValue) && (cookieValue) && (queryValue != cookieValue)) {
+            console.log('Value in query and in cookie, but values are different');
+            // TODO: what to do? Here: belief query value (next clause)
+        }
+
+        if (queryValue) {
+            console.log('Value in query');
+            res = setCookie(cookieName, queryValue, 7); // means also existing values are overwritten
+        } else {
+            console.log('Value not in query');
+            if (cookieValue) {
+                console.log('Value in cookie');
+                res = cookieValue;
+            } else {
+                console.log('Value neither in query and nor in cookie');
+                res = setCookie(cookieName, "ERROR", 7);
+            }
+        }
+        return res;
     }
 
 }
