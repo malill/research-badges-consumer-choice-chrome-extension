@@ -10,7 +10,7 @@ import { AMA_URL } from "../../config/constants";
 
 
 // THIS IS ONLY FOR TESTING
-makeExtensionClickable();
+// makeExtensionClickable();
 
 function makeExtensionClickable() {
     chrome.action.onClicked.addListener(async (tab) => {
