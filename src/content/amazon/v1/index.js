@@ -1,7 +1,6 @@
 // This script gets loaded on amazon.de & amazon.co.uk (--> see manifest.json)
 
-import { AMA_LOCATION_DICT, AMA_EVENT_TYPES_DICT, REST_API_EVENTS_URL } from "../../config/constants"
-import { cl } from "../util";
+import { AMA_LOCATION_DICT, AMA_EVENT_TYPES_DICT, REST_API_EVENTS_URL } from "../../../config/constants"
 import { User } from "./model/User";
 import { Platform } from "./model/Platform";
 import { attach_search_event_data_to_datalayer } from "./page/search_page";
@@ -66,7 +65,7 @@ async function getAmazonInfo(userInfo) {
         try {
             itemPrice = parseInt(document.getElementById("twister-plus-price-data-price").getAttribute("value").replaceAll('.', ''))
         } catch (error) {
-            cl("No price for item found")
+            console.log("No price for item found")
         }
 
         // Avg. rating | Event data (TODO: THERE ARE PRODUCTS WITHOUT RATINGS AND THIS WILL FAIL)
@@ -76,7 +75,7 @@ async function getAmazonInfo(userInfo) {
             let ratingStr = ratingTitle.slice(0, 3)
             ratingInt = parseInt(ratingStr.replaceAll(',', '').replaceAll('.', ''))
         } catch (error) {
-            cl("No rating for item found")
+            console.log("No rating for item found")
         }
 
         // Count of reviews | Event data
@@ -86,7 +85,7 @@ async function getAmazonInfo(userInfo) {
             let nReviewsStr = reviewText.slice(0, reviewText.indexOf(" "))
             nReviewInt = parseInt(nReviewsStr.replaceAll('.', '').replaceAll(',', ''))
         } catch (error) {
-            cl("No number of reviews for item found")
+            console.log("No number of reviews for item found")
         }
 
         // Item name | Item data

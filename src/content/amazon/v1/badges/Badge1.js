@@ -1,4 +1,4 @@
-import { ECM_BADGE_TYPE_REMOVED_PLATFORM } from "../../../config/constants"
+import { ECM_BADGE_TYPE_REMOVED_PLATFORM } from "../../../../config/constants"
 
 export class Badge1 {
     // Take this as inspiration for other Badge classes

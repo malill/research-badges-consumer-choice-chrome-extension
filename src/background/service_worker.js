@@ -2,13 +2,9 @@
 // when the extension is installed or refreshed (or when you access its console).
 // It would correspond to the background script in chrome extensions v2.
 
-import { myText } from "./service_worker_utils"
 import { CORE_SHORT_NAME, AMA_URL } from "../config/constants"
 
 console.log(`[${CORE_SHORT_NAME}] This prints to the console of the service worker (background script)`)
-
-// Importing and using functionality from external files is also possible.
-console.log(`[${CORE_SHORT_NAME}]`, myText)
 
 // If you want to import a file that is deeper in the file hierarchy of your
 // extension, simply do `importScripts('path/to/file.js')`.

@@ -5,8 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        amazon: path.resolve(__dirname, "src/content/amazon/index.js"),
-        core: path.resolve(__dirname, "src/content/core.js"),
+        amazon: path.resolve(__dirname, "src/content/amazon/v2/index.js"),
         service_worker: path.resolve(__dirname, "src/background/service_worker.js")
     },
     output: {
@@ -22,14 +21,6 @@ module.exports = {
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "src/popup/popup.html"),
-            filename: 'popup.html'
-        }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "src/settings/settings.html"),
-            filename: 'settings.html'
-        }),
         new CopyPlugin({
             patterns: [
                 { from: "public" },

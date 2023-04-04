@@ -1,4 +1,4 @@
-import { ECM_BADGE_TYPE_PRIME_ICON, ECM_BADGE_TYPE_REMOVED_PLATFORM } from "../../../config/constants"
+import { ECM_BADGE_TYPE_PRIME_ICON, ECM_BADGE_TYPE_REMOVED_PLATFORM } from "../../../../config/constants"
 
 export class Badge8 {
     constructor(htmlItemElement, amazonSearchItem, userGroup) {

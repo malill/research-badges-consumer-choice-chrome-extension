@@ -1,4 +1,4 @@
-import { AMA_EVENT_TYPES_DICT, AMA_LOCATION_DICT } from "../../../config/constants";
+import { AMA_EVENT_TYPES_DICT, AMA_LOCATION_DICT } from "../../../../config/constants";
 import { Badge1 } from "../badges/Badge1";
 import { Badge2 } from "../badges/Badge2";
 import { Badge4 } from "../badges/Badge4";

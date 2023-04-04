@@ -6,5 +6,3 @@
 import { CORE_SHORT_NAME } from "../config/constants"
 
 console.log(`[${CORE_SHORT_NAME}] External file is also loaded!`)
-
-export const myText = "Here the background magic happens..."
