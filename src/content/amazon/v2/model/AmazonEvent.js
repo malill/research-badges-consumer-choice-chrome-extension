@@ -1,7 +1,7 @@
-export class Event {
-    constructor() {
+export class AmazonEvent {
+    constructor(type) {
         this.item = null;
         this.timestamp = new Date().toJSON();
-        this.type = "view";
+        this.type = type;
     }
 }

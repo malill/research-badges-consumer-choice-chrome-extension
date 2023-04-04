@@ -9,4 +9,8 @@ export class ProductNavigatorData {
         this.page = new Page();
         this.user = new User();
     }
+
+    pushEvent(e) {
+        this.events.push(e);
+    }
 }
