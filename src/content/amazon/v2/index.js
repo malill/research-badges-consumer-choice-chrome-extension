@@ -1,12 +1,12 @@
 const { AmazonEvent } = require("./model/AmazonEvent");
 const { ProductNavigatorData } = require("./model/ProductNavigatorData");
 const { platformCSS } = require("./style/platform");
+var $ = require("jquery"); // only use for $.ajax(...)
 
 console.log("Product Navigator Amazon [v2]")
 
 
 let productNavigatorData = new ProductNavigatorData();
-productNavigatorData.pushEvent(new AmazonEvent(type = "visit"));
 console.log(productNavigatorData);
 
 if (productNavigatorData.user.group == 'c') {
@@ -20,4 +20,18 @@ if (productNavigatorData.user.group == 'c') {
         return el;
     };
     injectCSS(platformCSS);
+}
+
+if (productNavigatorData.page.queryString.includes("?k=")) {
+    // Search page
+    // TODO: check if this is really a good condition
+
+    const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
+
+    productNavigatorData.attachEventsfromSearchResults(searchResults);
+
+    console.log(productNavigatorData);
+
+    productNavigatorData.send();
+
 }
