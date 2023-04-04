@@ -15,7 +15,7 @@ chrome.runtime.onInstalled.addListener(() => {
     // Get the user ID (and group for ProLific participants) from backend
     const userInfo = { userId: 1, userGroup: 1, environment: 1 } // Should come from backend
 
-    // userGroup values
+    // user attribute 'group' values
     // 1:   Blank style (default CE style)
     // 2:   Platform style
     // 3-x: Custom style
