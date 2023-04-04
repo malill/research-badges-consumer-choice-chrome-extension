@@ -1,3 +1,5 @@
+const { ProductNavigatorData } = require("./model/ProductNavigatorData");
+
 console.log("Product Navigator Amazon [v2]")
 
 const queryString = window.location.search;
@@ -17,3 +19,6 @@ if (EXPERIMENT_GROUP) {
 } else {
     console.log('User is not assigned to a group. Need to draw group assignment for user...');
 }
+
+let productNavigatorData = new ProductNavigatorData();
+console.log(productNavigatorData);
