@@ -5,9 +5,9 @@ const { platformCSS } = require("./style/platform");
 console.log("Product Navigator Amazon [v2]")
 
 
-
 let productNavigatorData = new ProductNavigatorData();
-productNavigatorData.pushEvent(new AmazonEvent(type = "visit"))
+productNavigatorData.pushEvent(new AmazonEvent(type = "visit"));
+console.log(productNavigatorData);
 
 if (productNavigatorData.user.group == 'c') {
     // Default styling is "blank". Now we check 

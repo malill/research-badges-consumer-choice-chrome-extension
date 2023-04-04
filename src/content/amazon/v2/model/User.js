@@ -46,21 +46,21 @@ export class User {
         // Compares two values, and updates cookie if necessary
         let res = null;
         if ((queryValue) && (cookieValue) && (queryValue != cookieValue)) {
-            console.log('Value in query and in cookie, but values are different');
+            // Value in query and in cookie, but values are different
             // TODO: what to do? Here: belief query value (next clause)
         }
 
         if (queryValue) {
-            console.log('Value in query');
+            // Value in query
             res = setCookie(cookieName, queryValue, 7); // means also existing values are overwritten
         } else {
-            console.log('Value not in query');
+            // Value not in query
             if (cookieValue) {
-                console.log('Value in cookie');
+                // Value in cookie
                 res = cookieValue;
             } else {
-                console.log('Value neither in query and nor in cookie');
-                res = setCookie(cookieName, "ERROR", 7);
+                // Value neither in query and nor in cookie
+                res = setCookie(cookieName, "MISSING", 7);
             }
         }
         return res;
