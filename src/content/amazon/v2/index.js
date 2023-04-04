@@ -1,4 +1,3 @@
-const { AmazonEvent } = require("./model/AmazonEvent");
 const { ProductNavigatorData } = require("./model/ProductNavigatorData");
 const { platformCSS } = require("./style/platform");
 var $ = require("jquery"); // only use for $.ajax(...)

@@ -21,11 +21,25 @@ export class ProductNavigatorData {
         searchResults.forEach((searchResultElement) => {
             if (!isInViewport(searchResultElement)) {
                 // TODO: set a listener to scroll into view and make ajax call (only once!)
+                searchResultElement.isViewed = false;
+                this.attachViewListener(searchResultElement);
                 return
             }
             let item = new AmazonSearchItem(searchResultElement);
             let event = new AmazonEvent(item, "view");
             this.pushEvent(event);
+        });
+    }
+
+    attachViewListener(el) {
+        $(window).on("resize scroll", () => {
+            if (isInViewport(el) && (!el.isViewed)) {
+                el.isViewed = true; // prevents entering this clause multiple times
+                let item = new AmazonSearchItem(el);
+                let event = new AmazonEvent(item, "view");
+                this.pushEvent(event);
+                console.log(this);
+            }
         });
     }
 
