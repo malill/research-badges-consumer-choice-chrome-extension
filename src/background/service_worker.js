@@ -53,13 +53,13 @@ chrome.action.onClicked.addListener(async (tab) => {
             if (nextState === "OFF") {
                 // Insert the CSS file when the user turns the extension on
                 chrome.scripting.insertCSS({
-                    files: ["style/amazon/platform/core.css"],
+                    files: ["style/amazon/platform.css"],
                     target: { tabId: tab.id },
                 });
             } else if (nextState === "ON") {
                 // Remove the CSS file when the user turns the extension off
                 chrome.scripting.removeCSS({
-                    files: ["style/amazon/platform/core.css"],
+                    files: ["style/amazon/platform.css"],
                     target: { tabId: tab.id },
                 });
             }
