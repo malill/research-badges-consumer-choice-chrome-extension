@@ -1,12 +1,10 @@
 const { ProductNavigatorData } = require("./model/ProductNavigatorData");
 const { platformCSS } = require("./style/platform");
-var $ = require("jquery"); // only use for $.ajax(...)
 
 console.log("Product Navigator Amazon [v2]")
 
 
 let productNavigatorData = new ProductNavigatorData();
-console.log(productNavigatorData);
 
 if (productNavigatorData.user.group == 'c') {
     // Default styling is "blank". Now we check 
@@ -28,7 +26,4 @@ if (productNavigatorData.page.queryString.includes("?k=")) {
     const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
 
     productNavigatorData.attachEventsfromSearchResults(searchResults);
-
-    console.log(productNavigatorData);
-
 }

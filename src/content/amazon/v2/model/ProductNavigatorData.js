@@ -15,7 +15,6 @@ export class ProductNavigatorData {
 
     pushEvent(e) {
         this.events.push(e);
-        console.log(this);
     }
 
     attachEventsfromSearchResults(searchResults) {
@@ -43,16 +42,16 @@ export class ProductNavigatorData {
         });
     }
 
-    send() {
-        // Send ProductNavigatorData to backend
-        $.ajax({
-            url: "http://localhost:8000/api/v1/",
-            headers: {
-            },
-            type: "POST",
-            data: JSON.stringify(this),
-            contentType: "application/json",
-            dataType: "json"
-        });
-    }
+    // send() {
+    //     // Send ProductNavigatorData to backend
+    //     $.ajax({
+    //         url: "http://localhost:8000/api/v1/",
+    //         headers: {
+    //         },
+    //         type: "POST",
+    //         data: JSON.stringify(this),
+    //         contentType: "application/json",
+    //         dataType: "json"
+    //     });
+    // }
 }
