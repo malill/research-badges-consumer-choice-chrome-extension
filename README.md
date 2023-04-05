@@ -54,23 +54,3 @@ The personalization steps can always be narrowed down to the following cases/dec
 ## Development 
 
 > Check https://github.com/SimGus/chrome-extension-v3-starter for a Chrome Extension (V3) project setup
-
-## Privacy Practices
-
-**Single Purpose.** 
-_Help user navigate through E-Commerce platforms._
-
-**ActiveTabe Justification.**
- _Check user location of current platform._
-
- **Scripting Justification.**
- _Insert CSS styling for better user experience._
-
-**Storage Justification.** 
-_Store users experience group assignment._
-
-**Host Permission Justification.** 
-_Match URL pattern._
-
-**Remote Code Justification**
-_jQuery, selecting HTML elements and performing AJAX requests._

@@ -19,11 +19,7 @@ if (productNavigatorData.user.group == 'c') {
     injectCSS(platformCSS);
 }
 
-if (productNavigatorData.page.queryString.includes("?k=")) {
-    // Search page
-    // TODO: check if this is really a good condition
 
-    const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
+const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
 
-    productNavigatorData.attachEventsfromSearchResults(searchResults);
-}
+productNavigatorData.attachEventsfromSearchResults(searchResults);

@@ -1,14 +1,11 @@
 {
-    "name": "Product Navigator - BETA",
+    "name": "Product Navigator BETA",
     "manifest_version": 3,
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "THIS EXTENSION IS FOR BETA TESTING",
     "action": {
         "default_icon": "img/icon.png",
         "default_title": "Product Navigator"
-    },
-    "background": {
-        "service_worker": "service_worker.js"
     },
     "content_scripts": [
         {
@@ -19,8 +16,8 @@
                 "amazon.js"
             ],
             "matches": [
-                "http://www.amazon.co.uk/*",
-                "https://www.amazon.co.uk/*"
+                "http://www.amazon.co.uk/s?k=*",
+                "https://www.amazon.co.uk/s?k=*"
             ]
         }
     ],
@@ -37,13 +34,5 @@
         "32": "img/icon.png",
         "48": "img/icon.png",
         "128": "img/icon.png"
-    },
-    "permissions": [
-        "activeTab",
-        "scripting",
-        "storage"
-    ],
-    "host_permissions": [
-        "*://*/*"
-    ]
+    }
 }

@@ -15,6 +15,7 @@ export class ProductNavigatorData {
 
     pushEvent(e) {
         this.events.push(e);
+        // this.send();
     }
 
     attachEventsfromSearchResults(searchResults) {
