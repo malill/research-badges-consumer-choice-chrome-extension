@@ -1,5 +1,5 @@
 // Core Constants
-export const CORE_SHORT_NAME = "ECM-BOT"
+export const CORE_SHORT_NAME = "PRODUCT-NAVIGATOR"
 
 // ECM BOT REST API
 // export const REST_API_URL = "https://ecm-pai.herokuapp.com/api/v1"

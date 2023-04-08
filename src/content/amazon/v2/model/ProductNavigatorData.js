@@ -1,3 +1,4 @@
+import { REST_API_URL } from "../../../../config/constants";
 import { isInViewport } from "../util/isInViewport";
 import { AmazonEvent } from "./AmazonEvent";
 import { AmazonSearchItem } from "./AmazonSearchItem";
@@ -15,20 +16,23 @@ export class ProductNavigatorData {
 
     pushEvent(e) {
         this.events.push(e);
-        // this.send();
+        console.log(this);
+        this.send(e);
     }
 
     attachEventsfromSearchResults(searchResults) {
         searchResults.forEach((searchResultElement) => {
             if (!isInViewport(searchResultElement)) {
-                // TODO: set a listener to scroll into view and make ajax call (only once!)
+                // Element is not viewed -> register a "view-listener"
                 searchResultElement.isViewed = false;
                 this.attachViewListener(searchResultElement);
-                return
+                return;
+            } else {
+                // Element is in viewport -> directly push view event
+                let item = new AmazonSearchItem(searchResultElement);
+                let event = new AmazonEvent(item, "view");
+                this.pushEvent(event);
             }
-            let item = new AmazonSearchItem(searchResultElement);
-            let event = new AmazonEvent(item, "view");
-            this.pushEvent(event);
         });
     }
 
@@ -43,16 +47,16 @@ export class ProductNavigatorData {
         });
     }
 
-    // send() {
-    //     // Send ProductNavigatorData to backend
-    //     $.ajax({
-    //         url: "http://localhost:8000/api/v1/",
-    //         headers: {
-    //         },
-    //         type: "POST",
-    //         data: JSON.stringify(this),
-    //         contentType: "application/json",
-    //         dataType: "json"
-    //     });
-    // }
+    send(e) {
+        // Send ProductNavigatorData to backend
+        $.ajax({
+            url: REST_API_URL,
+            headers: {
+            },
+            type: "POST",
+            data: JSON.stringify({ 'productNavigatorData': this, 'new_event': e }),
+            contentType: "application/json",
+            dataType: "json"
+        });
+    }
 }
