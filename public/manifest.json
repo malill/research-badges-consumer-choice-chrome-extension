@@ -2,7 +2,7 @@
     "name": "Product Navigator BETA",
     "manifest_version": 3,
     "version": "0.0.2",
-    "description": "THIS EXTENSION IS FOR BETA TESTING",
+    "description": "Simply remove decision biases from Amazon UK search pages.",
     "action": {
         "default_icon": "img/icon.png",
         "default_title": "Product Navigator"

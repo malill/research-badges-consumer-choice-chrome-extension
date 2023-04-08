@@ -1,6 +1,6 @@
 import { REST_API_URL } from "../../../../config/constants";
 import { isInViewport } from "../util/isInViewport";
-import { AmazonEvent } from "./AmazonEvent";
+import { Event } from "./Event";
 import { AmazonSearchItem } from "./AmazonSearchItem";
 import { Device } from "./Device";
 import { Page } from "./Page";
@@ -30,7 +30,7 @@ export class ProductNavigatorData {
             } else {
                 // Element is in viewport -> directly push view event
                 let item = new AmazonSearchItem(searchResultElement);
-                let event = new AmazonEvent(item, "view");
+                let event = new Event(item, "view");
                 this.pushEvent(event);
             }
         });
@@ -41,7 +41,7 @@ export class ProductNavigatorData {
             if (isInViewport(el) && (!el.isViewed)) {
                 el.isViewed = true; // prevents entering this clause multiple times
                 let item = new AmazonSearchItem(el);
-                let event = new AmazonEvent(item, "view");
+                let event = new Event(item, "view");
                 this.pushEvent(event);
             }
         });

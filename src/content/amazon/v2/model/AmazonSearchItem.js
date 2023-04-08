@@ -1,16 +1,16 @@
 export class AmazonSearchItem {
-    constructor(searchResultElement) {
+    constructor(htmlmSearchResultElement) {
         // Basic attributes
 
         // ID
-        this.asin = searchResultElement.getAttribute("data-asin");
+        this.asin = htmlmSearchResultElement.getAttribute("data-asin");
 
         // POSITION
-        this.position = parseInt(searchResultElement.getAttribute("data-index"));
+        this.position = parseInt(htmlmSearchResultElement.getAttribute("data-index"));
 
         // NAME
         try {
-            const nameEl = searchResultElement.querySelector("h2");
+            const nameEl = htmlmSearchResultElement.querySelector("h2");
             this.name = nameEl.textContent.trim();
         } catch (error) {
             // Item name could not be found
@@ -18,7 +18,7 @@ export class AmazonSearchItem {
 
         // AVG RATING & NUMBER OF REVIEWS
         try {
-            const ratingEl = searchResultElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0];
+            const ratingEl = htmlmSearchResultElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0];
             this.avgRating = parseFloat(ratingEl.getElementsByClassName("a-size-base")[0].textContent.replace(/[{()},.]/g, ''));
             this.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},.]/g, ''));
         } catch (error) {
@@ -27,16 +27,16 @@ export class AmazonSearchItem {
 
         // PRICE
         try {
-            const priceEl = searchResultElement.querySelector("span.a-price > span.a-offscreen");
+            const priceEl = htmlmSearchResultElement.querySelector("span.a-price > span.a-offscreen");
             const priceValue = parseFloat(priceEl.textContent.replace(/\D/g, ''));
             this.price = priceValue;
         } catch (error) {
             // No price element found
         }
 
-        // DELIVERY TIME
+        // DELIVERY TIME (TODO: should be a badge (since removed by extension))
         try {
-            const dlvTimeString = searchResultElement.querySelector("div.a-row.a-size-base.a-color-secondary.s-align-children-center");
+            const dlvTimeString = htmlmSearchResultElement.querySelector("div.a-row.a-size-base.a-color-secondary.s-align-children-center");
             this.deliveryInfo = dlvTimeString.textContent.trim();
         } catch (error) {
             // No delivery info present
@@ -46,6 +46,7 @@ export class AmazonSearchItem {
     }
 
     getBadges() {
+        // TODO: implement badge logic
         return { 1: "a", 2: "b", 4: "d", 5: 5 };
     }
 }
