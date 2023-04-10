@@ -13,11 +13,20 @@
                 "/style/amazon/blank.css"
             ],
             "js": [
-                "amazon.js"
+                "searchResultsPage.js"
             ],
             "matches": [
-                "http://www.amazon.co.uk/*",
-                "https://www.amazon.co.uk/*"
+                "http://www.amazon.co.uk/s?k=*",
+                "https://www.amazon.co.uk/s?k=*"
+            ]
+        },
+        {
+            "js": [
+                "productDetailPage.js"
+            ],
+            "matches": [
+                "http://www.amazon.co.uk/**/dp*",
+                "https://www.amazon.co.uk/**/dp*"
             ]
         }
     ],

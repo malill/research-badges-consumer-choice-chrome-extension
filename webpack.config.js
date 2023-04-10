@@ -4,7 +4,8 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        amazon: path.resolve(__dirname, "src/content/amazon/v2/index.js")
+        searchResultsPage: path.resolve(__dirname, "src/content/amazon/v2/searchResultsPage.js"),
+        productDetailPage: path.resolve(__dirname, "src/content/amazon/v2/productDetailPage.js")
     },
     output: {
         path: path.resolve(__dirname, "dist"),
