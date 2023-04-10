@@ -2,6 +2,7 @@
 * Attach bages to `AmazonSearchItem` object
 * Add URL to `Page` object
 * Attach click listener to search results
+* Open dialog when add-to-cart is pressed
 
 # v0.0.2 | 09.04.2023
 * Create a JS datalayer object `ProductNavigatorData`
