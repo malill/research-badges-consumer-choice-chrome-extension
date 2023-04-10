@@ -43,8 +43,13 @@ span.a-size-base.a-color-price {
     display: block !important;
 }
 
+/*Badge13, Small Business & Climate Pledge Friendly*/
+a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center {
+    display: block !important;
+}
+
 /*Badge14a, (Green) "Save x% on any y qualifying items"*/
-.s-highlighted-text-padding {
+span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-promotion-highlight-color {
     display: inline-block !important;
 }
 
@@ -53,8 +58,8 @@ span.a-size-base.a-color-price {
     display: block !important;
 }
 
-/*Badge15, Small Business*/
-a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center {
+/*Badge15, "Featured from our brands"*/
+span.a-size-micro.a-color-secondary {
     display: block !important;
 }
 

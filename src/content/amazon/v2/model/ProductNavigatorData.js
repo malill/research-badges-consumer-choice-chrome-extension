@@ -19,7 +19,6 @@ export class ProductNavigatorData {
     pushEvent(e) {
         // Checks needed?
         this.events.push(e);
-        console.log(this);
         // Whenever a new event is pushed to the datalayer, also send it to backend
         // this.send(e);
     }

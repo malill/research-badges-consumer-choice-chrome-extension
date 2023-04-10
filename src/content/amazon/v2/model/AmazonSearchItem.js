@@ -57,9 +57,8 @@ export class AmazonSearchItem {
             let jsonProps = JSON.parse(badgeCompProps);
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
             badges[1] = jsonProps["badgeType"];
-        } catch (error) {
+        } catch (error) { }
 
-        }
         try {
             let platformBadgeEl = this.htmlElement.querySelector("span[data-a-badge-color='sx-lightning-deal-red']");
             let lightningDealText = platformBadgeEl.textContent;
@@ -71,8 +70,7 @@ export class AmazonSearchItem {
             } else {
                 badges[2] = lightningDealSavePercent;
             }
-        } catch (error) {
-        }
+        } catch (error) { }
 
         try {
             const platformBadgeEl = this.htmlElement.querySelector("span[data-component-type='s-coupon-component']");
@@ -86,30 +84,61 @@ export class AmazonSearchItem {
                 const couponSaveAmount = parseInt(couponText.substring(1, couponText.indexOf(" ")));
                 badges[5] = couponSaveAmount;
             }
-        } catch (error) {
-        }
+        } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("a.puis-sponsored-label-text");
             badges[6] = platformBadgeEl.firstChild.textContent.toLowerCase();
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
-        } catch (error) {
-        }
+        } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("span.a-text-price[data-a-strike='true']");
             let strikePriceEl = platformBadgeEl.children[0];
             badges[7] = parseInt(strikePriceEl.textContent.substring(1).replaceAll(',', '').replaceAll('.', ''));
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
-        } catch (error) {
-        }
+        } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("i.a-icon-prime");
             let badgeCompProps = platformBadgeEl.getAttribute("aria-label").toLowerCase().replaceAll(" ", "-");
             badges[8] = badgeCompProps;
-        } catch (error) {
-        }
+        } catch (error) { }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector(".a-section.a-spacing-none.a-spacing-top-mini");
+            let textEl = platformBadgeEl.textContent;
+            let openingParanIndex = textEl.indexOf("(");
+            let currencySymbolIndex = textEl.indexOf("£");
+            let paranSubstring = textEl.substring(openingParanIndex);
+
+            badges[10] = parseFloat(textEl.substring(currencySymbolIndex + 1, openingParanIndex));
+            badges[11] = parseInt(paranSubstring.substring(1, paranSubstring.indexOf(" ")));
+        } catch (error) { }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("span.a-size-base.a-color-price");
+            let textEl = platformBadgeEl.textContent;
+            textEl = textEl.substring(textEl.indexOf(" "));
+            badges[12] = parseInt(textEl.substring(0, textEl.indexOf("left")));
+        } catch (error) { }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center");
+            let textEl = platformBadgeEl.textContent;
+            badges[13] = textEl.trim().toLowerCase().replaceAll(" ", "-");
+        } catch (error) { }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-promotion-highlight-color");
+            badges[14] = platformBadgeEl.textContent;
+        } catch (error) { }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("span.a-size-micro.a-color-secondary");
+            let textEl = platformBadgeEl.textContent;
+            badges[15] = textEl.trim().toLowerCase().replaceAll(" ", "-");
+        } catch (error) { }
 
         return badges;
     }
