@@ -1,9 +1,10 @@
+import { PRL_COOKIE_NAME_GROUP, PRL_COOKIE_NAME_ID, PRL_MISSING_VALUE } from "../../../../config/constants";
 import { getCookie, setCookie } from "../util/cookie";
 
 export class User {
 
-    static prolificID = 'prolificID';
-    static prolificGroup = 'prolificGroup';
+    static prolificID = PRL_COOKIE_NAME_ID;
+    static prolificGroup = PRL_COOKIE_NAME_GROUP;
     static cookieLifetimeHours = 1;
 
     constructor() {
@@ -63,7 +64,7 @@ export class User {
                 res = cookieValue;
             } else {
                 // Value neither in query and nor in cookie
-                res = setCookie(cookieName, "none", User.cookieLifetimeHours);
+                res = setCookie(cookieName, PRL_MISSING_VALUE, User.cookieLifetimeHours);
             }
         }
         return res;
