@@ -77,7 +77,7 @@ export class AmazonSearchItem {
         try {
             const platformBadgeEl = this.htmlElement.querySelector("span[data-component-type='s-coupon-component']");
             const couponText = platformBadgeEl.textContent;
-            const platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
+            let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
             if (couponText.includes("%")) {
                 // String is something like "Save x% with voucher"
                 const couponSavePercent = parseInt(couponText.substring(0, couponText.indexOf("%")));
@@ -87,8 +87,30 @@ export class AmazonSearchItem {
                 badges[5] = couponSaveAmount;
             }
         } catch (error) {
-
         }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("a.puis-sponsored-label-text");
+            badges[6] = platformBadgeEl.firstChild.textContent.toLowerCase();
+            let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
+        } catch (error) {
+        }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("span.a-text-price[data-a-strike='true']");
+            let strikePriceEl = platformBadgeEl.children[0];
+            badges[7] = parseInt(strikePriceEl.textContent.substring(1).replaceAll(',', '').replaceAll('.', ''));
+            let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
+        } catch (error) {
+        }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("i.a-icon-prime");
+            let badgeCompProps = platformBadgeEl.getAttribute("aria-label").toLowerCase().replaceAll(" ", "-");
+            badges[8] = badgeCompProps;
+        } catch (error) {
+        }
+
         return badges;
     }
 }
