@@ -1,6 +1,7 @@
 # v0.0.3 | 09.04.2023
 * Attach bages to `AmazonSearchItem` object
-* Attach URL to `Page` object
+* Add URL to `Page` object
+* Attach click listener to search results
 
 # v0.0.2 | 09.04.2023
 * Create a JS datalayer object `ProductNavigatorData`

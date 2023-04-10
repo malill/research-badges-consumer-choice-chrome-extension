@@ -30,13 +30,18 @@ export class ProductNavigatorData {
                 // Element is not viewed -> register a "view-listener"
                 searchResultElement.isViewed = false;
                 this.attachViewListener(searchResultElement);
-                return;
             } else {
                 // Element is in viewport -> directly push view event
                 let item = new AmazonSearchItem(searchResultElement);
                 let event = new Event(item, "view");
                 this.pushEvent(event);
             }
+            // Attach click listener to all search elements
+            searchResultElement.addEventListener("click", () => {
+                let item = new AmazonSearchItem(searchResultElement);
+                let event = new Event(item, "click");
+                this.pushEvent(event);
+            });
         });
     }
 
