@@ -1,11 +1,10 @@
 const { ProductNavigatorData } = require("./model/ProductNavigatorData");
 const { platformCSS } = require("./style/platform");
 
-console.log("Product Navigator Amazon [v2]")
-
-
+// Create the datalayer object, responsible for tracking
 let productNavigatorData = new ProductNavigatorData();
 
+// Check if user is in control group, if yes show platform styling
 if (productNavigatorData.user.group == 'c') {
     // Default styling is "blank". Now we check 
     // whether we need to inject platform style.
@@ -19,7 +18,6 @@ if (productNavigatorData.user.group == 'c') {
     injectCSS(platformCSS);
 }
 
-
+// Check if there are search results present, if yes attach to datalayer
 const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
-
 productNavigatorData.attachEventsfromSearchResults(searchResults);

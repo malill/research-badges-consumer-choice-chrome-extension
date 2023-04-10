@@ -4,6 +4,7 @@ export class User {
 
     static prolificID = 'prolificID';
     static prolificGroup = 'prolificGroup';
+    static cookieLifetimeHours = 1;
 
     constructor() {
         this.setLocation();
@@ -28,11 +29,13 @@ export class User {
         let id = null;
         let group = null;
 
+        // Query params
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const idQueryValue = urlParams.get(User.prolificID);
         const groupQueryValue = urlParams.get(User.prolificGroup);
 
+        // Cookie params
         const idCookieValue = getCookie(User.prolificID);
         const groupCookieValue = getCookie(User.prolificGroup);
 
@@ -52,7 +55,7 @@ export class User {
 
         if (queryValue) {
             // Value in query
-            res = setCookie(cookieName, queryValue, 7); // means also existing values are overwritten
+            res = setCookie(cookieName, queryValue, User.cookieLifetimeHours); // means also existing values are overwritten
         } else {
             // Value not in query
             if (cookieValue) {
@@ -60,7 +63,7 @@ export class User {
                 res = cookieValue;
             } else {
                 // Value neither in query and nor in cookie
-                res = setCookie(cookieName, "MISSING", 7);
+                res = setCookie(cookieName, "none", User.cookieLifetimeHours);
             }
         }
         return res;

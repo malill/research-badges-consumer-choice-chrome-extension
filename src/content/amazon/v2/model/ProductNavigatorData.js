@@ -15,8 +15,10 @@ export class ProductNavigatorData {
     }
 
     pushEvent(e) {
+        // Checks needed?
         this.events.push(e);
         console.log(this);
+        // Whenever a new event is pushed to the datalayer, also send it to backend
         this.send(e);
     }
 
@@ -48,13 +50,13 @@ export class ProductNavigatorData {
     }
 
     send(e) {
-        // Send ProductNavigatorData to backend
         $.ajax({
             url: REST_API_URL,
             headers: {
             },
             type: "POST",
-            data: JSON.stringify({ 'productNavigatorData': this, 'new_event': e }),
+            // Send datalayer, note: event e == this.events[-1]
+            data: JSON.stringify({ 'productNavigatorData': this, 'event': e }),
             contentType: "application/json",
             dataType: "json"
         });
