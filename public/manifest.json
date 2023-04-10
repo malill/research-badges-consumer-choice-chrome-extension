@@ -1,7 +1,7 @@
 {
     "name": "Product Navigator BETA",
     "manifest_version": 3,
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Simply remove decision biases from Amazon UK search pages.",
     "action": {
         "default_icon": "img/icon.png",
@@ -16,8 +16,8 @@
                 "amazon.js"
             ],
             "matches": [
-                "http://www.amazon.co.uk/s?k=*",
-                "https://www.amazon.co.uk/s?k=*"
+                "http://www.amazon.co.uk/*",
+                "https://www.amazon.co.uk/*"
             ]
         }
     ],
