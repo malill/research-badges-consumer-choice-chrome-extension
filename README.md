@@ -27,6 +27,8 @@ tbd
 
 ## Displaying Badges
 
+> **Definition** <br> A **badge** is a visual element attached to a single product presentation on an online platform to generate more user attention for this specific product.
+
 The rules and behavior how badges are displayed are explained in this section.
 
 The default styling for a user that has the extension installed is a "blank" styling, i.e. all platform specific badges are set to `display: none` and are therefore not displayed. This is needed since otherwise, flickering would happen and users could see the inital platform's styling (for a few miliseconds). The default styling is set in the `manifest.json` .

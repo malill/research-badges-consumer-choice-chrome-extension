@@ -1,3 +1,9 @@
+# v0.0.2 | 09.04.2023
+* Create a JS datalayer object `ProductNavigatorData`
+* Refactor project setup to `v2`
+* Attach view listeners to search results
+* Retrieve Prolific ID & Group from query parameters and cookie
+
 # v0.0.1 | 06.02.2023
 * Initial project setup
 * Add styling that removes all Amazon digital nudges on extension installation 
@@ -13,9 +19,3 @@
 * FIX: remove tab title and URL from header request, since leads to error "Failed to execute 'setRequestHeader' on 'XMLHttpRequest': String contains non ISO-8859-1 code point."
 * Catch errors when retrieving information from PDP
 * Track average Rating, number of reviews, ASIN and BadgeType 1 on search pages
-
-# v0.0.2 | 09.04.2023
-* Create a JS datalayer object `ProductNavigatorData`
-* Refactor project setup to `v2`
-* Attach view listeners to search results
-* Retrieve Prolific ID & Group from query parameters and cookie

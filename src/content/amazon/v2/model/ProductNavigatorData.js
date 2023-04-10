@@ -12,6 +12,8 @@ export class ProductNavigatorData {
         this.events = [];
         this.page = new Page();
         this.user = new User();
+        let e = new Event(null, "page-view");
+        this.pushEvent(e);
     }
 
     pushEvent(e) {
@@ -19,7 +21,7 @@ export class ProductNavigatorData {
         this.events.push(e);
         console.log(this);
         // Whenever a new event is pushed to the datalayer, also send it to backend
-        this.send(e);
+        // this.send(e);
     }
 
     attachEventsfromSearchResults(searchResults) {
