@@ -78,3 +78,8 @@ div._bGlmZ_container_GMk6b.sbx-desktop {
 [data-asin=""] {
     display: none !important;
 }
+
+/* PDP, Add-to-Cart Button*/
+#addToCart_feature_div {
+    pointer-events: none;
+}
