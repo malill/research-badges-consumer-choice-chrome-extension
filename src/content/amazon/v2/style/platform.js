@@ -5,22 +5,22 @@
 export const platformCSS = `
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
 span.rush-component [data-component-type='s-status-badge-component'] {
-    display: block;
+    display: block !important;
 }
 
 /*Badge2 & 3, lightning red, Save X% OR Limited Time Deal*/
 span[data-a-badge-color='sx-lightning-deal-red'] {
-    display: block;
+    display: block !important;
 }
 
 /*Badge4 & 5, green voucher, "Save x%" OR "Save x$" below product price*/
 span[data-component-type="s-coupon-component"] {
-    display: block;
+    display: block !important;
 }
 
 /*Badge6, "Sponsored (i)" above product*/
 a.puis-sponsored-label-text {
-    display: block;
+    display: block !important;
 }
 
 /*Badge7, strice price*/
@@ -30,7 +30,7 @@ span.a-text-price[data-a-strike='true'] {
 
 /*Badge8, Prime (Delivery) Icon at product*/
 i.a-icon-prime {
-    display: block;
+    display: block !important;
 }
 
 /*Badge10/11, More buying choices*/
