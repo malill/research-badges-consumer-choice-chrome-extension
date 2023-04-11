@@ -3,6 +3,7 @@
 * Add URL to `Page` object
 * Attach click listener to search results
 * Open dialog when add-to-cart is pressed
+* Emit an "inspect" event when user navigates to product detail page
 
 # v0.0.2 | 09.04.2023
 * Create a JS datalayer object `ProductNavigatorData`
