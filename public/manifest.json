@@ -12,6 +12,11 @@
             "css": [
                 "/style/amazon/blank.css"
             ],
+            "matches": [
+                "https://*/*"
+            ]
+        },
+        {
             "js": [
                 "searchResultsPage.js"
             ],
