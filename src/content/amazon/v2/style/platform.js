@@ -72,7 +72,4 @@ span.a-size-small.a-color-base {
 .a-row.a-size-base.a-color-secondary.s-align-children-center {
     display: block !important;
 }
-
-/*OTHER STUFF*/
-/*Top banner ad*/
 `
