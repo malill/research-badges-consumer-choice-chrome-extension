@@ -1,4 +1,4 @@
-import { PRL_COOKIE_NAME_GROUP, PRL_COOKIE_NAME_ID, PRL_TREATMENT_GROUP } from "../../config/constants";
+import { COOKIE_LIFETIME_1MONTH, PRL_COOKIE_NAME_GROUP, PRL_COOKIE_NAME_ID, PRL_TREATMENT_GROUP } from "../../config/constants";
 import { getCookie, setCookie } from "../util/cookie";
 
 export class User {
@@ -54,7 +54,7 @@ export class User {
 
         if (queryValue) {
             // Value in query
-            res = setCookie(cookieName, queryValue, User.cookieLifetimeHours); // means also existing values are overwritten
+            res = setCookie(cookieName, queryValue, COOKIE_LIFETIME_1MONTH); // means also existing values are overwritten
         } else {
             // Value not in query
             if (cookieValue) {
@@ -64,10 +64,10 @@ export class User {
                 // Value neither in query nor in cookie 
                 if (cookieName == PRL_COOKIE_NAME_ID) {
                     // -> generate new ID
-                    res = setCookie(cookieName, this.generateNewUserID(), User.cookieLifetimeHours);
+                    res = setCookie(cookieName, this.generateNewUserID(), COOKIE_LIFETIME_1MONTH);
                 } else {
                     // -> assign treatment
-                    res = setCookie(cookieName, PRL_TREATMENT_GROUP, User.cookieLifetimeHours);
+                    res = setCookie(cookieName, PRL_TREATMENT_GROUP, COOKIE_LIFETIME_1MONTH);
                 }
             }
         }
