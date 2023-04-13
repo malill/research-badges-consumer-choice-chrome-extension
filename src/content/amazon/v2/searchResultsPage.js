@@ -1,3 +1,4 @@
+const { PRL_CONTROL_GROUP } = require("../../../config/constants");
 const { ProductNavigatorData } = require("./model/ProductNavigatorData");
 const { platformCSS } = require("./style/platform");
 
@@ -5,7 +6,7 @@ const { platformCSS } = require("./style/platform");
 let productNavigatorData = new ProductNavigatorData();
 
 // Check if user is in control group, if yes show platform styling
-if (productNavigatorData.user.group == 'c') {
+if (productNavigatorData.user.group == PRL_CONTROL_GROUP) {
     // Default styling is "blank". Now we check 
     // whether we need to inject platform style.
     const injectCSS = css => {

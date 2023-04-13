@@ -1,11 +1,9 @@
-import { PRL_COOKIE_NAME_GROUP, PRL_COOKIE_NAME_ID, PRL_MISSING_VALUE } from "../../../../config/constants";
+import { PRL_COOKIE_NAME_GROUP, PRL_COOKIE_NAME_ID, PRL_TREATMENT_GROUP } from "../../../../config/constants";
 import { getCookie, setCookie } from "../util/cookie";
 
 export class User {
 
-    static prolificID = PRL_COOKIE_NAME_ID;
-    static prolificGroup = PRL_COOKIE_NAME_GROUP;
-    static cookieLifetimeHours = 1;
+    static cookieLifetimeHours = 24 * 7 * 4;
 
     constructor() {
         this.setLocation();
@@ -33,15 +31,15 @@ export class User {
         // Query params
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        const idQueryValue = urlParams.get(User.prolificID);
-        const groupQueryValue = urlParams.get(User.prolificGroup);
+        const idQueryValue = urlParams.get(PRL_COOKIE_NAME_ID);
+        const groupQueryValue = urlParams.get(PRL_COOKIE_NAME_GROUP);
 
         // Cookie params
-        const idCookieValue = getCookie(User.prolificID);
-        const groupCookieValue = getCookie(User.prolificGroup);
+        const idCookieValue = getCookie(PRL_COOKIE_NAME_ID);
+        const groupCookieValue = getCookie(PRL_COOKIE_NAME_GROUP);
 
-        id = this.checkQueryCookieValues(idQueryValue, idCookieValue, User.prolificID)
-        group = this.checkQueryCookieValues(groupQueryValue, groupCookieValue, User.prolificGroup);
+        id = this.checkQueryCookieValues(idQueryValue, idCookieValue, PRL_COOKIE_NAME_ID)
+        group = this.checkQueryCookieValues(groupQueryValue, groupCookieValue, PRL_COOKIE_NAME_GROUP);
 
         return [id, group];
     }
@@ -63,11 +61,23 @@ export class User {
                 // Value in cookie
                 res = cookieValue;
             } else {
-                // Value neither in query and nor in cookie
-                res = setCookie(cookieName, PRL_MISSING_VALUE, User.cookieLifetimeHours);
+                // Value neither in query nor in cookie 
+                if (cookieName == PRL_COOKIE_NAME_ID) {
+                    // -> generate new ID
+                    res = setCookie(cookieName, this.generateNewUserID(), User.cookieLifetimeHours);
+                } else {
+                    // -> assign treatment
+                    res = setCookie(cookieName, PRL_TREATMENT_GROUP, User.cookieLifetimeHours);
+                }
             }
         }
         return res;
     }
+
+    generateNewUserID = () => {
+        const dateString = Date.now().toString(36);
+        const randomness = Math.random().toString(36).substr(2);
+        return dateString + randomness;
+    };
 
 }
