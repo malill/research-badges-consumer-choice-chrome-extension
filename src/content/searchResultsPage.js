@@ -1,4 +1,4 @@
-const { PRL_CONTROL_GROUP } = require("../../../config/constants");
+const { PRL_CONTROL_GROUP } = require("../config/constants");
 const { ProductNavigatorData } = require("./model/ProductNavigatorData");
 const { platformCSS } = require("./style/platform");
 

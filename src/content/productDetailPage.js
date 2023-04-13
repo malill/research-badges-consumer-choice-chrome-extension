@@ -1,7 +1,7 @@
-import { PRL_MISSING_VALUE } from "../../../config/constants";
 import { AmazonPDPItem } from "./model/AmazonPDPItem";
 import { ProductNavigatorData } from "./model/ProductNavigatorData";
 import { Event } from "./model/Event";
+import { PRL_MISSING_VALUE } from "../config/constants";
 
 // Create the datalayer object, responsible for tracking
 let productNavigatorData = new ProductNavigatorData();
@@ -26,6 +26,7 @@ if (productNavigatorData.user.id != PRL_MISSING_VALUE) {
             let addToCartEvent = new Event(item, "add-to-cart");
             productNavigatorData.pushEvent(addToCartEvent);
             alert("Thank you for participating in our survey. Please hit the blue 'Ok' button and you will be redicted to the questionaire to answer a few more final questions.");
+            // TODO: create another cookievalue with "activeProlificStudy"
             // Simulate an HTTP redirect:
             // window.location.href = "http://www.w3schools.com";
         });

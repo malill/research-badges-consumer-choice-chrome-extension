@@ -1,4 +1,4 @@
-import { REST_API_URL } from "../../../../config/constants";
+import { REST_API_URL } from "../../config/constants";
 import { isInViewport } from "../util/isInViewport";
 import { Event } from "./Event";
 import { AmazonSearchItem } from "./AmazonSearchItem";

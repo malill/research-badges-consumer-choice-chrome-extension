@@ -1,4 +1,4 @@
-import { PRL_COOKIE_NAME_GROUP, PRL_COOKIE_NAME_ID, PRL_TREATMENT_GROUP } from "../../../../config/constants";
+import { PRL_COOKIE_NAME_GROUP, PRL_COOKIE_NAME_ID, PRL_TREATMENT_GROUP } from "../../config/constants";
 import { getCookie, setCookie } from "../util/cookie";
 
 export class User {
