@@ -22,7 +22,8 @@ export class AmazonSearchItem {
         // AVG RATING & NUMBER OF REVIEWS
         try {
             const ratingEl = this.htmlElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0];
-            this.avgRating = parseFloat(ratingEl.getElementsByClassName("a-size-base")[0].textContent.replace(/[{()},.]/g, ''));
+            let avgRatingTxt = ratingEl.getElementsByClassName("a-icon-alt")[0].textContent;
+            this.avgRating = parseInt(parseFloat(avgRatingTxt.slice(0, 3)) * 10);
             this.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},.]/g, ''));
         } catch (error) {
             // No rating element found
@@ -46,7 +47,6 @@ export class AmazonSearchItem {
         }
 
         this.badges = this.getBadges();
-        console.log(this.badges);
     }
 
     getBadges() {
