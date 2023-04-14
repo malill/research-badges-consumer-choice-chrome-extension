@@ -70,8 +70,7 @@ export class ProductNavigatorData {
         } catch {
             console.log("An error occured sending event.")
         }
-        console.log(prolificEvent);
-        // this.send(prolificEvent);
+        this.send(prolificEvent);
     }
 
     attachEventsfromSearchResults(searchResults) {
