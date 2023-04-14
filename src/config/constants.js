@@ -23,7 +23,7 @@ export const COOKIE_NAME_TASK_ID = 'pnTaskID';
 
 export const COOKIE_VALUE_TASK_ID_CONTROL = 'i7sM';
 export const COOKIE_VALUE_TASK_ID_TREATMENT = 'i7tM';
-export const PRL_MISSING_VALUE = 'none';
+export const COOKIE_VALUE_MISSING = 'none';
 
 
 // -------------------

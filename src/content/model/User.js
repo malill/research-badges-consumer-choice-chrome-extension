@@ -1,4 +1,4 @@
-import { COOKIE_LIFETIME_1MONTH, COOKIE_LIFETIME_1YEAR, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID, COOKIE_NAME_USER_ID } from "../../config/constants";
+import { COOKIE_LIFETIME_1HOUR, COOKIE_LIFETIME_1YEAR, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID, COOKIE_NAME_USER_ID } from "../../config/constants";
 import { getCookie, setCookie } from "../util/cookie";
 
 export class User {
@@ -49,11 +49,11 @@ export class User {
         const cookieValueTaskID = getCookie(COOKIE_NAME_TASK_ID);
 
         // Compare query and cookie values
-        this.taskUID = this.checkQueryCookieValues(queryValueTaskUserID, cookieValueTaskUserID, COOKIE_NAME_TASK_USER_ID);
-        this.taskID = this.checkQueryCookieValues(queryValueTaskID, cookieValueTaskID, COOKIE_NAME_TASK_ID);;
+        this.taskUID = this.checkQueryCookieValues(queryValueTaskUserID, cookieValueTaskUserID, COOKIE_NAME_TASK_USER_ID, COOKIE_LIFETIME_1HOUR);
+        this.taskID = this.checkQueryCookieValues(queryValueTaskID, cookieValueTaskID, COOKIE_NAME_TASK_ID, COOKIE_LIFETIME_1HOUR);
     }
 
-    checkQueryCookieValues(queryValue, cookieValue, cookieName) {
+    checkQueryCookieValues(queryValue, cookieValue, cookieName, cookieLifeTime) {
         // Compares two values, and updates cookie if necessary
         let res = null;
 
@@ -69,7 +69,7 @@ export class User {
 
         if (queryValue) {
             // Value in query
-            res = setCookie(cookieName, queryValue, COOKIE_LIFETIME_1MONTH); // means also existing values are overwritten
+            res = setCookie(cookieName, queryValue, cookieLifeTime); // means also existing values are overwritten PLUS renews liftime
         } else {
             // Value not in query
             if (cookieValue) {
