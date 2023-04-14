@@ -27,7 +27,7 @@ tbd
 
 ## Displaying Badges
 
-> **Definition** <br> A **badge** is a visual element attached to a single product presentation on an online platform to generate more user attention for this specific product.
+> **Definition** <br> A **badge** is a visual element attached to a single product presentation on an online platform to generate more user attention for this specific product. The badges are the single point of interest, that are modified by the extension.
 
 The rules and behavior how badges are displayed are explained in this section.
 

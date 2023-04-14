@@ -43,8 +43,9 @@ export class ProductNavigatorData {
             prolificEvent["geo_accuracy"] = this.user.geoAccuracy;
             prolificEvent["geo_latitude"] = this.user.geoLatitude;
             prolificEvent["geo_longitude"] = this.user.geoLongitude;
-            prolificEvent["user_group"] = this.user.group;
-            prolificEvent["user_id"] = this.user.id;
+            prolificEvent["user_uid"] = this.user.uid;
+            prolificEvent["user_task_uid"] = this.user.taskUID;
+            prolificEvent["user_task_id"] = this.user.taskID;
 
             // Device attributes
             prolificEvent["is_battery_charging"] = this.device.batteryCharging;
@@ -69,7 +70,8 @@ export class ProductNavigatorData {
         } catch {
             console.log("An error occured sending event.")
         }
-        this.send(prolificEvent);
+        console.log(prolificEvent);
+        // this.send(prolificEvent);
     }
 
     attachEventsfromSearchResults(searchResults) {

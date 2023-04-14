@@ -12,12 +12,12 @@ export const REST_API_URL = "http://localhost:8000/event/";
 
 // -------------------
 // Prolific Constants
-export const PRL_COOKIE_NAME_ID = 'prolificID';
-export const PRL_COOKIE_NAME_GROUP = 'prolificGroup';
-export const PRL_COOKIE_NAME_STUDY_ID = 'prolificStudyID';
+export const COOKIE_NAME_USER_ID = 'pnUID';
+export const COOKIE_NAME_TASK_USER_ID = 'pnTaskUID';
+export const COOKIE_NAME_TASK_ID = 'pnTaskID';
 
-export const PRL_CONTROL_GROUP = 'control';
-export const PRL_TREATMENT_GROUP = 'treatment';
+export const COOKIE_VALUE_TASK_ID_CONTROL = 'i7sM';
+export const COOKIE_VALUE_TASK_ID_TREATMENT = 'i7tM';
 export const PRL_MISSING_VALUE = 'none';
 
 // -------------------

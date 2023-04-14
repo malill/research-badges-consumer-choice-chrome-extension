@@ -1,4 +1,4 @@
-import { COOKIE_LIFETIME_1MONTH, PRL_COOKIE_NAME_GROUP, PRL_COOKIE_NAME_ID, PRL_TREATMENT_GROUP } from "../../config/constants";
+import { COOKIE_LIFETIME_1MONTH, COOKIE_LIFETIME_1YEAR, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID, COOKIE_NAME_USER_ID } from "../../config/constants";
 import { getCookie, setCookie } from "../util/cookie";
 
 export class User {
@@ -6,8 +6,19 @@ export class User {
     static cookieLifetimeHours = 24 * 7 * 4;
 
     constructor() {
+        this.setUID();
         this.setLocation();
-        [this.id, this.group] = this.setProlificDetails();
+        this.setTaskDetails();
+    }
+
+    setUID() {
+        // Gets user ID from cookie or sets cookie if not present
+        this.uid = getCookie(COOKIE_NAME_USER_ID);
+        if (this.uid != "") {
+            return;
+        } else {
+            this.uid = setCookie(COOKIE_NAME_USER_ID, this.generateNewUserID(), COOKIE_LIFETIME_1YEAR);
+        }
     }
 
     setLocation() {
@@ -23,33 +34,37 @@ export class User {
         }
     }
 
-    setProlificDetails() {
-        // Info is stored in (1) searchQuery OR (2) cookie OR (3) both
-        let id = null;
-        let group = null;
+    setTaskDetails() {
+        // Info for task ID and task user ID are stored in 
+        // (1) searchQuery OR (2) cookie OR (3) both
 
-        // Query params
+        // Query parameter values
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        const idQueryValue = urlParams.get(PRL_COOKIE_NAME_ID);
-        const groupQueryValue = urlParams.get(PRL_COOKIE_NAME_GROUP);
+        const queryValueTaskUserID = urlParams.get(COOKIE_NAME_TASK_USER_ID);
+        const queryValueTaskID = urlParams.get(COOKIE_NAME_TASK_ID);
 
-        // Cookie params
-        const idCookieValue = getCookie(PRL_COOKIE_NAME_ID);
-        const groupCookieValue = getCookie(PRL_COOKIE_NAME_GROUP);
+        // Cookie values 
+        const cookieValueTaskUserID = getCookie(COOKIE_NAME_TASK_USER_ID);
+        const cookieValueTaskID = getCookie(COOKIE_NAME_TASK_ID);
 
-        id = this.checkQueryCookieValues(idQueryValue, idCookieValue, PRL_COOKIE_NAME_ID)
-        group = this.checkQueryCookieValues(groupQueryValue, groupCookieValue, PRL_COOKIE_NAME_GROUP);
-
-        return [id, group];
+        // Compare query and cookie values
+        this.taskUID = this.checkQueryCookieValues(queryValueTaskUserID, cookieValueTaskUserID, COOKIE_NAME_TASK_USER_ID);
+        this.taskID = this.checkQueryCookieValues(queryValueTaskID, cookieValueTaskID, COOKIE_NAME_TASK_ID);;
     }
 
     checkQueryCookieValues(queryValue, cookieValue, cookieName) {
         // Compares two values, and updates cookie if necessary
         let res = null;
+
+        if ((!queryValue) && (!cookieValue)) {
+            // Neither a query nor a cookie value is present --> non-task user
+            return null;
+        }
+
         if ((queryValue) && (cookieValue) && (queryValue != cookieValue)) {
             // Value in query and in cookie, but values are different
-            // TODO: what to do? Here: belief query value (next clause)
+            // What to do? Here: belief query value (next clause)
         }
 
         if (queryValue) {
@@ -60,15 +75,6 @@ export class User {
             if (cookieValue) {
                 // Value in cookie
                 res = cookieValue;
-            } else {
-                // Value neither in query nor in cookie 
-                if (cookieName == PRL_COOKIE_NAME_ID) {
-                    // -> generate new ID
-                    res = setCookie(cookieName, this.generateNewUserID(), COOKIE_LIFETIME_1MONTH);
-                } else {
-                    // -> assign treatment
-                    res = setCookie(cookieName, PRL_TREATMENT_GROUP, COOKIE_LIFETIME_1MONTH);
-                }
             }
         }
         return res;
