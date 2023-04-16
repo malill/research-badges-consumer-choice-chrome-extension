@@ -1,3 +1,12 @@
+# v0.0.4 | 16.04.2023
+* Create a study (="task") object that is sent to endpoint
+* Track click on search result items and add-to-cart on PDP
+* Show alert dialog when user hits add-to-cart button on PDP
+* Create an "inspect" event when user visits PDP
+* Create a random user ID for the application
+* Additionally, store a task ID and a task user ID to link to respective surveys
+* If present: delete task ID and task user ID when user hits add-to-cart button
+
 # v0.0.3 | 09.04.2023
 * Attach bages to `AmazonSearchItem` object
 * Add URL to `Page` object
