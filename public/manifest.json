@@ -13,7 +13,8 @@
                 "/style/amazon/blank.css"
             ],
             "matches": [
-                "https://*/*"
+                "http://www.amazon.co.uk/*",
+                "https://www.amazon.co.uk/*"
             ]
         },
         {
