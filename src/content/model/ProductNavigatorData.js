@@ -1,10 +1,11 @@
-import { REST_API_URL } from "../../config/constants";
+import { REST_API_URL } from "../../config/settings";
 import { isInViewport } from "../util/isInViewport";
 import { Event } from "./Event";
 import { AmazonSearchItem } from "./AmazonSearchItem";
 import { Device } from "./Device";
 import { Page } from "./Page";
 import { User } from "./User";
+import { TaskEvent } from "./TaskEvent";
 
 export class ProductNavigatorData {
     constructor() {
@@ -21,56 +22,10 @@ export class ProductNavigatorData {
         this.events.push(e);
         // Whenever a new event is pushed to the datalayer, also send it to backend
         // this.send(e);
-        let prolificEvent = {}
-        try {
-            if (e.item) {
-                // Item attributes
-                const item = e.item;
-                prolificEvent["asin"] = item.asin;
-                prolificEvent["avg_rating"] = item.avgRating;
-                prolificEvent["delivery_info"] = item.deliveryInfo;
-                prolificEvent["n_ratings"] = item.nReviews;
-                prolificEvent["name"] = item.name;
-                prolificEvent["position"] = item.position;
-                prolificEvent["price"] = item.price;
-                prolificEvent = Object.assign(prolificEvent, item["badges"])
-            }
-            // Event attributes
-            prolificEvent["event_type"] = e.type;
-            prolificEvent["timestamp_client"] = e.timestamp;
+        let taskEventObject = new TaskEvent(this, e);
 
-            // User attributes (note: geo data might be undefined bc promise)
-            prolificEvent["geo_accuracy"] = this.user.geoAccuracy;
-            prolificEvent["geo_latitude"] = this.user.geoLatitude;
-            prolificEvent["geo_longitude"] = this.user.geoLongitude;
-            prolificEvent["user_uid"] = this.user.uid;
-            prolificEvent["user_task_uid"] = this.user.taskUID;
-            prolificEvent["user_task_id"] = this.user.taskID;
-
-            // Device attributes
-            prolificEvent["is_battery_charging"] = this.device.batteryCharging;
-            prolificEvent["battery_charging_time"] = this.device.batteryChargingTime;
-            prolificEvent["battery_discharging_time"] = this.device.batteryDischargingTime;
-            prolificEvent["battery_level"] = this.device.batteryLevel;
-
-            prolificEvent["network_downlink"] = this.device.networkDownlink;
-            prolificEvent["networt_effective_type"] = this.device.networkEffectiveType;
-            prolificEvent["user_agent"] = this.device.userAgent;
-
-            prolificEvent["window_inner_height"] = this.device.windowInnerHeight;
-            prolificEvent["window_inner_width"] = this.device.windowInnerWidth;
-            prolificEvent["window_outer_height"] = this.device.windowOuterHeight;
-            prolificEvent["window_outer_width"] = this.device.windowOuterWidth;
-
-            // Page attributes
-            prolificEvent["hostname"] = this.page.hostname;
-            prolificEvent["tab_title"] = this.page.tabTitle;
-            prolificEvent["query_string"] = this.page.queryString;
-            prolificEvent["url"] = this.page.url;
-        } catch {
-            console.log("An error occured sending event.")
-        }
-        this.send(prolificEvent);
+        console.log(taskEventObject);
+        // this.send(taskEvent);
     }
 
     attachEventsfromSearchResults(searchResults) {

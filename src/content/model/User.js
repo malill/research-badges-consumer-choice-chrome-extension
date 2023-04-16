@@ -1,4 +1,4 @@
-import { COOKIE_LIFETIME_1HOUR, COOKIE_LIFETIME_1YEAR, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID, COOKIE_NAME_USER_ID } from "../../config/constants";
+import { COOKIE_LIFETIME_1HOUR, COOKIE_LIFETIME_1YEAR, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID, COOKIE_NAME_USER_ID } from "../../config/settings";
 import { getCookie, setCookie } from "../util/cookie";
 
 export class User {

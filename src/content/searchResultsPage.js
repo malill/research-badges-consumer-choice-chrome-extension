@@ -1,4 +1,4 @@
-const { COOKIE_VALUE_TASK_ID_CONTROL } = require("../config/constants");
+const { COOKIE_VALUE_TASK_ID_CONTROL } = require("../config/settings");
 const { ProductNavigatorData } = require("./model/ProductNavigatorData");
 const { platformCSS } = require("./style/platform");
 

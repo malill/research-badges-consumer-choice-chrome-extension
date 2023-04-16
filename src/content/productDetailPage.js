@@ -1,7 +1,7 @@
 import { AmazonPDPItem } from "./model/AmazonPDPItem";
 import { ProductNavigatorData } from "./model/ProductNavigatorData";
 import { Event } from "./model/Event";
-import { COOKIE_VALUE_MISSING, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID } from "../config/constants";
+import { COOKIE_VALUE_MISSING, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID } from "../config/settings";
 import { setCookie } from "./util/cookie";
 
 // Create the datalayer object, responsible for tracking
