@@ -21,11 +21,8 @@ export class ProductNavigatorData {
         // Checks needed?
         this.events.push(e);
         // Whenever a new event is pushed to the datalayer, also send it to backend
-        // this.send(e);
-        let taskEventObject = new TaskEvent(this, e);
-
-        console.log(taskEventObject);
-        // this.send(taskEvent);
+        let taskEvent = new TaskEvent(this, e);
+        this.send(taskEvent);
     }
 
     attachEventsfromSearchResults(searchResults) {
@@ -60,15 +57,13 @@ export class ProductNavigatorData {
         });
     }
 
-    send(e) {
+    send(taskEvent) {
         $.ajax({
             url: REST_API_URL,
             headers: {
             },
             type: "POST",
-            // Send datalayer, note: event e == this.events[-1]
-            // data: JSON.stringify({ 'productNavigatorData': this, 'event': e }),
-            data: JSON.stringify(e),
+            data: JSON.stringify(taskEvent),
             contentType: "application/json",
             dataType: "json"
         });

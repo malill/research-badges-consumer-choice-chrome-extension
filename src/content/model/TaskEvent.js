@@ -1,6 +1,5 @@
 export class TaskEvent {
     constructor(pnData, event) {
-        console.log("TaskEvent instance created");
         try {
             if (event.item) {
                 // Item attributes
@@ -12,7 +11,7 @@ export class TaskEvent {
                 this.name = item.name;
                 this.position = item.position;
                 this.price = item.price;
-                this.badges = Object.assign(this, item["badges"])
+                Object.assign(this, item["badges"])
             }
             // Event attributes
             this.event_type = event.type;
@@ -47,7 +46,7 @@ export class TaskEvent {
             this.query_string = pnData.page.queryString;
             this.url = pnData.page.url;
         } catch {
-            console.log("An error occured sending event.")
+            console.log("An error occured creating TaskEvent object.")
         }
     }
 }
