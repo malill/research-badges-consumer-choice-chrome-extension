@@ -23,14 +23,19 @@ a.puis-sponsored-label-text {
     display: block !important;
 }
 
-/*Badge7, strice price*/
+/*Badge7, strike price "annotation" (e.g. "RRP:", "Was:")*/
+span.a-size-base.a-color-secondary {
+    display: inline-block !important;
+}
+
+/*Badge7, strice price value*/
 span.a-text-price[data-a-strike='true'] {
     display: inline-block !important;
 }
 
 /*Badge8, Prime (Delivery) Icon at product*/
 i.a-icon-prime {
-    display: block !important;
+    display: inline-block !important;
 }
 
 /*Badge10/11, More buying choices*/
@@ -43,13 +48,8 @@ span.a-size-base.a-color-price {
     display: block !important;
 }
 
-/*Badge13, Small Business & Climate Pledge Friendly*/
-a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center {
-    display: block !important;
-}
-
 /*Badge14a, (Green) "Save x% on any y qualifying items"*/
-span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-promotion-highlight-color {
+.s-highlighted-text-padding {
     display: inline-block !important;
 }
 
@@ -58,8 +58,8 @@ span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-promotion-highlig
     display: block !important;
 }
 
-/*Badge15, "Featured from our brands"*/
-span.a-size-micro.a-color-secondary {
+/*Badge15, Small Business*/
+a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center {
     display: block !important;
 }
 
