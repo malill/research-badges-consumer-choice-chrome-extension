@@ -27,9 +27,7 @@ export class ProductNavigatorData {
         this.events.push(e);
         // Whenever a new event is pushed to the datalayer, also send it to backend
         let taskEvent = new TaskEvent(this, e);
-        console.log(this);
-        console.log(taskEvent);
-        // this.send(taskEvent);
+        this.send(taskEvent);
     }
 
     attachEventsfromSearchResults(searchResults) {
