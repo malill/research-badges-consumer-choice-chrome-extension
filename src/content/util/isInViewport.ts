@@ -1,3 +1,5 @@
+// https://stackoverflow.com/a/7557433/11236
+
 export function isInViewport(htmlElement: HTMLElement) {
     const rect = htmlElement.getBoundingClientRect();
     return (

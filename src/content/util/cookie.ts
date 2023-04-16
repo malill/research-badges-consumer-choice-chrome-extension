@@ -1,6 +1,7 @@
 // https://www.w3schools.com/js/js_cookies.asp
 
 export function setCookie(cname: string, cvalue: string, exhours: number) {
+    // exhours = 0 for session cookie
     const d = new Date();
     d.setTime(d.getTime() + (exhours * 60 * 60 * 1000));
     let expires = "expires=" + d.toUTCString();
@@ -21,16 +22,4 @@ export function getCookie(cname: string) {
         }
     }
     return "";
-}
-
-export function checkCookie() {
-    let user = getCookie("username");
-    if (user != "") {
-        alert("Welcome again " + user);
-    } else {
-        user = prompt("Please enter your name:", "");
-        if (user != "" && user != null) {
-            setCookie("username", user, 365);
-        }
-    }
 }
