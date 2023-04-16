@@ -8,6 +8,11 @@ import { User } from "./User";
 import { TaskEvent } from "./TaskEvent";
 
 export class ProductNavigatorData {
+    device: Device;
+    events: any[];
+    page: Page;
+    user: User;
+
     constructor() {
         this.device = new Device();
         this.events = [];
@@ -22,7 +27,9 @@ export class ProductNavigatorData {
         this.events.push(e);
         // Whenever a new event is pushed to the datalayer, also send it to backend
         let taskEvent = new TaskEvent(this, e);
-        this.send(taskEvent);
+        console.log(this);
+        console.log(taskEvent);
+        // this.send(taskEvent);
     }
 
     attachEventsfromSearchResults(searchResults) {
@@ -46,18 +53,18 @@ export class ProductNavigatorData {
         });
     }
 
-    attachViewListener(el) {
+    attachViewListener(htmlElement: any) {
         $(window).on("resize scroll", () => {
-            if (isInViewport(el) && (!el.isViewed)) {
-                el.isViewed = true; // prevents entering this clause multiple times
-                let item = new AmazonSearchItem(el);
+            if (isInViewport(htmlElement) && (!htmlElement.isViewed)) {
+                htmlElement.isViewed = true; // prevents entering this clause multiple times
+                let item = new AmazonSearchItem(htmlElement);
                 let event = new Event(item, "view");
                 this.pushEvent(event);
             }
         });
     }
 
-    send(taskEvent) {
+    send(taskEvent: TaskEvent) {
         $.ajax({
             url: REST_API_URL,
             headers: {

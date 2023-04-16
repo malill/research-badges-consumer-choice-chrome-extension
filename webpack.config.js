@@ -4,18 +4,23 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        searchResultsPage: path.resolve(__dirname, "src/content/searchResultsPage.js"),
-        productDetailPage: path.resolve(__dirname, "src/content/productDetailPage.js")
+        searchResultsPage: path.resolve(__dirname, "src/content/searchResultsPage.ts"),
+        productDetailPage: path.resolve(__dirname, "src/content/productDetailPage.ts")
     },
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[name].js",
     },
     resolve: {
-        extensions: [".js"],
+        extensions: ['.tsx', '.ts', '.js'],
     },
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
             { test: /\.css$/i, use: ["style-loader", "css-loader"] }
         ],
     },

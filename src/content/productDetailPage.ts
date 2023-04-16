@@ -12,8 +12,8 @@ let addToCartDivElement = document.getElementById("addToCart_feature_div");
 
 // Emit the "inspect" event
 const asin = addToCartDivElement.getAttribute("data-csa-c-asin");
-let item = new AmazonPDPItem(asin);
-let inspectEvent = new Event(item, "inspect");
+let item = new AmazonPDPItem(asin); // TODO: there needs to be a better way to get the ASIN
+let inspectEvent = new Event(null, "inspect");
 productNavigatorData.pushEvent(inspectEvent);
 
 if ((productNavigatorData.user.taskID) && (productNavigatorData.user.taskID != COOKIE_VALUE_MISSING)) {
@@ -24,7 +24,7 @@ if ((productNavigatorData.user.taskID) && (productNavigatorData.user.taskID != C
         addToCartInputElement.remove();
 
         addToCartDivElement.addEventListener("click", () => {
-            let addToCartEvent = new Event(item, "add-to-cart");
+            let addToCartEvent = new Event(null, "add-to-cart");
             productNavigatorData.pushEvent(addToCartEvent);
             alert("Thank you for participating in our survey. Please hit the blue 'Ok' button and you will be redicted to the questionaire to answer a few more final questions.");
 

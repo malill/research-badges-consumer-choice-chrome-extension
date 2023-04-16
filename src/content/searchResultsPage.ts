@@ -9,7 +9,7 @@ let productNavigatorData = new ProductNavigatorData();
 if (productNavigatorData.user.taskID == COOKIE_VALUE_TASK_ID_CONTROL) {
     // Default styling is "blank". Now we check 
     // whether we need to inject platform style.
-    const injectCSS = css => {
+    const injectCSS = (css: string) => {
         let el = document.createElement('style');
         el.type = 'text/css';
         el.innerText = css;

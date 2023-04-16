@@ -1,7 +1,16 @@
 export class AmazonSearchItem {
-    constructor(htmlmSearchResultElement) {
-        this.htmlElement = htmlmSearchResultElement;
+    htmlElement: HTMLElement;
+    asin: string;
+    position: number;
+    name: string;
+    avgRating: number;
+    nReviews: number;
+    price: number;
+    deliveryInfo: string;
+    badges: {};
 
+    constructor(htmlmSearchResultElement: HTMLElement) {
+        this.htmlElement = htmlmSearchResultElement;
 
         // Basic attributes
 
@@ -23,7 +32,7 @@ export class AmazonSearchItem {
         try {
             const ratingEl = this.htmlElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0];
             let avgRatingTxt = ratingEl.getElementsByClassName("a-icon-alt")[0].textContent;
-            this.avgRating = parseInt(parseFloat(avgRatingTxt.slice(0, 3)) * 10);
+            this.avgRating = parseInt(avgRatingTxt.slice(0, 3)) * 10;
             this.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},.]/g, ''));
         } catch (error) {
             // No rating element found
@@ -112,7 +121,7 @@ export class AmazonSearchItem {
             let currencySymbolIndex = textEl.indexOf("£");
             let paranSubstring = textEl.substring(openingParanIndex);
 
-            badges["b_10"] = parseInt(parseFloat(textEl.substring(currencySymbolIndex + 1, openingParanIndex)) * 100);
+            badges["b_10"] = parseFloat(textEl.substring(currencySymbolIndex + 1, openingParanIndex)) * 100;
             badges["b_11"] = parseInt(paranSubstring.substring(1, paranSubstring.indexOf(" ")));
         } catch (error) { }
 

@@ -4,6 +4,12 @@ import { getCookie, setCookie } from "../util/cookie";
 export class User {
 
     static cookieLifetimeHours = 24 * 7 * 4;
+    uid: string;
+    geoAccuracy: number;
+    geoLatitude: number;
+    geoLongitude: number;
+    taskUID: string;
+    taskID: string;
 
     constructor() {
         this.setUID();

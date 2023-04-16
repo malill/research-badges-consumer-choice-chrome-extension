@@ -1,5 +1,43 @@
+import { Event } from "./Event";
+import { ProductNavigatorData } from "./ProductNavigatorData";
+
 export class TaskEvent {
-    constructor(pnData, event) {
+    // A task event is a flat representation of a ProductNavigatorData object
+    asin: string;
+    avg_rating: number;
+    delivery_info: string;
+    n_ratings: number;
+    name: string;
+    position: number;
+    price: number;
+    event_type: string;
+    timestamp_client: string;
+    geo_accuracy: number;
+    geo_latitude: number;
+    geo_longitude: number;
+    user_uid: string;
+    user_task_uid: string;
+    user_task_id: string;
+    battery_charging: any;
+    battery_charging_time: any;
+    battery_discharging_time: any;
+    battery_level: any;
+    network_downlink: any;
+    networt_effective_type: any;
+    networt_rtt: any;
+    networt_save_data: any;
+    user_agent: string;
+    window_inner_height: number;
+    window_inner_width: number;
+    window_outer_height: number;
+    window_outer_width: number;
+    hostname: string;
+    tab_title: string;
+    query_string: string;
+    url: string;
+
+
+    constructor(pnData: ProductNavigatorData, event: Event) {
         try {
             if (event.item) {
                 // Item attributes
@@ -26,13 +64,15 @@ export class TaskEvent {
             this.user_task_id = pnData.user.taskID;
 
             // Device attributes
-            this.is_battery_charging = pnData.device.batteryCharging;
+            this.battery_charging = pnData.device.batteryCharging;
             this.battery_charging_time = pnData.device.batteryChargingTime;
             this.battery_discharging_time = pnData.device.batteryDischargingTime;
             this.battery_level = pnData.device.batteryLevel;
 
             this.network_downlink = pnData.device.networkDownlink;
             this.networt_effective_type = pnData.device.networkEffectiveType;
+            this.networt_rtt = pnData.device.networkRtt;
+            this.networt_save_data = pnData.device.networkSaveData;
             this.user_agent = pnData.device.userAgent;
 
             this.window_inner_height = pnData.device.windowInnerHeight;

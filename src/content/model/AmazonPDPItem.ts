@@ -1,5 +1,7 @@
 export class AmazonPDPItem {
-    constructor(asin) {
+    asin: string;
+
+    constructor(asin: string) {
         this.asin = asin;
     }
 }

@@ -1,6 +1,6 @@
 // https://www.w3schools.com/js/js_cookies.asp
 
-export function setCookie(cname, cvalue, exhours) {
+export function setCookie(cname: string, cvalue: string, exhours: number) {
     const d = new Date();
     d.setTime(d.getTime() + (exhours * 60 * 60 * 1000));
     let expires = "expires=" + d.toUTCString();
@@ -8,7 +8,7 @@ export function setCookie(cname, cvalue, exhours) {
     return cvalue;
 }
 
-export function getCookie(cname) {
+export function getCookie(cname: string) {
     let name = cname + "=";
     let ca = document.cookie.split(';');
     for (let i = 0; i < ca.length; i++) {
