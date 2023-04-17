@@ -27,10 +27,16 @@ export class TaskEvent {
     networt_rtt: any;
     networt_save_data: any;
     user_agent: string;
+    platform: string;
+    language: string;
+    processors: number;
+    referrer: string;
     window_inner_height: number;
     window_inner_width: number;
     window_outer_height: number;
     window_outer_width: number;
+    screen_color_depth: number;
+    screen_pixel_depth: number;
     hostname: string;
     tab_title: string;
     query_string: string;
@@ -74,11 +80,18 @@ export class TaskEvent {
             this.networt_rtt = pnData.device.networkRtt;
             this.networt_save_data = pnData.device.networkSaveData;
             this.user_agent = pnData.device.userAgent;
+            this.platform = pnData.device.platform;
+            this.language = pnData.device.language;
+            this.processors = pnData.device.processors;
+            this.referrer = pnData.device.referrer;
 
             this.window_inner_height = pnData.device.windowInnerHeight;
             this.window_inner_width = pnData.device.windowInnerWidth;
             this.window_outer_height = pnData.device.windowOuterHeight;
             this.window_outer_width = pnData.device.windowOuterWidth;
+
+            this.screen_color_depth = pnData.device.screenColorDepth;
+            this.screen_pixel_depth = pnData.device.screenPixelDepth;
 
             // Page attributes
             this.hostname = pnData.page.hostname;
