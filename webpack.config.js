@@ -1,6 +1,5 @@
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const webpack = require('webpack');
+
 
 module.exports = {
     entry: {
@@ -8,8 +7,9 @@ module.exports = {
         productDetailPage: path.resolve(__dirname, "src/content/productDetailPage.ts")
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
         filename: "[name].js",
+        path: path.resolve(__dirname, "dist"),
+        clean: true
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
@@ -24,16 +24,5 @@ module.exports = {
             { test: /\.css$/i, use: ["style-loader", "css-loader"] }
         ],
     },
-    plugins: [
-        new CopyPlugin({
-            patterns: [
-                { from: "public" },
-                { from: path.resolve(__dirname, "src/style"), to: path.resolve(__dirname, "dist/style") }
-            ]
-        }),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        })
-    ]
+
 };

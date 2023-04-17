@@ -1,4 +1,4 @@
-import { injectCSS } from "./util/injectCss";
+import { injectCSS } from "./util/injectCSS";
 
 import { COOKIE_VALUE_TASK_ID_CONTROL } from "../config/settings";
 import { ProductNavigatorData } from "./model/ProductNavigatorData";

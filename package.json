@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "*\"Personalized AI\" (pAI) repository for Google Chrome extension.*",
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
+    "build-q": "webpack --config webpack.q.js",
+    "build-p": "webpack --config webpack.p.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch --config webpack.dev.js"
   },

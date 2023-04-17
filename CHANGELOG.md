@@ -8,6 +8,7 @@
 * If present: delete task ID and task user ID when user hits add-to-cart button
 * Create a `TaskEvent` object that can be send to analytics endpoint
 * Convert to `TypeScript`
+* Create different versions for development, testing and production
 
 # v0.0.3 | 09.04.2023
 * Attach bages to `AmazonSearchItem` object
