@@ -1,8 +1,8 @@
-import { AmazonPDPItem } from "./model/AmazonPDPItem";
 import { ProductNavigatorData } from "./model/ProductNavigatorData";
 import { Event } from "./model/Event";
 import { COOKIE_VALUE_MISSING, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID } from "../config/settings";
 import { setCookie } from "./util/cookie";
+import { AmazonItem } from "./model/AmazonItem";
 
 // Create the datalayer object, responsible for analytics
 let productNavigatorData = new ProductNavigatorData();
@@ -12,8 +12,8 @@ let addToCartDivElement = document.getElementById("addToCart_feature_div");
 
 // Emit the "inspect" event
 const asin = addToCartDivElement.getAttribute("data-csa-c-asin");
-let item = new AmazonPDPItem(asin); // TODO: there needs to be a better way to get the ASIN
-let inspectEvent = new Event(null, "inspect");
+let item = new AmazonItem(null, asin); // TODO: there needs to be a better way to get the ASIN
+let inspectEvent = new Event(item, "inspect");
 productNavigatorData.pushEvent(inspectEvent);
 
 // When there is a taskID, the user came from a study (control or treatment)
@@ -24,7 +24,7 @@ if ((productNavigatorData.user.taskID) && (productNavigatorData.user.taskID != C
         addToCartInputElement.remove();
 
         addToCartDivElement.addEventListener("click", () => {
-            let addToCartEvent = new Event(null, "add-to-cart");
+            let addToCartEvent = new Event(item, "add-to-cart");
             productNavigatorData.pushEvent(addToCartEvent);
             alert("Thank you for participating in our survey. Please hit the blue 'Ok' button and you will be redicted to the questionaire to answer a few more final questions.");
 

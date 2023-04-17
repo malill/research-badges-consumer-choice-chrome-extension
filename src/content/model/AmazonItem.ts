@@ -1,4 +1,4 @@
-export class AmazonSearchItem {
+export class AmazonItem {
     htmlElement: HTMLElement;
     asin: string;
     position: number;
@@ -9,7 +9,12 @@ export class AmazonSearchItem {
     deliveryInfo: string;
     badges: {};
 
-    constructor(htmlmSearchResultElement: HTMLElement) {
+    constructor(htmlmSearchResultElement: HTMLElement, asin?: string) {
+        if (asin) {
+            this.asin = asin;
+            return this;
+        }
+
         this.htmlElement = htmlmSearchResultElement;
 
         // Basic attributes

@@ -1,7 +1,7 @@
 import { REST_API_URL } from "../../config/settings";
 import { isInViewport } from "../util/isInViewport";
 import { Event } from "./Event";
-import { AmazonSearchItem } from "./AmazonSearchItem";
+import { AmazonItem } from "./AmazonItem";
 import { Device } from "./Device";
 import { Page } from "./Page";
 import { User } from "./User";
@@ -27,6 +27,7 @@ export class ProductNavigatorData {
         this.events.push(event);
         // Whenever a new event is pushed to the datalayer, also send it to backend
         let taskEvent = new TaskEvent(this, event);
+        console.log(taskEvent);
         this.send(taskEvent);
     }
 
@@ -38,13 +39,13 @@ export class ProductNavigatorData {
                 this.attachViewListener(searchResultElement);
             } else {
                 // Element is in viewport -> directly push view event
-                let item = new AmazonSearchItem(searchResultElement);
+                let item = new AmazonItem(searchResultElement);
                 let event = new Event(item, "view");
                 this.pushEvent(event);
             }
             // Attach click listener to all search elements
             searchResultElement.addEventListener("click", () => {
-                let item = new AmazonSearchItem(searchResultElement);
+                let item = new AmazonItem(searchResultElement);
                 let event = new Event(item, "click");
                 this.pushEvent(event);
             });
@@ -55,7 +56,7 @@ export class ProductNavigatorData {
         $(window).on("resize scroll", () => {
             if (isInViewport(htmlElement) && (!htmlElement.isViewed)) {
                 htmlElement.isViewed = true; // prevents entering this clause multiple times
-                let item = new AmazonSearchItem(htmlElement);
+                let item = new AmazonItem(htmlElement);
                 let event = new Event(item, "view");
                 this.pushEvent(event);
             }
