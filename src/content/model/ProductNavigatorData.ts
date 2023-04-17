@@ -22,15 +22,15 @@ export class ProductNavigatorData {
         this.pushEvent(e);
     }
 
-    pushEvent(e) {
+    pushEvent(event: Event) {
         // Checks needed?
-        this.events.push(e);
+        this.events.push(event);
         // Whenever a new event is pushed to the datalayer, also send it to backend
-        let taskEvent = new TaskEvent(this, e);
+        let taskEvent = new TaskEvent(this, event);
         this.send(taskEvent);
     }
 
-    attachEventsfromSearchResults(searchResults) {
+    attachEventsfromSearchResults(searchResults: any[] | NodeListOf<Element>) {
         searchResults.forEach((searchResultElement) => {
             if (!isInViewport(searchResultElement)) {
                 // Element is not viewed -> register a "view-listener"

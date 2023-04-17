@@ -2,7 +2,7 @@
     "name": "Product Navigator DEV",
     "manifest_version": 3,
     "version": "0.0.4",
-    "description": "Simply remove decision biases from Amazon UK search pages. (TEST VERSION)",
+    "description": "Simply remove decision biases from Amazon UK search pages. (DEVELOPMENT VERSION)",
     "action": {
         "default_icon": "img/icon.png",
         "default_title": "Product Navigator DEV"

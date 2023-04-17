@@ -9,9 +9,7 @@ let productNavigatorData = new ProductNavigatorData();
 
 // Check if user is in control group, if yes show platform styling
 if (productNavigatorData.user.taskID == COOKIE_VALUE_TASK_ID_CONTROL) {
-    // Default styling is "blank". Now we check 
-    // whether we need to inject platform style.
-
+    // Default styling is "blank" > inject platform style
     injectCSS(platformCSS);
 }
 
