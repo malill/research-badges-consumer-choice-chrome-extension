@@ -4,7 +4,7 @@ import { Event } from "./model/Event";
 import { COOKIE_VALUE_MISSING, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID } from "../config/settings";
 import { setCookie } from "./util/cookie";
 
-// Create the datalayer object, responsible for tracking
+// Create the datalayer object, responsible for analytics
 let productNavigatorData = new ProductNavigatorData();
 
 // Get the parent div element of add-to-cart
@@ -16,8 +16,8 @@ let item = new AmazonPDPItem(asin); // TODO: there needs to be a better way to g
 let inspectEvent = new Event(null, "inspect");
 productNavigatorData.pushEvent(inspectEvent);
 
+// When there is a taskID, the user came from a study (control or treatment)
 if ((productNavigatorData.user.taskID) && (productNavigatorData.user.taskID != COOKIE_VALUE_MISSING)) {
-    // User came from a study (control or treatment), customize add-to-cart function
     try {
         // Remove the add to cart input button (note: its parent div is already disabled by blank.css, but will be activated again below)
         const addToCartInputElement = document.getElementById('add-to-cart-button');
@@ -34,8 +34,6 @@ if ((productNavigatorData.user.taskID) && (productNavigatorData.user.taskID != C
 
             // Simulate an HTTP redirect:
             // window.location.href = "http://www.w3schools.com";
-
-
         });
     } catch (error) { }
 }
