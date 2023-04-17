@@ -9,6 +9,7 @@
 * Create a `TaskEvent` object that can be send to analytics endpoint
 * Convert to `TypeScript`
 * Create different versions for development, testing and production
+* Read analytics endpoint from environmental variable
 
 # v0.0.3 | 09.04.2023
 * Attach bages to `AmazonSearchItem` object

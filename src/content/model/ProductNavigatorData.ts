@@ -1,4 +1,3 @@
-import { REST_API_URL } from "../../config/settings";
 import { isInViewport } from "../util/isInViewport";
 import { Event } from "./Event";
 import { AmazonItem } from "./AmazonItem";
@@ -64,7 +63,7 @@ export class ProductNavigatorData {
 
     send(taskEvent: TaskEvent) {
         $.ajax({
-            url: REST_API_URL,
+            url: process.env.REST_API_URL,
             headers: {
             },
             type: "POST",
