@@ -10,6 +10,7 @@
 * Convert to `TypeScript`
 * Create different versions for development, testing and production
 * Read analytics endpoint from environmental variable
+* Send out-of-stock information
 
 # v0.0.3 | 09.04.2023
 * Attach bages to `AmazonSearchItem` object

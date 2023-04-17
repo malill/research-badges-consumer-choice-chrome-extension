@@ -7,6 +7,7 @@ export class AmazonItem {
     nReviews: number;
     price: number;
     deliveryInfo: string;
+    outOfStockTxt: string;
     badges: {};
 
     constructor(htmlmSearchResultElement: HTMLElement, asin?: string) {
@@ -58,6 +59,15 @@ export class AmazonItem {
             this.deliveryInfo = dlvTimeString.textContent.trim();
         } catch (error) {
             // No delivery info present
+        }
+
+        // TEMPORARILY OUT OF STOCK
+        try {
+            const outOfStockEl = this.htmlElement.querySelector("span[aria-label='Temporarily out of stock.']");
+            if (outOfStockEl.textContent.includes("Temporarily out of stock")) {
+                this.outOfStockTxt = outOfStockEl.textContent.trim().toLowerCase().replaceAll(" ", "-");
+            }
+        } catch (error) {
         }
 
         this.badges = this.getBadges();
