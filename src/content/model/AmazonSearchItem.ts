@@ -1,7 +1,16 @@
 export class AmazonSearchItem {
-    constructor(htmlmSearchResultElement) {
-        this.htmlElement = htmlmSearchResultElement;
+    htmlElement: HTMLElement;
+    asin: string;
+    position: number;
+    name: string;
+    avgRating: number;
+    nReviews: number;
+    price: number;
+    deliveryInfo: string;
+    badges: {};
 
+    constructor(htmlmSearchResultElement: HTMLElement) {
+        this.htmlElement = htmlmSearchResultElement;
 
         // Basic attributes
 
@@ -22,7 +31,8 @@ export class AmazonSearchItem {
         // AVG RATING & NUMBER OF REVIEWS
         try {
             const ratingEl = this.htmlElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0];
-            this.avgRating = parseFloat(ratingEl.getElementsByClassName("a-size-base")[0].textContent.replace(/[{()},.]/g, ''));
+            let avgRatingTxt = ratingEl.getElementsByClassName("a-icon-alt")[0].textContent;
+            this.avgRating = parseFloat(avgRatingTxt.slice(0, 3)) * 10;
             this.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},.]/g, ''));
         } catch (error) {
             // No rating element found
@@ -46,7 +56,6 @@ export class AmazonSearchItem {
         }
 
         this.badges = this.getBadges();
-        console.log(this.badges);
     }
 
     getBadges() {
@@ -56,7 +65,7 @@ export class AmazonSearchItem {
             let badgeCompProps = platformBadgeEl.getAttribute("data-component-props");
             let jsonProps = JSON.parse(badgeCompProps);
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
-            badges[1] = jsonProps["badgeType"];
+            badges["b_1"] = jsonProps["badgeType"];
         } catch (error) { }
 
         try {
@@ -66,9 +75,9 @@ export class AmazonSearchItem {
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
             if (isNaN(lightningDealSavePercent)) {
                 // String is something like "Limited Time Deal"
-                badges[3] = lightningDealText.toLowerCase().replaceAll(" ", "-");
+                badges["b_3"] = lightningDealText.toLowerCase().replaceAll(" ", "-");
             } else {
-                badges[2] = lightningDealSavePercent;
+                badges["b_2"] = lightningDealSavePercent;
             }
         } catch (error) { }
 
@@ -79,30 +88,30 @@ export class AmazonSearchItem {
             if (couponText.includes("%")) {
                 // String is something like "Save x% with voucher"
                 const couponSavePercent = parseInt(couponText.substring(0, couponText.indexOf("%")));
-                badges[4] = couponSavePercent;
+                badges["b_4"] = couponSavePercent;
             } else {
                 const couponSaveAmount = parseInt(couponText.substring(1, couponText.indexOf(" ")));
-                badges[5] = couponSaveAmount;
+                badges["b_5"] = couponSaveAmount;
             }
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("a.puis-sponsored-label-text");
-            badges[6] = platformBadgeEl.firstChild.textContent.toLowerCase();
+            badges["b_6"] = platformBadgeEl.firstChild.textContent.toLowerCase();
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("span.a-text-price[data-a-strike='true']");
             let strikePriceEl = platformBadgeEl.children[0];
-            badges[7] = parseInt(strikePriceEl.textContent.substring(1).replaceAll(',', '').replaceAll('.', ''));
+            badges["b_7"] = parseInt(strikePriceEl.textContent.substring(1).replaceAll(',', '').replaceAll('.', ''));
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("i.a-icon-prime");
             let badgeCompProps = platformBadgeEl.getAttribute("aria-label").toLowerCase().replaceAll(" ", "-");
-            badges[8] = badgeCompProps;
+            badges["b_8"] = badgeCompProps;
         } catch (error) { }
 
         try {
@@ -112,32 +121,32 @@ export class AmazonSearchItem {
             let currencySymbolIndex = textEl.indexOf("£");
             let paranSubstring = textEl.substring(openingParanIndex);
 
-            badges[10] = parseFloat(textEl.substring(currencySymbolIndex + 1, openingParanIndex));
-            badges[11] = parseInt(paranSubstring.substring(1, paranSubstring.indexOf(" ")));
+            badges["b_10"] = parseFloat(textEl.substring(currencySymbolIndex + 1, openingParanIndex)) * 100;
+            badges["b_11"] = parseInt(paranSubstring.substring(1, paranSubstring.indexOf(" ")));
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("span.a-size-base.a-color-price");
             let textEl = platformBadgeEl.textContent;
             textEl = textEl.substring(textEl.indexOf(" "));
-            badges[12] = parseInt(textEl.substring(0, textEl.indexOf("left")));
+            badges["b_12"] = parseInt(textEl.substring(0, textEl.indexOf("left")));
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center");
             let textEl = platformBadgeEl.textContent;
-            badges[13] = textEl.trim().toLowerCase().replaceAll(" ", "-");
+            badges["b_13"] = textEl.trim().toLowerCase().replaceAll(" ", "-");
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-promotion-highlight-color");
-            badges[14] = platformBadgeEl.textContent;
+            badges["b_14"] = platformBadgeEl.textContent;
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("span.a-size-micro.a-color-secondary");
             let textEl = platformBadgeEl.textContent;
-            badges[15] = textEl.trim().toLowerCase().replaceAll(" ", "-");
+            badges["b_15"] = textEl.trim().toLowerCase().replaceAll(" ", "-");
         } catch (error) { }
 
         return badges;

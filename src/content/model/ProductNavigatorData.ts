@@ -1,12 +1,18 @@
-import { REST_API_URL } from "../../../../config/constants";
+import { REST_API_URL } from "../../config/settings";
 import { isInViewport } from "../util/isInViewport";
 import { Event } from "./Event";
 import { AmazonSearchItem } from "./AmazonSearchItem";
 import { Device } from "./Device";
 import { Page } from "./Page";
 import { User } from "./User";
+import { TaskEvent } from "./TaskEvent";
 
 export class ProductNavigatorData {
+    device: Device;
+    events: any[];
+    page: Page;
+    user: User;
+
     constructor() {
         this.device = new Device();
         this.events = [];
@@ -16,15 +22,15 @@ export class ProductNavigatorData {
         this.pushEvent(e);
     }
 
-    pushEvent(e) {
+    pushEvent(event: Event) {
         // Checks needed?
-        this.events.push(e);
-        console.log(this);
+        this.events.push(event);
         // Whenever a new event is pushed to the datalayer, also send it to backend
-        // this.send(e);
+        let taskEvent = new TaskEvent(this, event);
+        this.send(taskEvent);
     }
 
-    attachEventsfromSearchResults(searchResults) {
+    attachEventsfromSearchResults(searchResults: any[] | NodeListOf<Element>) {
         searchResults.forEach((searchResultElement) => {
             if (!isInViewport(searchResultElement)) {
                 // Element is not viewed -> register a "view-listener"
@@ -45,25 +51,24 @@ export class ProductNavigatorData {
         });
     }
 
-    attachViewListener(el) {
+    attachViewListener(htmlElement: any) {
         $(window).on("resize scroll", () => {
-            if (isInViewport(el) && (!el.isViewed)) {
-                el.isViewed = true; // prevents entering this clause multiple times
-                let item = new AmazonSearchItem(el);
+            if (isInViewport(htmlElement) && (!htmlElement.isViewed)) {
+                htmlElement.isViewed = true; // prevents entering this clause multiple times
+                let item = new AmazonSearchItem(htmlElement);
                 let event = new Event(item, "view");
                 this.pushEvent(event);
             }
         });
     }
 
-    send(e) {
+    send(taskEvent: TaskEvent) {
         $.ajax({
             url: REST_API_URL,
             headers: {
             },
             type: "POST",
-            // Send datalayer, note: event e == this.events[-1]
-            data: JSON.stringify({ 'productNavigatorData': this, 'event': e }),
+            data: JSON.stringify(taskEvent),
             contentType: "application/json",
             dataType: "json"
         });

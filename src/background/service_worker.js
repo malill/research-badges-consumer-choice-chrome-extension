@@ -2,7 +2,7 @@
 // when the extension is installed or refreshed (or when you access its console).
 // It would correspond to the background script in chrome extensions v2.
 
-import { AMA_URL } from "../../config/constants";
+import { AMA_URL } from "../config/constants";
 
 // If you want to import a file that is deeper in the file hierarchy of your
 // extension, simply do `importScripts('path/to/file.js')`.

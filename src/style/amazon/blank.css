@@ -1,3 +1,7 @@
+/* ---------------------- 
+------ SEARCH PAGE ------
+------------------------/*
+
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
 span.rush-component [data-component-type='s-status-badge-component'] {
     display: none !important;
@@ -18,10 +22,16 @@ a.puis-sponsored-label-text {
     display: none !important;
 }
 
-/*Badge7, strice price*/
+/*Badge7, strike price "annotation" (e.g. "RRP:", "Was:")*/
+span.a-size-base.a-color-secondary {
+    display: none !important;
+}
+
+/*Badge7, strice price value*/
 span.a-text-price[data-a-strike='true'] {
     display: none !important;
 }
+
 
 /*Badge8, Prime (Delivery) Icon at product*/
 i.a-icon-prime {
@@ -68,7 +78,7 @@ span.a-size-small.a-color-base {
     display: none !important;
 }
 
-/*OTHER STUFF*/
+/*OTHER COMPONENTS*/
 /*Top banner ad*/
 div._bGlmZ_container_GMk6b.sbx-desktop {
     display: none !important;
@@ -78,6 +88,11 @@ div._bGlmZ_container_GMk6b.sbx-desktop {
 [data-asin=""] {
     display: none !important;
 }
+
+
+/* ------------------- 
+------ PDP PAGE ------
+----------------------/*
 
 /* PDP, Add-to-Cart Button*/
 #addToCart_feature_div {

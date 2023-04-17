@@ -6,12 +6,11 @@ const webpack = require('webpack');
 
 
 module.exports = merge(config, {
-    mode: 'development',
-    devtool: 'inline-source-map',
+    mode: 'production',
     plugins: [
         new CopyPlugin({
             patterns: [
-                { from: "public/dev" },
+                { from: "public/prod" },
                 { from: path.resolve(__dirname, "src/style"), to: path.resolve(__dirname, "dist/style") }
             ]
         }),
