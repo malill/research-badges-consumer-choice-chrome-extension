@@ -5,14 +5,17 @@ import { Device } from "./Device";
 import { Page } from "./Page";
 import { User } from "./User";
 import { TaskEvent } from "./TaskEvent";
+import { debug } from "../util/debug";
 
 export class ProductNavigatorData {
+    log_level: string;
     device: Device;
     events: any[];
     page: Page;
     user: User;
 
-    constructor() {
+    constructor(log_level: string = "info") {
+        this.log_level = process.env.LOG_LEVEL;
         this.device = new Device();
         this.events = [];
         this.page = new Page();
@@ -26,7 +29,11 @@ export class ProductNavigatorData {
         this.events.push(event);
         // Whenever a new event is pushed to the datalayer, also send it to backend
         let taskEvent = new TaskEvent(this, event);
-        this.send(taskEvent);
+        debug(
+            () => { console.log(taskEvent) },
+            () => { this.send(taskEvent) },
+            this.log_level
+        );
     }
 
     attachEventsfromSearchResults(searchResults: any[] | NodeListOf<Element>) {

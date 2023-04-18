@@ -1,4 +1,7 @@
-# v0.0.4 | 16.04.2023
+# v0.1.0 | xx.04.2023
+* Add log level environmental variable
+
+# v0.0.4 | 18.04.2023
 * Create a study (="task") object that is sent to endpoint
 * Track click on search result items and add-to-cart on PDP
 * Show alert dialog when user hits add-to-cart button on PDP
