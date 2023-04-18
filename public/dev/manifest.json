@@ -7,6 +7,9 @@
         "default_icon": "img/icon.png",
         "default_title": "Product Navigator DEV"
     },
+    "background": {
+        "service_worker": "serviceWorker.js"
+    },
     "content_scripts": [
         {
             "css": [
@@ -43,5 +46,11 @@
         "32": "img/icon.png",
         "48": "img/icon.png",
         "128": "img/icon.png"
+    },
+    "externally_connectable": {
+        "matches": [
+            "*://localhost/*",
+            "*://your.domain.com/*"
+        ]
     }
 }

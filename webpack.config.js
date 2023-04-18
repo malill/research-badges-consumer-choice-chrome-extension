@@ -5,7 +5,8 @@ const webpack = require('webpack');
 module.exports = {
     entry: {
         searchResultsPage: path.resolve(__dirname, "src/content/searchResultsPage.ts"),
-        productDetailPage: path.resolve(__dirname, "src/content/productDetailPage.ts")
+        productDetailPage: path.resolve(__dirname, "src/content/productDetailPage.ts"),
+        serviceWorker: path.resolve(__dirname, "src/background/serviceWorker.ts"),
     },
     output: {
         filename: "[name].js",
