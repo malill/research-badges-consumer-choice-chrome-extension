@@ -3,6 +3,7 @@ export class Device {
     platform: string;
     language: string;
     processors: number;
+    memory: number;
     referrer: string;
     windowInnerWidth: number;
     windowInnerHeight: number;
@@ -27,6 +28,8 @@ export class Device {
         this.platform = window.navigator.userAgentData.platform;
         this.language = window.navigator.language;
         this.processors = window.navigator.hardwareConcurrency;
+        //@ts-ignore
+        this.memory = window.navigator.deviceMemory;
         this.referrer = document.referrer;
 
         this.windowInnerWidth = window.innerWidth;
