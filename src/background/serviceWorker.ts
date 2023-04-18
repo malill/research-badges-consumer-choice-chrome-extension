@@ -48,6 +48,7 @@ import { AMA_URL } from "../config/settings";
 // }
 
 chrome.runtime.onMessageExternal.addListener(
+    // https://stackoverflow.com/questions/6293498/check-whether-user-has-a-chrome-extension-installed
     function (request, sender, sendResponse) {
         const manifestData = chrome.runtime.getManifest();
         if (request) {
