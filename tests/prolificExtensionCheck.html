@@ -32,7 +32,7 @@
     <script>
         const devID = "enppnmfejhdhklnahefalpcffdgnmgag";
         const betaID = "ehlpeflmojonkaodoobdbiojlklomhnl";
-        chrome.runtime.sendMessage(betaID, { message: "version" },
+        chrome.runtime.sendMessage(devID, { message: "version" },
             function (reply) {
                 let hasExtension = false;
                 if (reply) {

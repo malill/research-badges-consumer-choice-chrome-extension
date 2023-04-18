@@ -26,7 +26,7 @@ if ((productNavigatorData.user.taskID) && (productNavigatorData.user.taskID != C
         addToCartDivElement.addEventListener("click", () => {
             let addToCartEvent = new Event(item, "add-to-cart");
             productNavigatorData.pushEvent(addToCartEvent);
-            alert("Thank you for participating in our survey. Please hit the blue 'Ok' button and you will be redicted to the questionaire to answer a few more final questions.");
+            alert("Thank you for participating in our survey. Please hit the blue 'Ok' button, close the current Amazon tab and return to the questionnaire to answer a few more final questions.");
 
             // Delete all task info
             setCookie(COOKIE_NAME_TASK_USER_ID, "", -1);
