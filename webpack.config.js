@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -27,6 +28,11 @@ module.exports = {
         ],
     },
     plugins: [
+        new CopyPlugin({
+            patterns: [
+                { from: path.resolve(__dirname, "src/style"), to: path.resolve(__dirname, "dist/style") }
+            ]
+        }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"

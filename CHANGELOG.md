@@ -10,7 +10,9 @@
 * Convert to `TypeScript`
 * Create different versions for development, testing and production
 * Read analytics endpoint from environmental variable
-* Send out-of-stock information
+* Send "out-of-stock" information
+* Create service worker: respond extension version when requested externally
+* Build `manifest.json` from single core file
 
 # v0.0.3 | 09.04.2023
 * Attach bages to `AmazonSearchItem` object

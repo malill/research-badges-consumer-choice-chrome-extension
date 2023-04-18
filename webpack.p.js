@@ -10,8 +10,8 @@ module.exports = merge(config, {
     plugins: [
         new CopyPlugin({
             patterns: [
-                { from: "public/prod" },
-                { from: path.resolve(__dirname, "src/style"), to: path.resolve(__dirname, "dist/style") }
+                { from: "public/p" },
+                { from: "public/manifest.json", to: "manifest.json", }
             ]
         }),
         new Dotenv({
