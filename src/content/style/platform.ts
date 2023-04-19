@@ -74,7 +74,7 @@ span.a-size-small.a-color-base {
 }
 
 /*Badge17, "Get it - X to Y*/
-.a-row.a-size-base.a-color-secondary.s-align-children-center {
+div.a-row.a-size-base.a-color-secondary.s-align-children-center {
     display: block !important;
 }
 `

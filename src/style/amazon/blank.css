@@ -77,8 +77,14 @@ span.a-size-small.a-color-base {
     display: none !important;
 }
 
-/*Badge17, "Get it - X to Y*/
-.a-row.a-size-base.a-color-secondary.s-align-children-center {
+/*Badge17, "Get it - X to Y FREE delivery by Amazon*/
+div.a-row.a-size-base.a-color-secondary.s-align-children-center {
+    display: none !important;
+}
+
+/*Badge18, "Save more with Subscribe & Save"
+https://www.amazon.co.uk/s?k=skin+care+sets+%26+kits&sprefix=skin+care+set%2Caps%2C84&ref=nb_sb_ss_ts-doa-p_2_13*/
+.a-row.a-size-base.a-color-secondary {
     display: none !important;
 }
 
