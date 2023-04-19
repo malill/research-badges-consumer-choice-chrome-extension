@@ -6,6 +6,7 @@ export class TaskEvent {
     asin: string;
     avg_rating: number;
     delivery_info: string;
+    out_of_stock: string;
     n_ratings: number;
     name: string;
     position: number;
@@ -30,6 +31,7 @@ export class TaskEvent {
     platform: string;
     language: string;
     processors: number;
+    memory: number;
     referrer: string;
     window_inner_height: number;
     window_inner_width: number;
@@ -51,6 +53,7 @@ export class TaskEvent {
                 this.asin = item.asin;
                 this.avg_rating = item.avgRating;
                 this.delivery_info = item.deliveryInfo;
+                this.out_of_stock = item.outOfStockTxt;
                 this.n_ratings = item.nReviews;
                 this.name = item.name;
                 this.position = item.position;
@@ -83,6 +86,7 @@ export class TaskEvent {
             this.platform = pnData.device.platform;
             this.language = pnData.device.language;
             this.processors = pnData.device.processors;
+            this.memory = pnData.device.memory;
             this.referrer = pnData.device.referrer;
 
             this.window_inner_height = pnData.device.windowInnerHeight;

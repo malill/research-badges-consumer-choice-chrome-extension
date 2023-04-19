@@ -1,12 +1,3 @@
-// Endpoint configuration
-// DEVELOPMENT
-export const REST_API_URL = "http://localhost:8000/event/";
-// STAGING
-// export const REST_API_URL = "https://product-navigator-staging.herokuapp.com/event/"
-// PRODUCTION
-// export const REST_API_URL = "https://product-navigator.herokuapp.com/event/"
-
-
 // User configuration
 export const COOKIE_NAME_USER_ID = 'pnUID';
 

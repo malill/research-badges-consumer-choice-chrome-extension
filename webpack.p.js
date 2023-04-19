@@ -2,7 +2,7 @@ const { merge } = require('webpack-merge');
 const config = require('./webpack.config.js');
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
-const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 
 module.exports = merge(config, {
@@ -10,13 +10,13 @@ module.exports = merge(config, {
     plugins: [
         new CopyPlugin({
             patterns: [
-                { from: "public/prod" },
-                { from: path.resolve(__dirname, "src/style"), to: path.resolve(__dirname, "dist/style") }
+                { from: "public/p" },
+                { from: "public/manifest.json", to: "manifest.json", }
             ]
         }),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        })
+        new Dotenv({
+            path: '.env/.env_p',
+            systemvars: true
+        }),
     ]
 })

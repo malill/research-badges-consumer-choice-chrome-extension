@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exentsion Test Site</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+
+    <article style="max-width: 50vw">
+        <p>
+            The button "Next Questions" should be enabled if you have the Chrome Extension "Product Navigator" extension
+            installed. If you don't have the extension installed, the button should be disabled. If you have the
+            extension installed, the button should be enabled.
+        </p>
+    </article>
+
+
+    <button id="next-button" class="mdc-button mdc-button--icon-leading" disabled>
+        <span class="mdc-button__ripple"></span>
+        <span class="mdc-button__label">Next Questions</span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_forward</i>
+    </button>
+
+    <!--https://stackoverflow.com/questions/6293498/check-whether-user-has-a-chrome-extension-installed-->
+    <script>
+        const devID = "enppnmfejhdhklnahefalpcffdgnmgag";
+        const betaID = "ehlpeflmojonkaodoobdbiojlklomhnl";
+        chrome.runtime.sendMessage(devID, { message: "version" },
+            function (reply) {
+                let hasExtension = false;
+                if (reply) {
+                    if (reply.version) {
+                        hasExtension = true;
+                        document.getElementById("next-button").disabled = false;
+                    }
+                }
+                console.log(reply);
+            });
+
+    </script>
+</body>
+
+</html>

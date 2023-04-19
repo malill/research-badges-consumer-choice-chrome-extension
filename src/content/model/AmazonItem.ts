@@ -1,4 +1,4 @@
-export class AmazonSearchItem {
+export class AmazonItem {
     htmlElement: HTMLElement;
     asin: string;
     position: number;
@@ -7,9 +7,15 @@ export class AmazonSearchItem {
     nReviews: number;
     price: number;
     deliveryInfo: string;
+    outOfStockTxt: string;
     badges: {};
 
-    constructor(htmlmSearchResultElement: HTMLElement) {
+    constructor(htmlmSearchResultElement: HTMLElement, asin?: string) {
+        if (asin) {
+            this.asin = asin;
+            return this;
+        }
+
         this.htmlElement = htmlmSearchResultElement;
 
         // Basic attributes
@@ -55,6 +61,15 @@ export class AmazonSearchItem {
             // No delivery info present
         }
 
+        // TEMPORARILY OUT OF STOCK
+        try {
+            const outOfStockEl = this.htmlElement.querySelector("span[aria-label='Temporarily out of stock.']");
+            if (outOfStockEl.textContent.includes("Temporarily out of stock")) {
+                this.outOfStockTxt = outOfStockEl.textContent.trim().toLowerCase().replaceAll(" ", "-");
+            }
+        } catch (error) {
+        }
+
         this.badges = this.getBadges();
     }
 
@@ -82,9 +97,8 @@ export class AmazonSearchItem {
         } catch (error) { }
 
         try {
-            const platformBadgeEl = this.htmlElement.querySelector("span[data-component-type='s-coupon-component']");
-            const couponText = platformBadgeEl.textContent;
-            let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
+            let platformBadgeEl = this.htmlElement.querySelector("span[data-component-type='s-coupon-component']");
+            let couponText = platformBadgeEl.textContent;
             if (couponText.includes("%")) {
                 // String is something like "Save x% with voucher"
                 const couponSavePercent = parseInt(couponText.substring(0, couponText.indexOf("%")));
@@ -98,7 +112,6 @@ export class AmazonSearchItem {
         try {
             let platformBadgeEl = this.htmlElement.querySelector("a.puis-sponsored-label-text");
             badges["b_6"] = platformBadgeEl.firstChild.textContent.toLowerCase();
-            let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
         } catch (error) { }
 
         try {
@@ -112,6 +125,11 @@ export class AmazonSearchItem {
             let platformBadgeEl = this.htmlElement.querySelector("i.a-icon-prime");
             let badgeCompProps = platformBadgeEl.getAttribute("aria-label").toLowerCase().replaceAll(" ", "-");
             badges["b_8"] = badgeCompProps;
+        } catch (error) { }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("span[aria-label='Lowest price in 30 days']");
+            badges["b_9"] = platformBadgeEl.firstChild.textContent.toLowerCase().replaceAll(" ", "-");
         } catch (error) { }
 
         try {

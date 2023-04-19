@@ -33,6 +33,11 @@ i.a-icon-prime {
     display: inline-block !important;
 }
 
+/*Badge9, "Lowest price in 30 days"*/
+span[aria-label="Lowest price in 30 days"] {
+    display: block !important;
+}
+
 /*Badge10/11, More buying choices*/
 .a-section.a-spacing-none.a-spacing-top-mini {
     display: block !important;

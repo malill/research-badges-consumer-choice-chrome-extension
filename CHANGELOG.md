@@ -1,6 +1,11 @@
-# v0.0.4 | 16.04.2023
+# v0.1.0 | 19.04.2023
+* Add log level environmental variable
+* Fix: add-to-cart event was not fired when taskID not present
+* Send "lowest-price-in-30-days" badge info
+
+# v0.0.4 | 18.04.2023
 * Create a study (="task") object that is sent to endpoint
-* Track click on search result items and add-to-cart on PDP
+* Send click event on search result items and add-to-cart event on PDP
 * Show alert dialog when user hits add-to-cart button on PDP
 * Create an "inspect" event when user visits PDP
 * Create a random user ID for the application
@@ -9,6 +14,10 @@
 * Create a `TaskEvent` object that can be send to analytics endpoint
 * Convert to `TypeScript`
 * Create different versions for development, testing and production
+* Read analytics endpoint from environmental variable
+* Send "out-of-stock" badge info
+* Create service worker: respond extension version when requested externally
+* Build `manifest.json` from single core file
 
 # v0.0.3 | 09.04.2023
 * Attach bages to `AmazonSearchItem` object
