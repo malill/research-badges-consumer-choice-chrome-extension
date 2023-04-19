@@ -1,5 +1,6 @@
 # v0.1.0 | xx.04.2023
 * Add log level environmental variable
+* Fix: add-to-cart event was not fired when taskID not present
 
 # v0.0.4 | 18.04.2023
 * Create a study (="task") object that is sent to endpoint

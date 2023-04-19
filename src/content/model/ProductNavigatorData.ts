@@ -79,4 +79,8 @@ export class ProductNavigatorData {
             dataType: "json"
         });
     }
+
+    isUserFromStudy() {
+        return (this.user.taskID) && (this.user.taskID != process.env.COOKIE_VALUE_MISSING);
+    }
 }
