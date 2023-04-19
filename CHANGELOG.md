@@ -1,4 +1,4 @@
-# v0.1.0 | xx.04.2023
+# v0.1.0 | 19.04.2023
 * Add log level environmental variable
 * Fix: add-to-cart event was not fired when taskID not present
 * Send "lowest-price-in-30-days" badge info

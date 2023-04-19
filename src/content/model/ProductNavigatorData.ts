@@ -25,7 +25,7 @@ export class ProductNavigatorData {
     }
 
     pushEvent(event: Event) {
-        // Checks needed?
+        // TODO: implement check event logic
         this.events.push(event);
         // Whenever a new event is pushed to the datalayer, also send it to backend
         let taskEvent = new TaskEvent(this, event);
