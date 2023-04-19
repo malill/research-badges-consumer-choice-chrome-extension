@@ -97,9 +97,8 @@ export class AmazonItem {
         } catch (error) { }
 
         try {
-            const platformBadgeEl = this.htmlElement.querySelector("span[data-component-type='s-coupon-component']");
-            const couponText = platformBadgeEl.textContent;
-            let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
+            let platformBadgeEl = this.htmlElement.querySelector("span[data-component-type='s-coupon-component']");
+            let couponText = platformBadgeEl.textContent;
             if (couponText.includes("%")) {
                 // String is something like "Save x% with voucher"
                 const couponSavePercent = parseInt(couponText.substring(0, couponText.indexOf("%")));
@@ -113,7 +112,6 @@ export class AmazonItem {
         try {
             let platformBadgeEl = this.htmlElement.querySelector("a.puis-sponsored-label-text");
             badges["b_6"] = platformBadgeEl.firstChild.textContent.toLowerCase();
-            let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
         } catch (error) { }
 
         try {
@@ -127,6 +125,11 @@ export class AmazonItem {
             let platformBadgeEl = this.htmlElement.querySelector("i.a-icon-prime");
             let badgeCompProps = platformBadgeEl.getAttribute("aria-label").toLowerCase().replaceAll(" ", "-");
             badges["b_8"] = badgeCompProps;
+        } catch (error) { }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("span[aria-label='Lowest price in 30 days']");
+            badges["b_9"] = platformBadgeEl.firstChild.textContent.toLowerCase().replaceAll(" ", "-");
         } catch (error) { }
 
         try {
