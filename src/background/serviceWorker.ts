@@ -15,7 +15,14 @@ import { AMA_URL } from "../config/settings";
 
 // function makeExtensionClickable() {
 //     // This needs "activeTab" and "scripting" permissions in the manifest.json
+
 //     console.log("makeExtensionClickable()");
+
+//     // Set the action badge to 'OFF' when the extension is installed
+//     chrome.action.setBadgeText({
+//         text: "ON",
+//     });
+
 //     chrome.action.onClicked.addListener(async (tab) => {
 //         console.log(tab.url);
 //         if ((tab.url != undefined) && (tab.url.startsWith(AMA_URL))) {
