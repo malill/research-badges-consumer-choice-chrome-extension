@@ -79,12 +79,7 @@ span.a-size-micro.a-color-secondary {
     display: block !important;
 }
 
-/*Badge16, "Eligible for delivery to Germany"*/
-span.a-size-small.a-color-base {
-    display: block !important;
-}
-
-/*Badge18, "Save more with Subscribe & Save"
+/*Badge16, "Save more with Subscribe & Save"
 https://www.amazon.co.uk/s?k=skin+care+sets+%26+kits&sprefix=skin+care+set%2Caps%2C84&ref=nb_sb_ss_ts-doa-p_2_13*/
 .a-row.a-size-base.a-color-secondary {
     display: block !important;
@@ -95,6 +90,11 @@ https://www.amazon.co.uk/s?k=skin+care+sets+%26+kits&sprefix=skin+care+set%2Caps
 
 /*Delivery info, "Get it - date1 (to date2)FREE delivery by Amazon*/
 div.a-row.a-size-base.a-color-secondary.s-align-children-center {
+    display: block !important;
+}
+
+/*"Eligible for delivery to Germany"*/
+span.a-size-small.a-color-base {
     display: block !important;
 }
 `

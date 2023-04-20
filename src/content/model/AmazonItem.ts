@@ -167,6 +167,15 @@ export class AmazonItem {
             badges["b_15"] = textEl.trim().toLowerCase().replaceAll(" ", "-");
         } catch (error) { }
 
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector(".a-row.a-size-base.a-color-secondary>div");
+            let textEl = platformBadgeEl.textContent;
+            // textEl contains also contains the delivery info
+            if (textEl.includes("Subscribe & Save")) {
+                badges["b_16"] = "subscribe-and-save";
+            }
+        } catch (error) { }
+
         return badges;
     }
 }
