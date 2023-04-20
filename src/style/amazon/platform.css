@@ -80,6 +80,11 @@ https://www.amazon.co.uk/s?k=skin+care+sets+%26+kits&sprefix=skin+care+set%2Caps
     display: block !important;
 }
 
+/*Badge17, "Energy Efficiency Class: X"*/
+div.a-section.a-spacing-none.a-spacing-top-micro.s-product-grid-adjustment {
+    display: block !important;
+}
+
 
 /* --- PRODUCT ATTRIBUTES --- */
 

@@ -176,6 +176,12 @@ export class AmazonItem {
             }
         } catch (error) { }
 
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("div.a-section.a-spacing-none.a-spacing-top-micro.s-product-grid-adjustment");
+            let textEl = platformBadgeEl.textContent;
+            badges["b_17"] = textEl.trim().toLowerCase().replaceAll(" ", "-");
+        } catch (error) { }
+
         return badges;
     }
 }

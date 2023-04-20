@@ -3,6 +3,7 @@
 * Fix: add-to-cart event was not fired when taskID not present
 * Send "lowest-price-in-30-days" badge info
 * Send "subscribe-and-save" badge info
+* Send "energy efficiency class" badge info
 
 # v0.0.4 | 18.04.2023
 * Create a study (="task") object that is sent to endpoint
