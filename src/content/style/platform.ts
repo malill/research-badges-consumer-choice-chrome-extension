@@ -3,6 +3,12 @@
 // available in service workers. 
 
 export const platformCSS = `
+/* ---------------------- 
+------ SEARCH PAGE ------
+------------------------/*
+
+/* --- BADGES --- */
+
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
 span.rush-component [data-component-type='s-status-badge-component'] {
     display: block !important;
@@ -53,8 +59,13 @@ span.a-size-base.a-color-price {
     display: block !important;
 }
 
+/*Badge13, Small Business & Climate Pledge Friendly*/
+a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center {
+    display: block !important;
+}
+
 /*Badge14a, (Green) "Save x% on any y qualifying items"*/
-.s-highlighted-text-padding {
+span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-promotion-highlight-color {
     display: inline-block !important;
 }
 
@@ -63,8 +74,8 @@ span.a-size-base.a-color-price {
     display: block !important;
 }
 
-/*Badge15, Small Business*/
-a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center {
+/*Badge15, "Featured from our brands"*/
+span.a-size-micro.a-color-secondary {
     display: block !important;
 }
 
@@ -73,7 +84,16 @@ span.a-size-small.a-color-base {
     display: block !important;
 }
 
-/*Badge17, "Get it - X to Y*/
+/*Badge18, "Save more with Subscribe & Save"
+https://www.amazon.co.uk/s?k=skin+care+sets+%26+kits&sprefix=skin+care+set%2Caps%2C84&ref=nb_sb_ss_ts-doa-p_2_13*/
+.a-row.a-size-base.a-color-secondary {
+    display: block !important;
+}
+
+
+/* --- PRODUCT ATTRIBUTES --- */
+
+/*Delivery info, "Get it - date1 (to date2)FREE delivery by Amazon*/
 div.a-row.a-size-base.a-color-secondary.s-align-children-center {
     display: block !important;
 }

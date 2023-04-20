@@ -2,6 +2,8 @@
 ------ SEARCH PAGE ------
 ------------------------/*
 
+/* --- BADGES --- */
+
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
 span.rush-component [data-component-type='s-status-badge-component'] {
     display: none !important;
@@ -72,23 +74,28 @@ span.a-size-micro.a-color-secondary {
     display: none !important;
 }
 
-/*Badge16, "Eligible for delivery to Germany"*/
-span.a-size-small.a-color-base {
-    display: none !important;
-}
-
-/*Badge17, "Get it - X to Y FREE delivery by Amazon*/
-div.a-row.a-size-base.a-color-secondary.s-align-children-center {
-    display: none !important;
-}
-
-/*Badge18, "Save more with Subscribe & Save"
+/*Badge16, "Save more with Subscribe & Save"
 https://www.amazon.co.uk/s?k=skin+care+sets+%26+kits&sprefix=skin+care+set%2Caps%2C84&ref=nb_sb_ss_ts-doa-p_2_13*/
 .a-row.a-size-base.a-color-secondary {
     display: none !important;
 }
 
-/*OTHER COMPONENTS*/
+
+/* --- PRODUCT ATTRIBUTES --- */
+
+/*Delivery info, "Get it - date1 (to date2)FREE delivery by Amazon*/
+div.a-row.a-size-base.a-color-secondary.s-align-children-center {
+    display: none !important;
+}
+
+/*"Eligible for delivery to Germany"*/
+span.a-size-small.a-color-base {
+    display: none !important;
+}
+
+
+/* --- OTHER COMPONENTS (ALWAYS HIDE, i.e. never unhide) --- */
+
 /*Top banner ad*/
 div._bGlmZ_container_GMk6b.sbx-desktop {
     display: none !important;
