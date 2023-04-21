@@ -1,9 +1,12 @@
+# v0.1.1 | 21.04.2023
+* Remove geolocation attributes from `User` object
+* Send "subscribe-and-save" badge info
+* Send "energy efficiency class" badge info
+
 # v0.1.0 | 19.04.2023
 * Add log level environmental variable
 * Fix: add-to-cart event was not fired when taskID not present
 * Send "lowest-price-in-30-days" badge info
-* Send "subscribe-and-save" badge info
-* Send "energy efficiency class" badge info
 
 # v0.0.4 | 18.04.2023
 * Create a study (="task") object that is sent to endpoint
