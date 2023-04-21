@@ -182,6 +182,11 @@ export class AmazonItem {
             badges["b_17"] = textEl.trim().toLowerCase().replaceAll(" ", "-");
         } catch (error) { }
 
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("img.s-image-logo-alm");
+            badges["b_18"] = platformBadgeEl.getAttribute("alt").trim().toLowerCase().replaceAll(" ", "-");
+        } catch (error) { }
+
         return badges;
     }
 }
