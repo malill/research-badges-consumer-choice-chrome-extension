@@ -30,7 +30,8 @@ module.exports = {
     plugins: [
         new CopyPlugin({
             patterns: [
-                { from: path.resolve(__dirname, "src/style"), to: path.resolve(__dirname, "dist/style") }
+                { from: path.resolve(__dirname, "src/style"), to: path.resolve(__dirname, "dist/style") },
+                { from: path.resolve(__dirname, "_locales"), to: path.resolve(__dirname, "dist/_locales") },
             ]
         }),
         new webpack.ProvidePlugin({

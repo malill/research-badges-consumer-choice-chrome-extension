@@ -1,0 +1,10 @@
+{
+    "cwsDescription": {
+        "message": "Simply masks highlights from Amazon UK search pages",
+        "description": "Description of the extension as shown in the CWS."
+    },
+    "taskEndedMessage": {
+        "message": "Thank you for participating in our survey. Please \n\n- hit the blue 'Ok' button,\n- close the current Amazon tab and\n- return to the survey tab\n\nto answer a few more final questions.",
+        "description": "Final message to show after the task is completed."
+    }
+}
