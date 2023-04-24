@@ -13,7 +13,8 @@ export class User {
 
     constructor() {
         this.setUID();
-        this.setLocation();
+        // Removed location setting for now, as it is not used
+        // this.setLocation();
         this.setTaskDetails();
     }
 

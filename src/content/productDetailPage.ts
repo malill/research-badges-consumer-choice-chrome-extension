@@ -34,7 +34,7 @@ addToCartDivElement.addEventListener("click", () => {
     // When there is a taskID, the user came from a study (control or treatment)
     if (productNavigatorData.isUserFromStudy()) {
         try {
-            alert("Thank you for participating in our survey. Please hit the blue 'Ok' button, close the current Amazon tab and return to the questionnaire to answer a few more final questions.");
+            alert(chrome.i18n.getMessage("taskEndedMessage"));
             // Delete all task info
             setCookie(COOKIE_NAME_TASK_USER_ID, "", -1);
             setCookie(COOKIE_NAME_TASK_ID, "", -1);

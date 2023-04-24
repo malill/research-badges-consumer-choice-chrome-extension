@@ -1,3 +1,9 @@
+# v0.1.1 | 21.04.2023
+* Remove geolocation attributes from `User` object
+* Send "subscribe-and-save" badge info
+* Send "energy efficiency class" badge info
+* Add localization to extension
+
 # v0.1.0 | 19.04.2023
 * Add log level environmental variable
 * Fix: add-to-cart event was not fired when taskID not present

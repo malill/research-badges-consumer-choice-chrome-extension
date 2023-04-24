@@ -1,0 +1,10 @@
+{
+    "cwsDescription": {
+        "message": "Verdecke Highlights auf Amazon UK Suchseiten",
+        "description": "Beschreibung der Erweiterung wie im CWS dargestellt."
+    },
+    "taskEndedMessage": {
+        "message": "Vielen Dank, dass Sie an unserer Umfrage teilgenommen haben. Bitte \n\n- betätigen Sie die blaue Schaltfläche 'Ok',\n- schließen Sie den aktuellen Amazon Tab und\n- kehren Sie zum Fragebogen zurück,\n\num noch ein paar letzte Fragen zu beantworten.",
+        "description": "Abschließende Meldung, die nach Abschluss der Aufgabe angezeigt wird."
+    }
+}

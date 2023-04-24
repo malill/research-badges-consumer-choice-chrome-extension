@@ -21,7 +21,6 @@ module.exports = merge(config, {
                         // make any modifications you like, such as
                         manifest.name = "Product Navigator DEV";
                         manifest.action.default_title = "Product Navigator DEV";
-                        manifest.description = "Simply remove decision biases from Amazon UK search pages. (DEVELOPMENT VERSION)";
                         // pretty print to JSON with two spaces
                         return JSON.stringify(manifest, null, 2);
                     }
