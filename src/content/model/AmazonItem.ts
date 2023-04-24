@@ -8,6 +8,7 @@ export class AmazonItem {
     price: number;
     deliveryInfo: string;
     outOfStockTxt: string;
+    imgUrl: string;
     badges: {};
 
     constructor(htmlmSearchResultElement: HTMLElement, asin?: string) {
@@ -69,6 +70,11 @@ export class AmazonItem {
             }
         } catch (error) {
         }
+
+        // ITEM IMAGE URL
+        try {
+            this.imgUrl = this.htmlElement.querySelector("img.s-image").getAttribute('src');
+        } catch (error) { }
 
         this.badges = this.getBadges();
     }

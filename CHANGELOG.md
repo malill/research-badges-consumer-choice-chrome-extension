@@ -1,3 +1,6 @@
+# v1.0.0 | tbd
+* Send image URL to analytics endpoint
+
 # v0.1.1 | 21.04.2023
 * Remove geolocation attributes from `User` object
 * Send "subscribe-and-save" badge info
