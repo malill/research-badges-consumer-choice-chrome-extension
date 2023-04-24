@@ -47,7 +47,7 @@ export class ProductNavigatorData {
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 // [UNSTABLE] Sometimes this is not captured e.g. when the tab is closed
-                e = new Event(item, "page-hide");
+                // e = new Event(item, "page-hide");
             } else {
                 e = new Event(item, "page-visit");
             }
