@@ -38,6 +38,7 @@ export class ProductNavigatorData {
 
     attachEventsfromSearchResults(searchResults: any[] | NodeListOf<Element>) {
         searchResults.forEach((searchResultElement) => {
+
             if (!isInViewport(searchResultElement)) {
                 // Element is not viewed -> register a "view-listener"
                 searchResultElement.isViewed = false;
@@ -48,12 +49,18 @@ export class ProductNavigatorData {
                 let event = new Event(item, "view");
                 this.pushEvent(event);
             }
-            // Attach click listener to all search elements
+
+            // Attach click listeners to all search elements
+            let item = new AmazonItem(searchResultElement);
             searchResultElement.addEventListener("click", () => {
-                let item = new AmazonItem(searchResultElement);
                 let event = new Event(item, "click");
                 this.pushEvent(event);
             });
+            searchResultElement.addEventListener("contextmenu", (e: any) => {
+                let event = new Event(item, "right-click");
+                this.pushEvent(event);
+            });
+
         });
     }
 
