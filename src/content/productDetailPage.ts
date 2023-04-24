@@ -20,14 +20,10 @@ if (productNavigatorData.isUserFromStudy()) {
 // Get the parent div element of add-to-cart
 let addToCartDivElement = document.getElementById("addToCart_feature_div");
 
-// Emit the "inspect" event
-const asin = addToCartDivElement.getAttribute("data-csa-c-asin");
-let item = new AmazonItem(null, asin);
-let inspectEvent = new Event(item, "inspect");
-productNavigatorData.pushEvent(inspectEvent);
-
 // Add an event listener to the add-to-cart div element
 addToCartDivElement.addEventListener("click", () => {
+    const asin = addToCartDivElement.getAttribute("data-csa-c-asin");
+    let item = new AmazonItem(null, asin);
     let addToCartEvent = new Event(item, "add-to-cart");
     productNavigatorData.pushEvent(addToCartEvent);
 

@@ -20,8 +20,41 @@ export class ProductNavigatorData {
         this.events = [];
         this.page = new Page();
         this.user = new User();
-        let e = new Event(null, "page-view");
+
+        // If page is a product detail page, attach item to event
+        let item = null;
+        try {
+            const asin = document.getElementById("addToCart_feature_div").getAttribute("data-csa-c-asin");
+            item = new AmazonItem(null, asin);
+        } catch (error) { }
+
+        // Push the page-load event
+        let e = new Event(item, "page-load");
         this.pushEvent(e);
+
+        // Check if the page is currently visible or not
+        if (document.hidden) {
+            // You opened the page in a new tab
+            // e = new Event(null, "page-open-in-tab");
+            // this.pushEvent(e);
+        } else {
+            // Page was already open
+            e = new Event(item, "page-visit");
+            this.pushEvent(e);
+        }
+
+        // Listen to changes in the visibility of the page
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // [UNSTABLE] Sometimes this is not captured e.g. when the tab is closed
+                e = new Event(item, "page-hide");
+            } else {
+                e = new Event(item, "page-visit");
+            }
+            this.pushEvent(e);
+        });
+
+        // TODO: Listen to page unload: not practical, onbeforeunload is not blockable
     }
 
     pushEvent(event: Event) {
