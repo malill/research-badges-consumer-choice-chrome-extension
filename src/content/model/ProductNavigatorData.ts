@@ -32,29 +32,8 @@ export class ProductNavigatorData {
         let e = new Event(item, "page-load");
         this.pushEvent(e);
 
-        // Check if the page is currently visible or not
-        if (document.hidden) {
-            // You opened the page in a new tab
-            // e = new Event(null, "page-open-in-tab");
-            // this.pushEvent(e);
-        } else {
-            // Page was already open
-            e = new Event(item, "page-visit");
-            this.pushEvent(e);
-        }
-
-        // Listen to changes in the visibility of the page
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                // [UNSTABLE] Sometimes this is not captured e.g. when the tab is closed
-                // e = new Event(item, "page-hide");
-            } else {
-                e = new Event(item, "page-visit");
-            }
-            this.pushEvent(e);
-        });
-
-        // TODO: Listen to page unload: not practical, onbeforeunload is not blockable
+        // Page visibility handler
+        this.pageVisibilityHandler(item);
     }
 
     pushEvent(event: Event) {
@@ -67,6 +46,19 @@ export class ProductNavigatorData {
             () => { this.send(taskEvent) },
             this.log_level
         );
+    }
+
+    pageVisibilityHandler(item: AmazonItem) {
+        // Check if the page is currently visible or not
+        if (!document.hidden) {
+            this.pushEvent(new Event(item, "page-visit"));
+        }
+        // Listen to changes in the visibility of the page, i.e. it was not visible and now it is
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                this.pushEvent(new Event(item, "page-visit"));
+            }
+        });
     }
 
     attachEventsfromSearchResults(searchResults: any[] | NodeListOf<Element>) {
