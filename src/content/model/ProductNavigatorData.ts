@@ -14,7 +14,7 @@ export class ProductNavigatorData {
     page: Page;
     user: User;
 
-    constructor(log_level: string = "info") {
+    constructor() {
         this.log_level = process.env.LOG_LEVEL;
         this.device = new Device();
         this.events = [];
@@ -29,15 +29,13 @@ export class ProductNavigatorData {
         } catch (error) { }
 
         // Push the page-load event
-        let e = new Event(item, "page-load");
-        this.pushEvent(e);
+        this.pushEvent(new Event(item, "page-load"));
 
         // Page visibility handler
         this.pageVisibilityHandler(item);
     }
 
     pushEvent(event: Event) {
-        // TODO: implement check event logic
         this.events.push(event);
         // Whenever a new event is pushed to the datalayer, also send it to backend
         let taskEvent = new TaskEvent(this, event);
@@ -71,19 +69,16 @@ export class ProductNavigatorData {
             } else {
                 // Element is in viewport -> directly push view event
                 let item = new AmazonItem(searchResultElement);
-                let event = new Event(item, "view");
-                this.pushEvent(event);
+                this.pushEvent(new Event(item, "view"));
             }
 
             // Attach click listeners to all search elements
             let item = new AmazonItem(searchResultElement);
             searchResultElement.addEventListener("click", () => {
-                let event = new Event(item, "click");
-                this.pushEvent(event);
+                this.pushEvent(new Event(item, "click"));
             });
             searchResultElement.addEventListener("contextmenu", (e: any) => {
-                let event = new Event(item, "right-click");
-                this.pushEvent(event);
+                this.pushEvent(new Event(item, "right-click"));
             });
 
         });
