@@ -1,3 +1,8 @@
+# v1.0.0 | tbd
+* Send image URL to analytics endpoint
+* Send "right-click" event when user right-clicks on search result item
+* Create "page-visit" event
+
 # v0.1.1 | 21.04.2023
 * Remove geolocation attributes from `User` object
 * Send "subscribe-and-save" badge info

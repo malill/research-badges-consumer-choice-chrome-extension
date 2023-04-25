@@ -14,18 +14,28 @@ export class ProductNavigatorData {
     page: Page;
     user: User;
 
-    constructor(log_level: string = "info") {
+    constructor() {
         this.log_level = process.env.LOG_LEVEL;
         this.device = new Device();
         this.events = [];
         this.page = new Page();
         this.user = new User();
-        let e = new Event(null, "page-view");
-        this.pushEvent(e);
+
+        // If page is a product detail page, attach item to event
+        let item = null;
+        try {
+            const asin = document.getElementById("addToCart_feature_div").getAttribute("data-csa-c-asin");
+            item = new AmazonItem(null, asin);
+        } catch (error) { }
+
+        // Push the page-load event
+        this.pushEvent(new Event(item, "page-load"));
+
+        // Page visibility handler
+        this.pageVisibilityHandler(item);
     }
 
     pushEvent(event: Event) {
-        // TODO: implement check event logic
         this.events.push(event);
         // Whenever a new event is pushed to the datalayer, also send it to backend
         let taskEvent = new TaskEvent(this, event);
@@ -36,8 +46,22 @@ export class ProductNavigatorData {
         );
     }
 
+    pageVisibilityHandler(item: AmazonItem) {
+        // Check if the page is currently visible or not
+        if (!document.hidden) {
+            this.pushEvent(new Event(item, "page-visit"));
+        }
+        // Listen to changes in the visibility of the page, i.e. it was not visible and now it is
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                this.pushEvent(new Event(item, "page-visit"));
+            }
+        });
+    }
+
     attachEventsfromSearchResults(searchResults: any[] | NodeListOf<Element>) {
         searchResults.forEach((searchResultElement) => {
+
             if (!isInViewport(searchResultElement)) {
                 // Element is not viewed -> register a "view-listener"
                 searchResultElement.isViewed = false;
@@ -45,15 +69,18 @@ export class ProductNavigatorData {
             } else {
                 // Element is in viewport -> directly push view event
                 let item = new AmazonItem(searchResultElement);
-                let event = new Event(item, "view");
-                this.pushEvent(event);
+                this.pushEvent(new Event(item, "view"));
             }
-            // Attach click listener to all search elements
+
+            // Attach click listeners to all search elements
+            let item = new AmazonItem(searchResultElement);
             searchResultElement.addEventListener("click", () => {
-                let item = new AmazonItem(searchResultElement);
-                let event = new Event(item, "click");
-                this.pushEvent(event);
+                this.pushEvent(new Event(item, "click"));
             });
+            searchResultElement.addEventListener("contextmenu", (e: any) => {
+                this.pushEvent(new Event(item, "right-click"));
+            });
+
         });
     }
 

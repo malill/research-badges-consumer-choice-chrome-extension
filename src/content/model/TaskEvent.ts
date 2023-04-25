@@ -11,6 +11,7 @@ export class TaskEvent {
     name: string;
     position: number;
     price: number;
+    img_url: string;
     event_type: string;
     timestamp_client: string;
     geo_accuracy: number;
@@ -58,6 +59,7 @@ export class TaskEvent {
                 this.name = item.name;
                 this.position = item.position;
                 this.price = item.price;
+                this.img_url = item.imgUrl;
                 Object.assign(this, item["badges"])
             }
             // Event attributes
