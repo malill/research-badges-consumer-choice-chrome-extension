@@ -7,7 +7,6 @@ export class AmazonItem {
     nReviews: number;
     price: number;
     deliveryInfo: string;
-    outOfStockTxt: string;
     imgUrl: string;
     badges: {};
 
@@ -60,15 +59,6 @@ export class AmazonItem {
             this.deliveryInfo = dlvTimeString.textContent.trim();
         } catch (error) {
             // No delivery info present
-        }
-
-        // TEMPORARILY OUT OF STOCK
-        try {
-            const outOfStockEl = this.htmlElement.querySelector("span[aria-label='Temporarily out of stock.']");
-            if (outOfStockEl.textContent.includes("Temporarily out of stock")) {
-                this.outOfStockTxt = outOfStockEl.textContent.trim().toLowerCase();
-            }
-        } catch (error) {
         }
 
         // ITEM IMAGE URL
@@ -154,6 +144,14 @@ export class AmazonItem {
             let textEl = platformBadgeEl.textContent;
             textEl = textEl.substring(textEl.indexOf(" "));
             badges["b_12"] = parseInt(textEl.substring(0, textEl.indexOf("left")));
+        } catch (error) { }
+
+        // TEMPORARILY OUT OF STOCK (also badge12 -> stock:=0)
+        try {
+            const outOfStockEl = this.htmlElement.querySelector("span[aria-label='Temporarily out of stock.']");
+            if (outOfStockEl.textContent.includes("Temporarily out of stock")) {
+                badges["b_12"] = 0;
+            }
         } catch (error) { }
 
         try {

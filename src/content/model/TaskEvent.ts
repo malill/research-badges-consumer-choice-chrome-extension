@@ -54,7 +54,6 @@ export class TaskEvent {
                 this.asin = item.asin;
                 this.avg_rating = item.avgRating;
                 this.delivery_info = item.deliveryInfo;
-                this.out_of_stock = item.outOfStockTxt;
                 this.n_ratings = item.nReviews;
                 this.name = item.name;
                 this.position = item.position;
