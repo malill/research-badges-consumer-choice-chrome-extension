@@ -7,7 +7,6 @@ export class AmazonItem {
     nReviews: number;
     price: number;
     deliveryInfo: string;
-    outOfStockTxt: string;
     imgUrl: string;
     badges: {};
 
@@ -62,15 +61,6 @@ export class AmazonItem {
             // No delivery info present
         }
 
-        // TEMPORARILY OUT OF STOCK
-        try {
-            const outOfStockEl = this.htmlElement.querySelector("span[aria-label='Temporarily out of stock.']");
-            if (outOfStockEl.textContent.includes("Temporarily out of stock")) {
-                this.outOfStockTxt = outOfStockEl.textContent.trim().toLowerCase().replaceAll(" ", "-");
-            }
-        } catch (error) {
-        }
-
         // ITEM IMAGE URL
         try {
             this.imgUrl = this.htmlElement.querySelector("img.s-image").getAttribute('src');
@@ -96,7 +86,7 @@ export class AmazonItem {
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
             if (isNaN(lightningDealSavePercent)) {
                 // String is something like "Limited Time Deal"
-                badges["b_3"] = lightningDealText.toLowerCase().replaceAll(" ", "-");
+                badges["b_3"] = lightningDealText.toLowerCase();
             } else {
                 badges["b_2"] = lightningDealSavePercent;
             }
@@ -129,13 +119,13 @@ export class AmazonItem {
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("i.a-icon-prime");
-            let badgeCompProps = platformBadgeEl.getAttribute("aria-label").toLowerCase().replaceAll(" ", "-");
+            let badgeCompProps = platformBadgeEl.getAttribute("aria-label").toLowerCase();
             badges["b_8"] = badgeCompProps;
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("span[aria-label='Lowest price in 30 days']");
-            badges["b_9"] = platformBadgeEl.firstChild.textContent.toLowerCase().replaceAll(" ", "-");
+            badges["b_9"] = platformBadgeEl.firstChild.textContent.toLowerCase();
         } catch (error) { }
 
         try {
@@ -156,10 +146,18 @@ export class AmazonItem {
             badges["b_12"] = parseInt(textEl.substring(0, textEl.indexOf("left")));
         } catch (error) { }
 
+        // TEMPORARILY OUT OF STOCK (also badge12 -> stock:=0)
+        try {
+            const outOfStockEl = this.htmlElement.querySelector("span[aria-label='Temporarily out of stock.']");
+            if (outOfStockEl.textContent.includes("Temporarily out of stock")) {
+                badges["b_12"] = 0;
+            }
+        } catch (error) { }
+
         try {
             let platformBadgeEl = this.htmlElement.querySelector("a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center");
             let textEl = platformBadgeEl.textContent;
-            badges["b_13"] = textEl.trim().toLowerCase().replaceAll(" ", "-");
+            badges["b_13"] = textEl.trim().toLowerCase();
         } catch (error) { }
 
         try {
@@ -170,7 +168,7 @@ export class AmazonItem {
         try {
             let platformBadgeEl = this.htmlElement.querySelector("span.a-size-micro.a-color-secondary");
             let textEl = platformBadgeEl.textContent;
-            badges["b_15"] = textEl.trim().toLowerCase().replaceAll(" ", "-");
+            badges["b_15"] = textEl.trim().toLowerCase();
         } catch (error) { }
 
         try {
@@ -185,12 +183,17 @@ export class AmazonItem {
         try {
             let platformBadgeEl = this.htmlElement.querySelector("div.a-section.a-spacing-none.a-spacing-top-micro.s-product-grid-adjustment");
             let textEl = platformBadgeEl.textContent;
-            badges["b_17"] = textEl.trim().toLowerCase().replaceAll(" ", "-");
+            badges["b_17"] = textEl.trim().toLowerCase();
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("img.s-image-logo-alm");
-            badges["b_18"] = platformBadgeEl.getAttribute("alt").trim().toLowerCase().replaceAll(" ", "-");
+            badges["b_18"] = platformBadgeEl.getAttribute("alt").trim().toLowerCase();
+        } catch (error) { }
+
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("span.a-size-base.a-color-secondary");
+            badges["b_19"] = platformBadgeEl.textContent.trim().toLowerCase();
         } catch (error) { }
 
         return badges;

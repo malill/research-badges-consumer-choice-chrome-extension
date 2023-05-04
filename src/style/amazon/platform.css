@@ -88,6 +88,9 @@ div.a-section.a-spacing-none.a-spacing-top-micro.s-product-grid-adjustment {
 /*Badge18, Sub-company, e.g. "morrisons", "amazon-fresh"*/
 /*No rule needed, since already hidden by rule "Delivery info" below*/
 
+/*Badge19, "100+ bought in past week"*/
+/*No rule needed, since already hidden by badge7 strike price annotation (RDP) */
+
 /* --- PRODUCT ATTRIBUTES --- */
 
 /*Delivery info, "Get it - date1 (to date2)FREE delivery by Amazon*/
