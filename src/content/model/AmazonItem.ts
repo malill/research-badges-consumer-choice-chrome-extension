@@ -193,6 +193,11 @@ export class AmazonItem {
             badges["b_18"] = platformBadgeEl.getAttribute("alt").trim().toLowerCase().replaceAll(" ", "-");
         } catch (error) { }
 
+        try {
+            let platformBadgeEl = this.htmlElement.querySelector("span.a-size-base.a-color-secondary");
+            badges["b_19"] = platformBadgeEl.textContent.trim().toLowerCase().replaceAll(" ", "-");
+        } catch (error) { }
+
         return badges;
     }
 }

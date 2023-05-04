@@ -1,3 +1,6 @@
+# v1.0.1 | 05.05.2023
+* Badge 19, "100+ bought in past week"
+
 # v1.0.0 | 25.04.2023
 * Send image URL to analytics endpoint
 * Send "right-click" event when user right-clicks on search result item
