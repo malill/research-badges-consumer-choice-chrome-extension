@@ -4,12 +4,12 @@ import { getCookie, setCookie } from "../util/cookie";
 export class User {
 
     static cookieLifetimeHours = 24 * 7 * 4;
-    uid: string;
-    geoAccuracy: number;
-    geoLatitude: number;
-    geoLongitude: number;
-    taskUID: string;
-    taskID: string;
+    user_uid: string;
+    user_task_uid: string;
+    user_task_id: string;
+    geo_accuracy: number;
+    geo_latitude: number;
+    geo_longitude: number;
 
     constructor() {
         this.setUID();
@@ -20,11 +20,11 @@ export class User {
 
     setUID() {
         // Gets user ID from cookie or sets cookie if not present
-        this.uid = getCookie(COOKIE_NAME_USER_ID);
-        if (this.uid != "") {
+        this.user_uid = getCookie(COOKIE_NAME_USER_ID);
+        if (this.user_uid != "") {
             return;
         } else {
-            this.uid = setCookie(COOKIE_NAME_USER_ID, this.generateNewUserID(), COOKIE_LIFETIME_1YEAR);
+            this.user_uid = setCookie(COOKIE_NAME_USER_ID, this.generateNewUserID(), COOKIE_LIFETIME_1YEAR);
         }
     }
 
@@ -32,9 +32,9 @@ export class User {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
                 const geoCoords = pos.coords;
-                this.geoAccuracy = geoCoords.accuracy;
-                this.geoLatitude = geoCoords.latitude;
-                this.geoLongitude = geoCoords.longitude;
+                this.geo_accuracy = geoCoords.accuracy;
+                this.geo_latitude = geoCoords.latitude;
+                this.geo_longitude = geoCoords.longitude;
             });
         } else {
             console.log("Geolocation is not supported by this browser");
@@ -56,8 +56,8 @@ export class User {
         const cookieValueTaskID = getCookie(COOKIE_NAME_TASK_ID);
 
         // Compare query and cookie values
-        this.taskUID = this.checkQueryCookieValues(queryValueTaskUserID, cookieValueTaskUserID, COOKIE_NAME_TASK_USER_ID, COOKIE_LIFETIME_1HOUR);
-        this.taskID = this.checkQueryCookieValues(queryValueTaskID, cookieValueTaskID, COOKIE_NAME_TASK_ID, COOKIE_LIFETIME_1HOUR);
+        this.user_task_uid = this.checkQueryCookieValues(queryValueTaskUserID, cookieValueTaskUserID, COOKIE_NAME_TASK_USER_ID, COOKIE_LIFETIME_1HOUR);
+        this.user_task_id = this.checkQueryCookieValues(queryValueTaskID, cookieValueTaskID, COOKIE_NAME_TASK_ID, COOKIE_LIFETIME_1HOUR);
     }
 
     checkQueryCookieValues(queryValue, cookieValue, cookieName, cookieLifeTime) {

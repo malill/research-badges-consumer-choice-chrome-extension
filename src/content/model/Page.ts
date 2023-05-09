@@ -1,13 +1,13 @@
 export class Page {
     hostname: string;
-    tabTitle: string;
+    tab_title: string;
     url: string;
-    queryString: string;
+    query_string: string;
 
     constructor() {
         this.hostname = window.location.hostname;
-        this.tabTitle = document.title;
+        this.tab_title = document.title;
         this.url = window.location.href;
-        this.queryString = window.location.search;
+        this.query_string = window.location.search;
     }
 }

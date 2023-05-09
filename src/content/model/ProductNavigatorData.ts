@@ -5,7 +5,6 @@ import { Device } from "./Device";
 import { Page } from "./Page";
 import { User } from "./User";
 import { TaskEvent } from "./TaskEvent";
-import { debug } from "../util/debug";
 
 export class ProductNavigatorData {
     log_level: string;
@@ -33,17 +32,13 @@ export class ProductNavigatorData {
 
         // Page visibility handler
         this.pageVisibilityHandler(item);
+
+        this.addSendAnalyticsListener();
     }
 
     pushEvent(event: Event) {
         this.events.push(event);
-        // Whenever a new event is pushed to the datalayer, also send it to backend
-        let taskEvent = new TaskEvent(this, event);
-        debug(
-            () => { console.log(taskEvent) },
-            () => { this.send(taskEvent) },
-            this.log_level
-        );
+        this.log_level == "debug" ? console.log(event) : null;
     }
 
     pageVisibilityHandler(item: AmazonItem) {
@@ -77,6 +72,8 @@ export class ProductNavigatorData {
             searchResultElement.addEventListener("click", () => {
                 this.pushEvent(new Event(item, "click"));
             });
+
+            // Attach right-click listeners to all search elements
             searchResultElement.addEventListener("contextmenu", (e: any) => {
                 this.pushEvent(new Event(item, "right-click"));
             });
@@ -95,19 +92,27 @@ export class ProductNavigatorData {
         });
     }
 
-    send(taskEvent: TaskEvent) {
-        $.ajax({
-            url: process.env.REST_API_URL,
-            headers: {
-            },
-            type: "POST",
-            data: JSON.stringify(taskEvent),
-            contentType: "application/json",
-            dataType: "json"
-        });
+    isUserFromStudy() {
+        return (this.user.user_task_id) && (this.user.user_task_id != process.env.COOKIE_VALUE_MISSING);
     }
 
-    isUserFromStudy() {
-        return (this.user.taskID) && (this.user.taskID != process.env.COOKIE_VALUE_MISSING);
+    resetEvents() {
+        this.events = [];
+    }
+
+    addSendAnalyticsListener() {
+        // Send analytics data when the page is hidden
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "hidden") {
+                this.log_level == "debug" ? console.log(this) : null;
+                let taskEvents = [];
+                this.events.forEach(event => {
+                    taskEvents.push(new TaskEvent(this, event));
+                });
+                navigator.sendBeacon(process.env.REST_API_URL, new Blob([JSON.stringify(taskEvents)], { type: "application/json" }))
+                // After sending the data, reset the datalayer's event list (TODO: check if this is safe!)
+                this.resetEvents();
+            }
+        });
     }
 }

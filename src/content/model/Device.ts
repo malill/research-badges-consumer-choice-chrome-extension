@@ -1,29 +1,31 @@
 export class Device {
-    userAgent: string;
+    battery_charging: any;
+    battery_charging_time: any;
+    battery_discharging_time: any;
+    battery_level: any;
+
+    network_downlink: any;
+    network_effective_type: any;
+    network_rtt: any;
+    network_save_data: any;
+    user_agent: string;
     platform: string;
     language: string;
     processors: number;
     memory: number;
     referrer: string;
-    windowInnerWidth: number;
-    windowInnerHeight: number;
-    windowOuterWidth: number;
-    windowOuterHeight: number;
-    screenColorDepth: number;
-    screenPixelDepth: number;
-    networkDownlink: any;
-    networkEffectiveType: any;
-    networkRtt: any;
-    networkSaveData: any;
-    batteryCharging: any;
-    batteryChargingTime: any;
-    batteryDischargingTime: any;
-    batteryLevel: any;
+
+    window_inner_width: number;
+    window_inner_height: number;
+    window_outer_width: number;
+    window_outer_height: number;
+    screen_color_depth: number;
+    screen_pixel_depth: number;
 
     constructor() {
         this.setNetworkInformation();
         this.setBattery();
-        this.userAgent = window.navigator.userAgent;
+        this.user_agent = window.navigator.userAgent;
         //@ts-ignore
         this.platform = window.navigator.userAgentData.platform;
         this.language = window.navigator.language;
@@ -32,32 +34,32 @@ export class Device {
         this.memory = window.navigator.deviceMemory;
         this.referrer = document.referrer;
 
-        this.windowInnerWidth = window.innerWidth;
-        this.windowInnerHeight = window.innerHeight;
-        this.windowOuterWidth = window.outerWidth;
-        this.windowOuterHeight = window.outerHeight;
+        this.window_inner_width = window.innerWidth;
+        this.window_inner_height = window.innerHeight;
+        this.window_outer_width = window.outerWidth;
+        this.window_outer_height = window.outerHeight;
 
-        this.screenColorDepth = window.screen.colorDepth;
-        this.screenPixelDepth = window.screen.pixelDepth;
+        this.screen_color_depth = window.screen.colorDepth;
+        this.screen_pixel_depth = window.screen.pixelDepth;
     }
 
     setNetworkInformation() {
         //@ts-ignore
-        this.networkDownlink = window.navigator.connection.downlink;
+        this.network_downlink = window.navigator.connection.downlink;
         //@ts-ignore
-        this.networkEffectiveType = window.navigator.connection.effectiveType;
+        this.network_effective_type = window.navigator.connection.effectiveType;
         //@ts-ignore
-        this.networkRtt = window.navigator.connection.rtt;
+        this.network_rtt = window.navigator.connection.rtt;
         //@ts-ignore
-        this.networkSaveData = window.navigator.connection.saveData;
+        this.network_save_data = window.navigator.connection.saveData;
     }
 
     async setBattery() {
         //@ts-ignore
         const battery = await window.navigator.getBattery();
-        this.batteryCharging = battery.charging;
-        this.batteryChargingTime = battery.chargingTime;
-        this.batteryDischargingTime = battery.dischargingTime;
-        this.batteryLevel = battery.level;
+        this.battery_charging = battery.charging;
+        this.battery_charging_time = battery.chargingTime;
+        this.battery_discharging_time = battery.dischargingTime;
+        this.battery_level = battery.level;
     }
 }
