@@ -7,38 +7,46 @@ import { AmazonItem } from "./model/AmazonItem";
 // Create the datalayer object, responsible for analytics
 let productNavigatorData = new ProductNavigatorData();
 
-// Remove the add-to-cart button if the user came from a study (control or treatment)
-if (productNavigatorData.isUserFromStudy()) {
-    try {
-        // We need to make sure this input button is removed, otherwise it will result in a real 
-        // add-to-cart action (what we don't want for study users).
-        const addToCartInputElement = document.getElementById('add-to-cart-button');
-        addToCartInputElement.remove();
-    } catch (error) { }
-}
+// Remove the add-to-cart and buy-now button if the user came from a study (control or treatment)
+remove_html_element_by_id('add-to-cart-button');
+remove_html_element_by_id('buy-now-button');
 
-// Get the parent div element of add-to-cart
-let addToCartDivElement = document.getElementById("addToCart_feature_div");
+// Add event listeners to the add-to-cart and buy-now div element
+add_event_listener("addToCart_feature_div", "add-to-cart");
+add_event_listener("buyNow_feature_div", "buy-now");
 
-// Add an event listener to the add-to-cart div element
-addToCartDivElement.addEventListener("click", () => {
-    const asin = addToCartDivElement.getAttribute("data-csa-c-asin");
-    let item = new AmazonItem(null, asin);
-    let addToCartEvent = new Event(item, "add-to-cart");
-    productNavigatorData.pushEvent(addToCartEvent);
-
-    // When there is a taskID, the user came from a study (control or treatment)
+function remove_html_element_by_id(id: string) {
     if (productNavigatorData.isUserFromStudy()) {
         try {
-            alert(chrome.i18n.getMessage("taskEndedMessage"));
-            // Delete all task info
-            setCookie(COOKIE_NAME_TASK_USER_ID, "", -1);
-            setCookie(COOKIE_NAME_TASK_ID, "", -1);
+            // We need to make sure this input button is removed, otherwise it will result in a real 
+            // add-to-cart action (what we don't want for study users).
+            const addToCartInputElement = document.getElementById(id);
+            addToCartInputElement.remove();
         } catch (error) { }
     }
-});
+}
 
-// Make the add-to-cart div element clickable again (disbaled by blank.css)
-addToCartDivElement.style['pointer-events'] = "auto";
+function add_event_listener(id: string, eventName: string) {
+    // Get the parent div element of add-to-cart
+    let divElement = document.getElementById(id);
 
-productNavigatorData.addSendAnalyticsListener();
+    divElement.addEventListener("click", () => {
+        const asin = divElement.getAttribute("data-csa-c-asin");
+        let item = new AmazonItem(null, asin);
+        let addToCartEvent = new Event(item, eventName);
+        productNavigatorData.pushEvent(addToCartEvent);
+
+        // When there is a taskID, the user came from a study (control or treatment)
+        if (productNavigatorData.isUserFromStudy()) {
+            try {
+                alert(chrome.i18n.getMessage("taskEndedMessage"));
+                // Delete all task info
+                setCookie(COOKIE_NAME_TASK_USER_ID, "", -1);
+                setCookie(COOKIE_NAME_TASK_ID, "", -1);
+            } catch (error) { }
+        }
+    });
+
+    // Make the add-to-cart div element clickable again (disbaled by blank.css)
+    divElement.style['pointer-events'] = "auto";
+}

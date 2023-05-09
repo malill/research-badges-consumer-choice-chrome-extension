@@ -18,5 +18,3 @@ try {
     const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
     productNavigatorData.attachEventsfromSearchResults(searchResults);
 } catch (error) { }
-
-productNavigatorData.addSendAnalyticsListener();

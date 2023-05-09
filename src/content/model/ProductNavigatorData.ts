@@ -32,6 +32,8 @@ export class ProductNavigatorData {
 
         // Page visibility handler
         this.pageVisibilityHandler(item);
+
+        this.addSendAnalyticsListener();
     }
 
     pushEvent(event: Event) {
