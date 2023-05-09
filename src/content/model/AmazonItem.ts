@@ -1,13 +1,13 @@
 export class AmazonItem {
-    htmlElement: HTMLElement;
+    htmlElement: HTMLElement; // -> not sent to server
     asin: string;
-    position: number;
+    avg_rating: number;
+    delivery_info: string;
+    n_ratings: number;
     name: string;
-    avgRating: number;
-    nReviews: number;
+    position: number;
     price: number;
-    deliveryInfo: string;
-    imgUrl: string;
+    img_url: string;
     badges: {};
 
     constructor(htmlmSearchResultElement: HTMLElement, asin?: string) {
@@ -38,8 +38,8 @@ export class AmazonItem {
         try {
             const ratingEl = this.htmlElement.getElementsByClassName("a-section a-spacing-none a-spacing-top-micro")[0];
             let avgRatingTxt = ratingEl.getElementsByClassName("a-icon-alt")[0].textContent;
-            this.avgRating = parseFloat(avgRatingTxt.slice(0, 3)) * 10;
-            this.nReviews = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},.]/g, ''));
+            this.avg_rating = parseFloat(avgRatingTxt.slice(0, 3)) * 10;
+            this.n_ratings = parseFloat(ratingEl.getElementsByClassName("a-size-base s-underline-text")[0].textContent.replace(/[{()},.]/g, ''));
         } catch (error) {
             // No rating element found
         }
@@ -56,14 +56,14 @@ export class AmazonItem {
         // DELIVERY TIME (TODO: should be a badge (since removed by extension))
         try {
             const dlvTimeString = this.htmlElement.querySelector("div.a-row.a-size-base.a-color-secondary.s-align-children-center");
-            this.deliveryInfo = dlvTimeString.textContent.trim();
+            this.delivery_info = dlvTimeString.textContent.trim();
         } catch (error) {
             // No delivery info present
         }
 
         // ITEM IMAGE URL
         try {
-            this.imgUrl = this.htmlElement.querySelector("img.s-image").getAttribute('src');
+            this.img_url = this.htmlElement.querySelector("img.s-image").getAttribute('src');
         } catch (error) { }
 
         this.badges = this.getBadges();
@@ -76,7 +76,7 @@ export class AmazonItem {
             let badgeCompProps = platformBadgeEl.getAttribute("data-component-props");
             let jsonProps = JSON.parse(badgeCompProps);
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
-            badges["b_1"] = jsonProps["badgeType"];
+            badges["b_01"] = jsonProps["badgeType"];
         } catch (error) { }
 
         try {
@@ -86,9 +86,9 @@ export class AmazonItem {
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
             if (isNaN(lightningDealSavePercent)) {
                 // String is something like "Limited Time Deal"
-                badges["b_3"] = lightningDealText.toLowerCase();
+                badges["b_03"] = lightningDealText.toLowerCase();
             } else {
-                badges["b_2"] = lightningDealSavePercent;
+                badges["b_02"] = lightningDealSavePercent;
             }
         } catch (error) { }
 
@@ -98,34 +98,34 @@ export class AmazonItem {
             if (couponText.includes("%")) {
                 // String is something like "Save x% with voucher"
                 const couponSavePercent = parseInt(couponText.substring(0, couponText.indexOf("%")));
-                badges["b_4"] = couponSavePercent;
+                badges["b_04"] = couponSavePercent;
             } else {
                 const couponSaveAmount = parseInt(couponText.substring(1, couponText.indexOf(" ")));
-                badges["b_5"] = couponSaveAmount;
+                badges["b_05"] = couponSaveAmount;
             }
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("a.puis-sponsored-label-text");
-            badges["b_6"] = platformBadgeEl.firstChild.textContent.toLowerCase();
+            badges["b_06"] = platformBadgeEl.firstChild.textContent.toLowerCase();
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("span.a-text-price[data-a-strike='true']");
             let strikePriceEl = platformBadgeEl.children[0];
-            badges["b_7"] = parseInt(strikePriceEl.textContent.substring(1).replaceAll(',', '').replaceAll('.', ''));
+            badges["b_07"] = parseInt(strikePriceEl.textContent.substring(1).replaceAll(',', '').replaceAll('.', ''));
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("i.a-icon-prime");
             let badgeCompProps = platformBadgeEl.getAttribute("aria-label").toLowerCase();
-            badges["b_8"] = badgeCompProps;
+            badges["b_08"] = badgeCompProps;
         } catch (error) { }
 
         try {
             let platformBadgeEl = this.htmlElement.querySelector("span[aria-label='Lowest price in 30 days']");
-            badges["b_9"] = platformBadgeEl.firstChild.textContent.toLowerCase();
+            badges["b_09"] = platformBadgeEl.firstChild.textContent.toLowerCase();
         } catch (error) { }
 
         try {

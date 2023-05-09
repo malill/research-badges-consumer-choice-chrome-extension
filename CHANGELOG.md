@@ -1,3 +1,6 @@
+# v1.0.2 | 09.05.2023
+* Use `navigator.sendBeacon` to send list of events to analytics endpoint
+
 # v1.0.1 | 05.05.2023
 * Badge 19, "100+ bought in past week"
 * Remove hyperlink from badges

@@ -38,6 +38,7 @@ addToCartDivElement.addEventListener("click", () => {
     }
 });
 
-
 // Make the add-to-cart div element clickable again (disbaled by blank.css)
 addToCartDivElement.style['pointer-events'] = "auto";
+
+productNavigatorData.addSendAnalyticsListener();
