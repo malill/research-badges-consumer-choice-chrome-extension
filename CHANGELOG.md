@@ -1,3 +1,6 @@
+# v1.0.3 | 10.05.2023
+* Hide recommendation carousel on search results page
+
 # v1.0.2 | 09.05.2023
 * Use `navigator.sendBeacon` to send list of events to analytics endpoint
 * Add buy-now button to analytics
