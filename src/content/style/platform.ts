@@ -98,7 +98,7 @@ div.a-section.a-spacing-none.a-spacing-top-micro.s-product-grid-adjustment {
 
 /* --- PRODUCT ATTRIBUTES --- */
 
-/*Delivery info, "Get it - date1 (to date2)FREE delivery by Amazon*/
+/*Delivery info, "Get it - date1 (to date2)FREE delivery by Amazon"*/
 div.a-row.a-size-base.a-color-secondary.s-align-children-center {
     display: block !important;
 }
