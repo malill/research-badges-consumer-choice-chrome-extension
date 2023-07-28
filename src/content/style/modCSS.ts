@@ -2,7 +2,7 @@
 // We can't inject via chrome.scripting since this is only
 // available in service workers. 
 
-export const platformCSS = `
+export const modCSS_01 = `
 /* ---------------------- 
 ------ SEARCH PAGE ------
 ------------------------/*
