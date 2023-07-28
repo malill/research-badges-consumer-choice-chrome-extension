@@ -14,23 +14,20 @@
     "content_scripts": [
         {
             "css": [
-                "/style/amazon/blank.css"
+                "/style/amazon/blank_search.css"
             ],
-            "matches": [
-                "http://www.amazon.co.uk/*",
-                "https://www.amazon.co.uk/*"
-            ]
-        },
-        {
             "js": [
                 "searchResultsPage.js"
             ],
             "matches": [
-                "http://www.amazon.co.uk/s?k=*",
-                "https://www.amazon.co.uk/s?k=*"
+                "http://www.amazon.co.uk/s?*",
+                "https://www.amazon.co.uk/s?*"
             ]
         },
         {
+            "css": [
+                "/style/amazon/blank_pdp.css"
+            ],
             "js": [
                 "productDetailPage.js"
             ],

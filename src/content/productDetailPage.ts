@@ -50,3 +50,10 @@ function add_event_listener(id: string, eventName: string) {
     // Make the add-to-cart div element clickable again (disbaled by blank.css)
     divElement.style['pointer-events'] = "auto";
 }
+
+try {
+    console.log("Dispatches from:", document.querySelector("#tabular-buybox > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='Dispatches from']").textContent.replace(/[^A-Z0-9]/ig, ""));
+} catch (error) { console.info(error) }
+try {
+    console.log("Sold by:", document.querySelector("#tabular-buybox > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='Sold by']").textContent.replace(/[^A-Z0-9]/ig, ""));
+} catch (error) { console.info(error) }

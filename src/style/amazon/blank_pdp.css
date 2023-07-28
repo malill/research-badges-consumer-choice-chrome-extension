@@ -1,0 +1,99 @@
+/* ------------------- 
+------ PDP PAGE ------
+----------------------/*
+
+/* Badge1 */
+#acBadge_feature_div {
+    display: none !important;
+}
+
+/*Badge1, Highlight (Best Seller, Amazon's Choice)*/
+#addToCart_feature_div {
+    pointer-events: none;
+}
+
+/*Badge2 & 3, lightning red, Save X%*/
+.a-size-large.a-color-price.savingPriceOverride.aok-align-center.reinventPriceSavingsPercentageMargin.savingsPercentage {
+    display: none !important;
+}
+
+/*Badge2 & 3, red "Deal" sign*/
+#dealBadge_feature_div {
+    display: none !important;
+}
+
+/*Badge4 & 5, voucher*/
+#promoPriceBlockMessage_feature_div {
+    display: none !important;
+}
+
+/*Badge7, strike price "annotation" (e.g. "RRP:", "Was:")*/
+.a-section.a-spacing-small.aok-align-center {
+    display: none !important;
+}
+
+/*Badge13, Climate Pledge Friendly*/
+#climatePledgeFriendlyBadge {
+    display: none !important;
+}
+
+/*FREE Returns*/
+#creturns-policy-anchor-text {
+    display: none !important;
+}
+
+/*"Yes, I want FREE Delivery on this order with Amazon Prime"*/
+#bbop_feature_div {
+    display: none !important;
+}
+
+/*Consider a similar item*/
+.climatePledgeFriendlyATF {
+    display: none !important;
+}
+
+/* CAROUSELS */
+/*limited time deal*/
+.sponsored-products-deal-badge-generic.sponsored-products-deal-evergreen-badge {
+    display: none !important;
+}
+
+/*strike price*/
+.sponsored-products-deal-discount-text {
+    display: none !important;
+}
+
+/*"x% off Deal"*/
+._cDEzb_savingsBadgeWrapper_3DNjt {
+    display: none !important;
+}
+
+/*Amazon Prime*/
+.a-icon.a-icon-prime.a-icon-small {
+    display: none !important;
+}
+
+/*Strike Price*/
+.a-size-mini.a-color-base.aok-nowrap {
+    display: none !important;
+}
+
+/*Delivery Info*/
+.a-size-mini.a-color-base {
+    display: none !important;
+}
+
+/*Climate Pledege Friendly*/
+.a-size-small.aok-align-center {
+    display: none !important;
+}
+
+/*Climate Pledege Friendly*/
+.a-link-normal.cpfBadgeLogoID.a-text-normal {
+    display: none !important;
+}
+
+/*Save x%*/
+.a-size-small {
+    display: none !important;
+}
