@@ -52,6 +52,10 @@ function add_event_listener(id: string, eventName: string) {
 }
 
 try {
+    console.log("AC Badge for category:", document.querySelector("#acBadge_feature_div > div > span.ac-for-text > span > span.ac-keyword-link").textContent);
+} catch (error) { console.info(error) }
+
+try {
     console.log("Dispatches from:", document.querySelector("#tabular-buybox > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='Dispatches from']").textContent.replace(/[^A-Z0-9]/ig, ""));
 } catch (error) { console.info(error) }
 try {

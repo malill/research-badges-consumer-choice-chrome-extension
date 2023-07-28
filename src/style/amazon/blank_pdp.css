@@ -1,15 +1,14 @@
 /* ------------------- 
 ------ PDP PAGE ------
-----------------------/*
+----------------------*/
+
+#addToCart_feature_div {
+    pointer-events: none;
+}
 
 /* Badge1 */
 #acBadge_feature_div {
     display: none !important;
-}
-
-/*Badge1, Highlight (Best Seller, Amazon's Choice)*/
-#addToCart_feature_div {
-    pointer-events: none;
 }
 
 /*Badge2 & 3, lightning red, Save X%*/
@@ -90,10 +89,5 @@
 
 /*Climate Pledege Friendly*/
 .a-link-normal.cpfBadgeLogoID.a-text-normal {
-    display: none !important;
-}
-
-/*Save x%*/
-.a-size-small {
     display: none !important;
 }
