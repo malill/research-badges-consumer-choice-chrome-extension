@@ -91,3 +91,8 @@
 .a-link-normal.cpfBadgeLogoID.a-text-normal {
     display: none !important;
 }
+
+/*Badge4 & 5, voucher*/
+div:has(> span.couponLabel) {
+    display: none !important;
+}

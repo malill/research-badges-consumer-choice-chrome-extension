@@ -1,7 +1,7 @@
 {
     "name": "Product Navigator",
     "manifest_version": 3,
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "__MSG_cwsDescription__",
     "default_locale": "en",
     "action": {
@@ -20,8 +20,8 @@
                 "searchResultsPage.js"
             ],
             "matches": [
-                "http://www.amazon.co.uk/s?*",
-                "https://www.amazon.co.uk/s?*"
+                "http://www.amazon.co.uk/*",
+                "https://www.amazon.co.uk/*"
             ]
         },
         {

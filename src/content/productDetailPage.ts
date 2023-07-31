@@ -71,7 +71,6 @@ try {
 
     const selectorNames = ["Payment", "Dispatches from", "Sold by", "Returns"];
 
-
     selectorNames.forEach((sName) => {
         try {
             pdpRes[sName] = (buyBoxSimpleSelector(sName) ? buyBoxSimpleSelector(sName) : buyBoxExpandableSelector(sName));
@@ -79,13 +78,10 @@ try {
         } catch (error) { }
     });
 
-    console.log(pdpRes);
-
     // Stock Level
     try {
-        let stockLevel = document.querySelector("#availability").textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
-        console.log("Stock Level:", stockLevel);
+        pdpRes["stockLevel"] = document.querySelector("#availability").textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
     } catch (error) { }
 
+    console.log(pdpRes);
 } catch (error) { }
-
