@@ -52,12 +52,40 @@ function add_event_listener(id: string, eventName: string) {
 }
 
 try {
-    console.log("AC Badge for category:", document.querySelector("#acBadge_feature_div > div > span.ac-for-text > span > span.ac-keyword-link").textContent);
-} catch (error) { console.info(error) }
+    // Check if there are PDP infos present, if yes attach to datalayer
+    // const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
+    // productNavigatorData.attachEventsfromSearchResults(searchResults);
 
-try {
-    console.log("Dispatches from:", document.querySelector("#tabular-buybox > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='Dispatches from']").textContent.replace(/[^A-Z0-9]/ig, ""));
-} catch (error) { console.info(error) }
-try {
-    console.log("Sold by:", document.querySelector("#tabular-buybox > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='Sold by']").textContent.replace(/[^A-Z0-9]/ig, ""));
-} catch (error) { console.info(error) }
+    let pdpRes = {};
+
+    // Amazon's Choice Badge
+    try {
+        let acBadgeCategory = document.querySelector("#acBadge_feature_div > div > span.ac-for-text > span > span.ac-keyword-link").textContent;
+        pdpRes["acCategory"] = acBadgeCategory;
+    } catch (error) { }
+
+
+    // Buy Box Information
+    let buyBoxSimpleSelector = (selectorName: string) => document.querySelectorAll(`#tabular-buybox > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='${selectorName}']`)[0];
+    let buyBoxExpandableSelector = (selectorName: string) => document.querySelectorAll(`#tabular-buybox > div > div.a-expander-content.a-expander-partial-collapse-content > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='${selectorName}']`)[0];
+
+    const selectorNames = ["Payment", "Dispatches from", "Sold by", "Returns"];
+
+
+    selectorNames.forEach((sName) => {
+        try {
+            pdpRes[sName] = (buyBoxSimpleSelector(sName) ? buyBoxSimpleSelector(sName) : buyBoxExpandableSelector(sName));
+            pdpRes[sName] = pdpRes[sName].textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+        } catch (error) { }
+    });
+
+    console.log(pdpRes);
+
+    // Stock Level
+    try {
+        let stockLevel = document.querySelector("#availability").textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+        console.log("Stock Level:", stockLevel);
+    } catch (error) { }
+
+} catch (error) { }
+
