@@ -7,7 +7,7 @@ import { AmazonItem } from "./model/AmazonItem";
 // Create the datalayer object, responsible for analytics
 let productNavigatorData = new ProductNavigatorData();
 
-// Remove the add-to-cart and buy-now button if the user came from a study (control or treatment)
+// If the user came from a study (control or treatment) -> remove add-to-cart and buy-now button 
 remove_html_element_by_id('add-to-cart-button');
 remove_html_element_by_id('buy-now-button');
 
