@@ -20,8 +20,8 @@
                 "searchResultsPage.js"
             ],
             "matches": [
-                "http://www.amazon.co.uk/*",
-                "https://www.amazon.co.uk/*"
+                "http://www.amazon.co.uk/s*",
+                "https://www.amazon.co.uk/s*"
             ]
         },
         {

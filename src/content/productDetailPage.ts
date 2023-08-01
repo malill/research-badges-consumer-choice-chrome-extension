@@ -1,6 +1,6 @@
 import { ProductNavigatorData } from "./model/ProductNavigatorData";
 import { Event } from "./model/Event";
-import { COOKIE_VALUE_MISSING, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID } from "../config/settings";
+import { COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID } from "../config/settings";
 import { setCookie } from "./util/cookie";
 import { AmazonItem } from "./model/AmazonItem";
 
@@ -55,33 +55,5 @@ try {
     // Check if there are PDP infos present, if yes attach to datalayer
     // const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
     // productNavigatorData.attachEventsfromSearchResults(searchResults);
-
-    let pdpRes = {};
-
-    // Amazon's Choice Badge
-    try {
-        let acBadgeCategory = document.querySelector("#acBadge_feature_div > div > span.ac-for-text > span > span.ac-keyword-link").textContent;
-        pdpRes["acCategory"] = acBadgeCategory;
-    } catch (error) { }
-
-
-    // Buy Box Information
-    let buyBoxSimpleSelector = (selectorName: string) => document.querySelectorAll(`#tabular-buybox > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='${selectorName}']`)[0];
-    let buyBoxExpandableSelector = (selectorName: string) => document.querySelectorAll(`#tabular-buybox > div > div.a-expander-content.a-expander-partial-collapse-content > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='${selectorName}']`)[0];
-
-    const selectorNames = ["Payment", "Dispatches from", "Sold by", "Returns"];
-
-    selectorNames.forEach((sName) => {
-        try {
-            pdpRes[sName] = (buyBoxSimpleSelector(sName) ? buyBoxSimpleSelector(sName) : buyBoxExpandableSelector(sName));
-            pdpRes[sName] = pdpRes[sName].textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
-        } catch (error) { }
-    });
-
-    // Stock Level
-    try {
-        pdpRes["stockLevel"] = document.querySelector("#availability").textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
-    } catch (error) { }
-
-    console.log(pdpRes);
+    productNavigatorData.attachEventsfromProductDetailPage(document);
 } catch (error) { }

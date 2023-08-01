@@ -81,6 +81,38 @@ export class ProductNavigatorData {
         });
     }
 
+    attachEventsfromProductDetailPage(document: Document) {
+        let pdpDetails = {};
+
+        // Amazon's Choice Badge
+        try {
+            let acBadgeCategory = document.querySelector("#acBadge_feature_div > div > span.ac-for-text > span > span.ac-keyword-link").textContent;
+            pdpDetails["acCategory"] = acBadgeCategory;
+        } catch (error) { }
+
+
+        // Buy Box Information
+        let buyBoxSimpleSelector = (selectorName: string) => document.querySelectorAll(`#tabular-buybox > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='${selectorName}']`)[0];
+        let buyBoxExpandableSelector = (selectorName: string) => document.querySelectorAll(`#tabular-buybox > div > div.a-expander-content.a-expander-partial-collapse-content > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='${selectorName}']`)[0];
+
+        const selectorNames = ["Payment", "Dispatches from", "Sold by", "Returns"];
+
+        selectorNames.forEach((sName) => {
+            try {
+                pdpDetails[sName] = (buyBoxSimpleSelector(sName) ? buyBoxSimpleSelector(sName) : buyBoxExpandableSelector(sName));
+                pdpDetails[sName] = pdpDetails[sName].textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+            } catch (error) { }
+        });
+
+        // Stock Level
+        try {
+            pdpDetails["stockLevel"] = document.querySelector("#availability").textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+        } catch (error) { }
+
+        console.log(pdpDetails);
+    }
+
+
     attachViewListener(htmlElement: any) {
         $(window).on("resize scroll", () => {
             if (isInViewport(htmlElement) && (!htmlElement.isViewed)) {
