@@ -21,7 +21,7 @@ try {
     // Attach product details from HTML page to the data object
     productNavigatorData.eventHandlerProductDetailPage(document);
 } catch (error) {
-    console.warn(`Error in eventHandlerProductDetailPage: ${error.message}`);
+    console.info(`Error in eventHandlerProductDetailPage: ${error.message}`);
 }
 
 function removeElementIfUserInStudy(id: string): void {
@@ -30,7 +30,7 @@ function removeElementIfUserInStudy(id: string): void {
             const element = document.getElementById(id);
             element?.remove();
         } catch (error) {
-            console.warn(`Error removing element by id: ${error.message}`);
+            console.info(`Error removing element by id: ${error.message}`);
         }
     }
 }
@@ -40,7 +40,7 @@ function addListenersToButtons(buttonIDs: string[], eventName: string): void {
         try {
             addEventListener(id, eventName);
         } catch (error) {
-            console.warn(`Error adding event listener to ${id}: ${error.message}`);
+            console.info(`Error adding event listener to ${id}: ${error.message}`);
         }
     });
 }
@@ -62,7 +62,7 @@ function addEventListener(id: string, eventName: string): void {
                 setCookie(COOKIE_NAME_TASK_USER_ID, "", -1);
                 setCookie(COOKIE_NAME_TASK_ID, "", -1);
             } catch (error) {
-                console.warn(`Error when handling study user click: ${error.message}`);
+                console.info(`Error when handling study user click: ${error.message}`);
             }
         }
     });
