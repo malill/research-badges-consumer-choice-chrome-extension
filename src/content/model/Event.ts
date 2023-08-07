@@ -1,13 +1,13 @@
 import { AmazonItem } from "./AmazonItem";
 
 export class Event {
-    items: [AmazonItem];
+    item: AmazonItem;
     event_type: string;
     timestamp_client: string;
 
-    constructor(items: [AmazonItem], type: string) {
+    constructor(item: AmazonItem, type: string) {
         this.timestamp_client = new Date().toJSON();
-        this.items = items;
+        this.item = item;
         this.event_type = type;
     }
 }

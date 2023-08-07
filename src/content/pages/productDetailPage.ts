@@ -51,7 +51,7 @@ function addEventListener(id: string, eventName: string): void {
     divElement?.addEventListener("click", () => {
         const asin = divElement.getAttribute("data-csa-c-asin");
         let item = new AmazonItem(null, asin);
-        let event = new Event([item], eventName);
+        let event = new Event(item, eventName);
         productNavigatorData.pushEvent(event);
 
         // Check if user is part of a study and display alert message

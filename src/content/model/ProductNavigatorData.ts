@@ -9,7 +9,7 @@ import { User } from "./User";
 export class ProductNavigatorData {
     log_level: string;
     device: Device;
-    events: any[];
+    events: Event[];
     page: Page;
     user: User;
 
@@ -60,18 +60,18 @@ export class ProductNavigatorData {
             } else {
                 // Element is in viewport -> directly push view event
                 let item = new AmazonItem(searchResultElement);
-                this.pushEvent(new Event([item], "view"));
+                this.pushEvent(new Event(item, "view"));
             }
 
             // Attach click listeners to all search elements
             let item = new AmazonItem(searchResultElement);
             searchResultElement.addEventListener("click", () => {
-                this.pushEvent(new Event([item], "click"));
+                this.pushEvent(new Event(item, "click"));
             });
 
             // Attach right-click listeners to all search elements
             searchResultElement.addEventListener("contextmenu", (e: any) => {
-                this.pushEvent(new Event([item], "right-click"));
+                this.pushEvent(new Event(item, "right-click"));
             });
 
         });
@@ -112,7 +112,7 @@ export class ProductNavigatorData {
 
         let item = new AmazonItem(null, asin);
         item.pdpDetails = pdpDetails;
-        let event = new Event([item], "inspect");
+        let event = new Event(item, "inspect");
         this.pushEventWhenVisible(event);
     }
 
@@ -121,7 +121,7 @@ export class ProductNavigatorData {
             if (isInViewport(htmlElement) && (!htmlElement.isViewed)) {
                 htmlElement.isViewed = true; // prevents entering this clause multiple times
                 let item = new AmazonItem(htmlElement);
-                let event = new Event([item], "view");
+                let event = new Event(item, "view");
                 this.pushEvent(event);
             }
         });
