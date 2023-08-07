@@ -92,17 +92,18 @@ export class ProductNavigatorData {
         let buyBoxExpandableSelector = (selectorName: string) => document.querySelectorAll(`#tabular-buybox > div > div.a-expander-content.a-expander-partial-collapse-content > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='${selectorName}']`)[0];
 
         const selectorNames = ["Payment", "Dispatches from", "Sold by", "Returns"];
+        const selectorNamesTaskKeys = ["payment", "dispatcher", "seller", "return_policy"];
 
-        selectorNames.forEach((sName: string) => {
+        selectorNames.forEach((sName: string, index: number) => {
             try {
-                pdpDetails[sName] = (buyBoxSimpleSelector(sName) ? buyBoxSimpleSelector(sName) : buyBoxExpandableSelector(sName));
-                pdpDetails[sName] = pdpDetails[sName].textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+                pdpDetails[selectorNamesTaskKeys[index]] = (buyBoxSimpleSelector(sName) ? buyBoxSimpleSelector(sName) : buyBoxExpandableSelector(sName));
+                pdpDetails[selectorNamesTaskKeys[index]] = pdpDetails[selectorNamesTaskKeys[index]].textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
             } catch (error) { }
         });
 
         // Stock Level
         try {
-            pdpDetails["stockLevel"] = document.querySelector("#availability").textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+            pdpDetails["stock_level"] = document.querySelector("#availability").textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
         } catch (error) { }
 
         let asin = null;
@@ -143,7 +144,7 @@ export class ProductNavigatorData {
                     taskEvents.push(new TaskEvent(this, event));
                 });
                 if (this.log_level === "debug") {
-                    console.log(this);
+                    console.log(taskEvents);
                 }
                 navigator.sendBeacon(
                     process.env.REST_API_URL,
