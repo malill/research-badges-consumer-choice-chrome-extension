@@ -4,7 +4,7 @@ import { AmazonItem } from "./AmazonItem";
 import { Device } from "./Device";
 import { Page } from "./Page";
 import { User } from "./User";
-// import { TaskEvent } from "./TaskEvent";
+import { TaskEvent } from "./TaskEvent";
 
 export class ProductNavigatorData {
     log_level: string;
@@ -138,12 +138,16 @@ export class ProductNavigatorData {
     addSendAnalyticsListener() {
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "hidden") {
+                let taskEvents = [];
+                this.events.forEach((event) => {
+                    taskEvents.push(new TaskEvent(this, event));
+                });
                 if (this.log_level === "debug") {
                     console.log(this);
                 }
                 navigator.sendBeacon(
                     process.env.REST_API_URL,
-                    new Blob([JSON.stringify(this)], { type: "application/json" })
+                    new Blob([JSON.stringify(taskEvents)], { type: "application/json" })
                 );
                 this.resetEvents();
             }
