@@ -3,12 +3,9 @@
 // available in service workers. 
 
 export const modCSS_01 = `
-/* ---------------------- 
------- SEARCH PAGE ------
-------------------------/*
+/*---blank_search.css---/*
 
 /* --- BADGES --- */
-
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
 span.rush-component [data-component-props*='amazons-choice'] {
     display: block !important;

@@ -1,121 +1,49 @@
-/* ---------------------- 
------- SEARCH PAGE ------
-------------------------/*
-
 /* --- BADGES --- */
-
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
-span.rush-component [data-component-type='s-status-badge-component'] {
-    display: none !important;
-}
-
+span.rush-component [data-component-type='s-status-badge-component'],
 /*Badge2 & 3, lightning red, Save X% OR Limited Time Deal*/
-span[data-a-badge-color='sx-lightning-deal-red'] {
-    display: none !important;
-}
-
+span[data-a-badge-color='sx-lightning-deal-red'],
 /*Badge4 & 5, green voucher, "Save x%" OR "Save x$" below product price*/
-span[data-component-type="s-coupon-component"] {
-    display: none !important;
-}
-
+span[data-component-type="s-coupon-component"],
 /*Badge6, "Sponsored (i)" above product*/
-a.puis-sponsored-label-text {
-    display: none !important;
-}
-
+a.puis-sponsored-label-text,
 /*Badge7, strike price "annotation" (e.g. "RRP:", "Was:")*/
-span.a-size-base.a-color-secondary {
-    display: none !important;
-}
-
+span.a-size-base.a-color-secondary,
 /*Badge7, strice price value*/
-span.a-text-price[data-a-strike='true'] {
-    display: none !important;
-}
-
+span.a-text-price[data-a-strike='true'],
 /*Badge8, Prime (Delivery) Icon at product*/
-i.a-icon-prime {
-    display: none !important;
-}
-
+i.a-icon-prime,
 /*Badge9, "Lowest price in 30 days"*/
-span[aria-label="Lowest price in 30 days"] {
-    display: none !important;
-}
-
+span[aria-label="Lowest price in 30 days"],
 /*Badge10/11, More buying choices*/
-.a-section.a-spacing-none.a-spacing-top-mini {
-    display: none !important;
-}
-
+.a-section.a-spacing-none.a-spacing-top-mini,
 /*Badge12, "Only x left in stock"*/
-span.a-size-base.a-color-price {
-    display: none !important;
-}
-
+span.a-size-base.a-color-price,
 /*Badge13, Small Business & Climate Pledge Friendly*/
-a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center {
-    display: none !important;
-}
-
+a.a-popover-trigger.a-declarative.s-no-underline.s-pc-badge.s-align-children-center,
 /*Badge14a, (Green) "Save x% on any y qualifying items"*/
-span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-promotion-highlight-color {
-    display: none !important;
-}
-
+span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-promotion-highlight-color,
 /*Badge14b, (Above Green) "X with subsribe & save discount*/
-.a-row.a-size-small.a-color-secondary {
-    display: none !important;
-}
-
+.a-row.a-size-small.a-color-secondary,
 /*Badge15, "Featured from our brands"*/
-span.a-size-micro.a-color-secondary {
-    display: none !important;
-}
-
-/*Badge16, "Save more with Subscribe & Save"
-https://www.amazon.co.uk/s?k=skin+care+sets+%26+kits&sprefix=skin+care+set%2Caps%2C84&ref=nb_sb_ss_ts-doa-p_2_13*/
-.a-row.a-size-base.a-color-secondary {
-    display: none !important;
-}
-
+span.a-size-micro.a-color-secondary,
+/*Badge16, "Save more with Subscribe & Save"*/
+.a-row.a-size-base.a-color-secondary,
 /*Badge17, "Energy Efficiency Class: X"*/
-div.a-section.a-spacing-none.a-spacing-top-micro.s-product-grid-adjustment {
-    display: none !important;
-}
-
-/*Badge18, Sub-company, e.g. "morrisons", "amazon-fresh"*/
-/*No rule needed, since already hidden by rule "Delivery info" below*/
-
-/*Badge19, "100+ bought in past week"*/
-/*No rule needed, since already hidden by badge7 strike price annotation (RDP) */
-
+div.a-section.a-spacing-none.a-spacing-top-micro.s-product-grid-adjustment,
 /* --- PRODUCT ATTRIBUTES --- */
-
 /*Delivery info, "Get it - date1 (to date2)FREE delivery by Amazon"*/
-div.a-row.a-size-base.a-color-secondary.s-align-children-center {
-    display: none !important;
-}
-
+div.a-row.a-size-base.a-color-secondary.s-align-children-center,
 /*"Eligible for delivery to Germany"*/
 span.a-size-small.a-color-base {
     display: none !important;
 }
 
-
-/* --- OTHER COMPONENTS (ALWAYS HIDE, i.e. never unhide) --- */
-
+/* --- OTHER COMPONENTS --- */
 /*Top banner ad*/
-div._bGlmZ_container_GMk6b.sbx-desktop {
-    display: none !important;
-}
-
+div._bGlmZ_container_GMk6b.sbx-desktop,
 /*Other disturbing carousels*/
-[data-asin=""] {
-    display: none !important;
-}
-
+[data-asin=""],
 /*Recommended for you, at the end of search results*/
 div#rhf {
     display: none !important;

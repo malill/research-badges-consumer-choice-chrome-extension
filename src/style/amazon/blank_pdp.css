@@ -1,98 +1,44 @@
-/* ------------------- 
------- PDP PAGE ------
-----------------------*/
-
-#addToCart_feature_div {
-    pointer-events: none;
-}
-
+/*Buy Now Button*/
+#buyNow_feature_div,
 /* Badge1 */
-#acBadge_feature_div {
-    display: none !important;
-}
-
-/*Badge2 & 3, lightning red, Save X%*/
-.a-size-large.a-color-price.savingPriceOverride.aok-align-center.reinventPriceSavingsPercentageMargin.savingsPercentage {
-    display: none !important;
-}
-
+#acBadge_feature_div,
 /*Badge2 & 3, red "Deal" sign*/
-#dealBadge_feature_div {
-    display: none !important;
-}
-
+#dealBadge_feature_div,
 /*Badge4 & 5, voucher*/
-#promoPriceBlockMessage_feature_div {
-    display: none !important;
-}
-
+#promoPriceBlockMessage_feature_div,
 /*Badge7, strike price "annotation" (e.g. "RRP:", "Was:")*/
-.a-section.a-spacing-small.aok-align-center {
-    display: none !important;
-}
-
+#a-section.a-spacing-small.aok-align-center,
 /*Badge13, Climate Pledge Friendly*/
-#climatePledgeFriendlyBadge {
-    display: none !important;
-}
-
+#climatePledgeFriendlyBadge,
 /*FREE Returns*/
-#creturns-policy-anchor-text {
-    display: none !important;
-}
-
+#creturns-policy-anchor-text,
 /*"Yes, I want FREE Delivery on this order with Amazon Prime"*/
-#bbop_feature_div {
-    display: none !important;
-}
-
+#bbop_feature_div,
 /*Consider a similar item*/
-.climatePledgeFriendlyATF {
-    display: none !important;
-}
-
+.climatePledgeFriendlyATF,
 /* CAROUSELS */
 /*limited time deal*/
-.sponsored-products-deal-badge-generic.sponsored-products-deal-evergreen-badge {
-    display: none !important;
-}
-
+.sponsored-products-deal-badge-generic.sponsored-products-deal-evergreen-badge,
 /*strike price*/
-.sponsored-products-deal-discount-text {
-    display: none !important;
-}
-
+.sponsored-products-deal-discount-text,
 /*"x% off Deal"*/
-._cDEzb_savingsBadgeWrapper_3DNjt {
-    display: none !important;
-}
-
+._cDEzb_savingsBadgeWrapper_3DNjt,
 /*Amazon Prime*/
-.a-icon.a-icon-prime.a-icon-small {
-    display: none !important;
-}
-
+.a-icon.a-icon-prime.a-icon-small,
 /*Strike Price*/
-.a-size-mini.a-color-base.aok-nowrap {
-    display: none !important;
-}
-
+.a-size-mini.a-color-base.aok-nowrap,
 /*Delivery Info*/
-.a-size-mini.a-color-base {
-    display: none !important;
-}
-
+.a-size-mini.a-color-base,
 /*Climate Pledege Friendly*/
-.a-size-small.aok-align-center {
-    display: none !important;
-}
-
+.a-size-small.aok-align-center,
 /*Climate Pledege Friendly*/
-.a-link-normal.cpfBadgeLogoID.a-text-normal {
-    display: none !important;
-}
-
+.a-link-normal.cpfBadgeLogoID.a-text-normal,
 /*Badge4 & 5, voucher*/
 div:has(> span.couponLabel) {
     display: none !important;
+}
+
+/*Add to Cart Button*/
+#addToCart_feature_div {
+    pointer-events: none;
 }
