@@ -51,6 +51,7 @@ function addEventListener(id: string, eventName: string): void {
     divElement?.addEventListener("click", () => {
         const asin = divElement.getAttribute("data-csa-c-asin");
         let item = new AmazonItem(null, asin);
+        item.name = document.getElementById("productTitle").textContent.trim();
         let event = new Event(item, eventName);
         productNavigatorData.pushEvent(event);
 

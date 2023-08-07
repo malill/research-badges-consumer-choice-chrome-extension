@@ -113,6 +113,7 @@ export class ProductNavigatorData {
 
         let item = new AmazonItem(null, asin);
         item.pdpDetails = pdpDetails;
+        item.name = document.getElementById("productTitle").textContent.trim();
         let event = new Event(item, "inspect");
         this.pushEventWhenVisible(event);
     }
