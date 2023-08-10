@@ -42,9 +42,16 @@ span.a-size-small.a-color-base {
 /* --- OTHER COMPONENTS --- */
 /*Top banner ad*/
 div._bGlmZ_container_GMk6b.sbx-desktop,
+/*Ad banner left/right to search results*/
+div#ad,
 /*Other disturbing carousels*/
 [data-asin=""],
 /*Recommended for you, at the end of search results*/
 div#rhf {
     display: none !important;
+}
+
+/*Don't hide the search results pagination bar*/
+div:has(div):has(div.a-section.a-text-center.s-pagination-container) {
+    display: block !important;
 }
