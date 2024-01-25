@@ -6,6 +6,14 @@
 
 See confluence for documentation.
 
+## Development
+
+### Installation
+
+* Clone the repository
+* Run `npm install`
+* Run `npm run watch`
+
 # Build and Deployment
 
 ## Staging (BETA)
