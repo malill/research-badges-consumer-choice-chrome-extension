@@ -17,17 +17,11 @@ if (productNavigatorData.user.user_task_id == COOKIE_VALUE_TASK_ID_CONTROL) {
 try {
     // Check if there are search results present, if yes attach to datalayer
     const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
-    
-    // Attach "bestseller" badge to a random search result inside class="puisg-col-inner"
-    const randomSearchResult = searchResults[Math.floor(Math.random() * searchResults.length)];
-    const randomSearchResultInner = randomSearchResult.querySelector(`div[class="puisg-col-inner"]`);
-    randomSearchResultInner.insertAdjacentHTML('afterbegin', bestsellerBadge);
 
-    // searchResults.forEach((searchResult) => {
-    //     const searchResultInner = searchResult.querySelector(`div[class="puisg-col-inner"]`);
-    //     searchResultInner.insertAdjacentHTML('afterbegin', bestsellerBadge);
-    //     console.log("Hello")
-    // });
+    // Attach "bestseller" badge to a random search result
+    // const randomSearchResult = searchResults[Math.floor(Math.random() * searchResults.length)];
+    // const randomSearchResultInner = randomSearchResult.querySelector(`div[class="puisg-col-inner"]`);
+    // randomSearchResultInner.insertAdjacentHTML('afterbegin', bestsellerBadge);
 
     productNavigatorData.eventHandlerSearchResults(searchResults);
 } catch (error) { }

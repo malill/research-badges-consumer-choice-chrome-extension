@@ -51,6 +51,16 @@ div#rhf {
     display: none !important;
 }
 
+/*Refinement, filters*/
+#s-refinements {
+    display: none !important;
+}
+
+/*Refinement, sorting*/
+form:has(#s-result-sort-select) {
+    display: none !important;
+}
+
 /*Don't hide the search results pagination bar*/
 div:has(div):has(div.a-section.a-text-center.s-pagination-container) {
     display: block !important;
