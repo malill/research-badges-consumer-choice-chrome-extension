@@ -30,6 +30,7 @@ span.a-size-micro.a-color-secondary,
 /*Badge16, "Save more with Subscribe & Save"*/
 .a-row.a-size-base.a-color-secondary,
 /*Badge17, "Energy Efficiency Class: X"*/
+div.a-section.a-spacing-none.a-spacing-top-micro.puis-product-grid-adjustment,
 div.a-section.a-spacing-none.a-spacing-top-micro.s-product-grid-adjustment,
 /* --- PRODUCT ATTRIBUTES --- */
 /*Delivery info, "Get it - date1 (to date2)FREE delivery by Amazon"*/
@@ -44,10 +45,21 @@ span.a-size-small.a-color-base {
 div._bGlmZ_container_GMk6b.sbx-desktop,
 /*Ad banner left/right to search results*/
 div#ad,
+div.sg-col-4-of-24.sg-col-4-of-12.s-matching-dir.sg-col-4-of-16.sg-col.sg-col-4-of-20,
 /*Other disturbing carousels*/
 [data-asin=""],
 /*Recommended for you, at the end of search results*/
 div#rhf {
+    display: none !important;
+}
+
+/*Refinement, filters*/
+#s-refinements {
+    display: none !important;
+}
+
+/*Refinement, sorting*/
+form:has(#s-result-sort-select) {
     display: none !important;
 }
 
