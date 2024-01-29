@@ -9,7 +9,7 @@ import { TaskEvent } from "./TaskEvent";
 export class ProductNavigatorData {
     log_level: string;
     device: Device;
-    events: any[];
+    events: Event[];
     page: Page;
     user: User;
 
@@ -20,41 +20,37 @@ export class ProductNavigatorData {
         this.page = new Page();
         this.user = new User();
 
-        // If page is a product detail page, attach item to event
-        let item = null;
-        try {
-            const asin = document.getElementById("addToCart_feature_div").getAttribute("data-csa-c-asin");
-            item = new AmazonItem(null, asin);
-        } catch (error) { }
-
-        // Push the page-load event
-        this.pushEvent(new Event(item, "page-load"));
-
-        // Page visibility handler
-        this.pageVisibilityHandler(item);
+        // Push event when the page is loaded
+        this.pushEvent(new Event(null, "page-load"));
+        // Push event when the page is visible
+        this.pushEventWhenVisible(new Event(null, "page-visit"));
 
         this.addSendAnalyticsListener();
     }
 
     pushEvent(event: Event) {
         this.events.push(event);
-        this.log_level == "debug" ? console.log(event) : null;
+        if (this.log_level === "debug") {
+            console.log(event);
+        }
     }
-
-    pageVisibilityHandler(item: AmazonItem) {
+    pushEventWhenVisible(event: Event) {
+        /* Pushes the event when the page is visible and updates the timestamp. */
         // Check if the page is currently visible or not
         if (!document.hidden) {
-            this.pushEvent(new Event(item, "page-visit"));
+            event.timestamp_client = new Date().toJSON();
+            this.pushEvent(event);
         }
         // Listen to changes in the visibility of the page, i.e. it was not visible and now it is
         document.addEventListener('visibilitychange', () => {
             if (!document.hidden) {
-                this.pushEvent(new Event(item, "page-visit"));
+                event.timestamp_client = new Date().toJSON();
+                this.pushEvent(event);
             }
         });
     }
 
-    attachEventsfromSearchResults(searchResults: any[] | NodeListOf<Element>) {
+    eventHandlerSearchResults(searchResults: any[] | NodeListOf<Element>) {
         searchResults.forEach((searchResultElement) => {
 
             if (!isInViewport(searchResultElement)) {
@@ -81,6 +77,47 @@ export class ProductNavigatorData {
         });
     }
 
+    eventHandlerProductDetailPage(document: Document) {
+        let pdpDetails = {};
+
+        // Amazon's Choice Badge
+        try {
+            let acBadgeCategory = document.querySelector("#acBadge_feature_div > div > span.ac-for-text > span > span.ac-keyword-link").textContent;
+            pdpDetails["acCategory"] = acBadgeCategory;
+        } catch (error) { }
+
+
+        // Buy Box Information
+        let buyBoxSimpleSelector = (selectorName: string) => document.querySelectorAll(`#tabular-buybox > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='${selectorName}']`)[0];
+        let buyBoxExpandableSelector = (selectorName: string) => document.querySelectorAll(`#tabular-buybox > div > div.a-expander-content.a-expander-partial-collapse-content > div.tabular-buybox-container > div.tabular-buybox-text[tabular-attribute-name='${selectorName}']`)[0];
+
+        const selectorNames = ["Payment", "Dispatches from", "Sold by", "Returns"];
+        const selectorNamesTaskKeys = ["payment", "dispatcher", "seller", "return_policy"];
+
+        selectorNames.forEach((sName: string, index: number) => {
+            try {
+                pdpDetails[selectorNamesTaskKeys[index]] = (buyBoxSimpleSelector(sName) ? buyBoxSimpleSelector(sName) : buyBoxExpandableSelector(sName));
+                pdpDetails[selectorNamesTaskKeys[index]] = pdpDetails[selectorNamesTaskKeys[index]].textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+            } catch (error) { }
+        });
+
+        // Stock Level
+        try {
+            pdpDetails["stock_level"] = document.querySelector("#availability").textContent.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+        } catch (error) { }
+
+        let asin = null;
+        try {
+            asin = document.getElementById("addToCart_feature_div").getAttribute("data-csa-c-asin");
+        } catch (error) { }
+
+        let item = new AmazonItem(null, asin);
+        item.pdpDetails = pdpDetails;
+        item.name = document.getElementById("productTitle").textContent.trim();
+        let event = new Event(item, "inspect");
+        this.pushEventWhenVisible(event);
+    }
+
     attachViewListener(htmlElement: any) {
         $(window).on("resize scroll", () => {
             if (isInViewport(htmlElement) && (!htmlElement.isViewed)) {
@@ -101,16 +138,19 @@ export class ProductNavigatorData {
     }
 
     addSendAnalyticsListener() {
-        // Send analytics data when the page is hidden
         document.addEventListener("visibilitychange", () => {
             if (document.visibilityState === "hidden") {
-                this.log_level == "debug" ? console.log(this) : null;
                 let taskEvents = [];
-                this.events.forEach(event => {
+                this.events.forEach((event) => {
                     taskEvents.push(new TaskEvent(this, event));
                 });
-                navigator.sendBeacon(process.env.REST_API_URL, new Blob([JSON.stringify(taskEvents)], { type: "application/json" }))
-                // After sending the data, reset the datalayer's event list (TODO: check if this is safe!)
+                if (this.log_level === "debug") {
+                    console.log(taskEvents);
+                }
+                navigator.sendBeacon(
+                    process.env.REST_API_URL,
+                    new Blob([JSON.stringify(taskEvents)], { type: "application/json" })
+                );
                 this.resetEvents();
             }
         });

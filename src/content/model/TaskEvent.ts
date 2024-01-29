@@ -44,7 +44,12 @@ export class TaskEvent {
     tab_title: string;
     query_string: string;
     url: string;
-
+    // Product Details Infos
+    payment: string;
+    dispatcher: string;
+    seller: string;
+    return_policy: string;
+    stock_level: string;
 
     constructor(pnData: ProductNavigatorData, event: Event) {
         try {
@@ -60,6 +65,14 @@ export class TaskEvent {
                 this.price = item.price;
                 this.img_url = item.img_url;
                 Object.assign(this, item["badges"])
+                // Product Details Infos
+                if (item.pdpDetails) {
+                    this.payment = item.pdpDetails["payment"];
+                    this.dispatcher = item.pdpDetails["dispatcher"];
+                    this.seller = item.pdpDetails["seller"];
+                    this.return_policy = item.pdpDetails["return_policy"];
+                    this.stock_level = item.pdpDetails["stock_level"];
+                }
             }
             // Event attributes
             this.event_type = event.event_type;

@@ -6,7 +6,8 @@ const Dotenv = require('dotenv-webpack');
 
 
 module.exports = merge(config, {
-    mode: 'production',
+    mode: 'development',
+    devtool: false,
     plugins: [
         new CopyPlugin({
             patterns: [

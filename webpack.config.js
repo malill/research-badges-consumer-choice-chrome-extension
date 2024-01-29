@@ -5,8 +5,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        searchResultsPage: path.resolve(__dirname, "src/content/searchResultsPage.ts"),
-        productDetailPage: path.resolve(__dirname, "src/content/productDetailPage.ts"),
+        searchResultsPage: path.resolve(__dirname, "src/content/pages/searchResultsPage.ts"),
+        productDetailPage: path.resolve(__dirname, "src/content/pages/productDetailPage.ts"),
         serviceWorker: path.resolve(__dirname, "src/background/serviceWorker.ts"),
     },
     output: {

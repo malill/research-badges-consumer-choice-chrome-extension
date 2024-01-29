@@ -9,6 +9,7 @@ export class AmazonItem {
     price: number;
     img_url: string;
     badges: {};
+    pdpDetails: {};
 
     constructor(htmlmSearchResultElement: HTMLElement, asin?: string) {
         if (asin) {
