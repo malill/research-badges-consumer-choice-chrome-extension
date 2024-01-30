@@ -63,7 +63,7 @@ form:has(#s-result-sort-select) {
     display: none !important;
 }
 
-/*Don't hide the search results pagination bar*/
-div:has(div):has(div.a-section.a-text-center.s-pagination-container) {
+/*Search results pagination bar*/
+/* div:has(div):has(div.a-section.a-text-center.s-pagination-container) {
     display: block !important;
-}
+} */
