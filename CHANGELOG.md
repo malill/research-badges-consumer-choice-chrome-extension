@@ -1,3 +1,11 @@
+# v1.0.12 | xx.07.2024
+* Added `span[data-a-badge-type="deal"]` for *Badge 2 & 3* lightning deal badge
+* Do not display *Badge 10 & 11* (more buying choices) in control group, since this enables add to basket from search results
+* Added `div[data-cy="certification-recipe"]` for *Badge 13* small business badge
+
+# v1.0.12 | 05.05.2024
+* Various bug fixes and badge updates
+
 # v1.0.3 | 10.05.2023
 * Hide recommendation carousel on search results page
 
