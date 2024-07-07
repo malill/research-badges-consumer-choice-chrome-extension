@@ -1,4 +1,4 @@
-# v1.0.12 | xx.07.2024
+# v1.0.13 | 07.07.2024
 * Added `span[data-a-badge-type="deal"]` for *Badge 2 & 3* lightning deal badge
 * Do not display *Badge 10 & 11* (more buying choices) in control group, since this enables add to basket from search results
 * Added `div[data-cy="certification-recipe"]` for *Badge 13* small business badge
