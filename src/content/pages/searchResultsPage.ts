@@ -1,9 +1,8 @@
 
 import { COOKIE_VALUE_TASK_ID_CONTROL } from "../../config/settings";
 import { ProductNavigatorData } from "../model/ProductNavigatorData";
-import { modCSS_01 } from "../style/modCSS";
+import { modCSS_01, modCSS_02, modCSS_03 } from "../style/modCSS";
 import { injectCSS } from "../util/injectCSS";
-import { bestsellerBadge } from "../style/bestsellerBadge";
 
 // Create the datalayer object, responsible for analytics
 let productNavigatorData = new ProductNavigatorData();
@@ -11,7 +10,7 @@ let productNavigatorData = new ProductNavigatorData();
 // Check if user is in control group, if yes inject modified CSS
 if (productNavigatorData.user.user_task_id == COOKIE_VALUE_TASK_ID_CONTROL) {
     // Default styling is "blank" > inject platform style
-    injectCSS(modCSS_01);
+    injectCSS(modCSS_03);
 }
 
 try {
