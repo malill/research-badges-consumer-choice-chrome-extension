@@ -2,7 +2,7 @@
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
 span.rush-component [data-component-type='s-status-badge-component'],
 /*Badge2 & 3, lightning red, Save X% OR Limited Time Deal*/
-span[data-a-badge-color='sx-lightning-deal-red'],
+/*span[data-a-badge-color='sx-lightning-deal-red'],*/
 span[data-a-badge-type="deal"],
 /*Badge4 & 5, green voucher, "Save x%" OR "Save x$" below product price*/
 span[data-component-type="s-coupon-component"],

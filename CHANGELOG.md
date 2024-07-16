@@ -1,3 +1,6 @@
+# v1.0.14 | 16.07.2024
+* Fix tracking *Badge 2 & 3*, Amazon changed into "deal" badge - not limited time deal only, e.g. also "Prime Day Deal"
+
 # v1.0.13 | 07.07.2024
 * Added `span[data-a-badge-type="deal"]` for *Badge 2 & 3* lightning deal badge
 * Do not display *Badge 10 & 11* (more buying choices) in control group, since this enables add to basket from search results

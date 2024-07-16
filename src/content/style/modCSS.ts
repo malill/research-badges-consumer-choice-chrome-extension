@@ -1,11 +1,11 @@
 // We inject the platform CSS in content script "index.js".
 // We can't inject via chrome.scripting since this is only
 // available in service workers. 
+// src\style\amazon\blank_search.css is applied, we need to
+// revert the respective CSS changes.
 
 // DISPLAY AMAZON'S CHOICE BADGE
 export const modCSS_01 = `
-/*---blank_search.css---/*
-
 /* --- BADGES --- */
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
 span.rush-component [data-component-props*='amazons-choice'] {
@@ -15,8 +15,6 @@ span.rush-component [data-component-props*='amazons-choice'] {
 
 // DISPLAY BESTSELLER BADGE
 export const modCSS_02 = `
-/*---blank_search.css---/*
-
 /* --- BADGES --- */
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
 span.rush-component [data-component-props*='best-seller'] {
@@ -26,13 +24,11 @@ span.rush-component [data-component-props*='best-seller'] {
 
 // DISPLAY ALL BADGES
 export const modCSS_03 = `
-/*---blank_search.css---/*
-
 /* --- BADGES --- */
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
 span.rush-component [data-component-type='s-status-badge-component'],
 /*Badge2 & 3, lightning red, Save X% OR Limited Time Deal*/
-span[data-a-badge-color='sx-lightning-deal-red'],
+/*span[data-a-badge-color='sx-lightning-deal-red'],*/
 span[data-a-badge-type="deal"],
 /*Badge4 & 5, green voucher, "Save x%" OR "Save x$" below product price*/
 span[data-component-type="s-coupon-component"],
