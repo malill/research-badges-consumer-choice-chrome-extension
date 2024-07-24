@@ -1,3 +1,6 @@
+# v1.0.15 | 24.07.2024
+* Show infos in search results: _badge 7, badge 10/11, badge 12, badge 17, Delivery info & eligible, "Bought Y the last month"_
+
 # v1.0.14 | 16.07.2024
 * Fix tracking *Badge 2 & 3*, Amazon changed into "deal" badge - not limited time deal only, e.g. also "Prime Day Deal"
 
