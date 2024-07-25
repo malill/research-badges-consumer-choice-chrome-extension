@@ -22,7 +22,7 @@ span.rush-component [data-component-props*='best-seller'] {
 }
 `
 
-// DISPLAY ALL BADGES
+// DISPLAY ALL BADGES (BADGES! Not all infos are badges)
 export const modCSS_03 = `
 /* --- BADGES --- */
 /*Badge1, Highlight (Best Seller, Amazon's Choice)*/
@@ -49,6 +49,19 @@ span.a-size-base.s-highlighted-text-padding.aok-inline-block.s-promotion-highlig
 span.a-size-micro.a-color-secondary,
 /*Badge16, "Save more with Subscribe & Save"*/
 .a-row.a-size-base.a-color-secondary {
+    display: block !important;
+}
+`
+
+export const modCSS_PDP_03 = `
+/* Badge1 */
+#acBadge_feature_div,
+/*Badge2 & 3, red "Deal" sign*/
+#dealBadge_feature_div,
+/*Badge4 & 5, voucher*/
+#promoPriceBlockMessage_feature_div,
+/*Badge13, Climate Pledge Friendly*/
+#climatePledgeFriendlyBadge {
     display: block !important;
 }
 `

@@ -1,7 +1,7 @@
 
 import { COOKIE_VALUE_TASK_ID_CONTROL } from "../../config/settings";
 import { ProductNavigatorData } from "../model/ProductNavigatorData";
-import { modCSS_01, modCSS_02, modCSS_03 } from "../style/modCSS";
+import { modCSS_03 } from "../style/modCSS";
 import { injectCSS } from "../util/injectCSS";
 
 // Create the datalayer object, responsible for analytics

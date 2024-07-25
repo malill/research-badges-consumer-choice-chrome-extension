@@ -1,11 +1,20 @@
+import { COOKIE_VALUE_TASK_ID_CONTROL } from "../../config/settings";
 import { ProductNavigatorData } from "../model/ProductNavigatorData";
 import { Event } from "../model/Event";
 import { COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID } from "../../config/settings";
 import { setCookie } from "../util/cookie";
 import { AmazonItem } from "../model/AmazonItem";
+import { modCSS_PDP_03 } from "../style/modCSS";
+import { injectCSS } from "../util/injectCSS";
 
 // Instantiate a new ProductNavigatorData object
 const productNavigatorData = new ProductNavigatorData();
+
+// Check if user is in control group, if yes inject modified CSS
+if (productNavigatorData.user.user_task_id == COOKIE_VALUE_TASK_ID_CONTROL) {
+    // Default styling is "blank" > inject platform style
+    injectCSS(modCSS_PDP_03);
+}
 
 // Remove elements if user is part of a study
 removeElementIfUserInStudy('add-to-cart-button');
