@@ -1,3 +1,6 @@
+# v1.0.16 | 24.07.2024
+* Fix: Display badges on PDP
+
 # v1.0.15 | 24.07.2024
 * Show infos in search results: _badge 7, badge 10/11, badge 12, badge 17, Delivery info & eligible, "Bought Y the last month"_
 
