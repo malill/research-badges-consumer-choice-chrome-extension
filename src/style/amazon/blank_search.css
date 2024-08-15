@@ -17,7 +17,7 @@ span.a-text-price[data-a-strike='true'],
 /*Badge9, "Lowest price in 30 days"*/
 span[aria-label="Lowest price in 30 days"],
 /*Badge10/11, More buying choices*/
-.a-section.a-spacing-none.a-spacing-top-mini,
+/*MOVED TO PRODUCT ATTRIBUTES > More buying choices*/
 /*Badge12, "Only x left in stock"*/
 span.a-size-base.a-color-price,
 /*Badge13, Small Business & Climate Pledge Friendly*/
@@ -38,6 +38,8 @@ div.a-section.a-spacing-none.a-spacing-top-micro.s-product-grid-adjustment,
 /*Delivery info, "Get it - date1 (to date2)FREE delivery by Amazon"*/
 div.a-row.a-size-base.a-color-secondary.s-align-children-center>div.a-row,
 div.a-row.a-size-base.a-color-secondary.s-align-children-center>span,
+/*More buying choices*/
+.a-section.a-spacing-none.a-spacing-top-mini,
 /*"Eligible for delivery to Germany"*/
 span.a-size-small.a-color-base {
     display: none !important;
