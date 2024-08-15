@@ -1,4 +1,4 @@
-# v1.0.17 | XX.08.2024
+# v1.0.17 | 16.08.2024
 * Fix Amazon Prime for Group 1, badge was hidden since it is part of the delivery description (that is permanently hidden for this group)
 
 # v1.0.16 | 24.07.2024
