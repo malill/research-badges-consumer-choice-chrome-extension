@@ -35,7 +35,8 @@ span[data-component-type="s-coupon-component"],
 /*Badge6, "Sponsored (i)" above product*/
 a.puis-sponsored-label-text,
 /*Badge8, Prime (Delivery) Icon at product*/
-i.a-icon-prime,
+/*i.a-icon-prime,*/
+div.a-row.a-size-base.a-color-secondary.s-align-children-center > div.a-row.s-align-children-center:has(.a-icon-prime),
 /*Badge9, "Lowest price in 30 days"*/
 span[aria-label="Lowest price in 30 days"],
 /*Badge13, Small Business & Climate Pledge Friendly*/
