@@ -1,12 +1,18 @@
-![](.readme/img/Screenshot_03_control_treatment_MOD.png)
+![](docs\cws_global_screenshot_01.png)
 
 # Wiki - Product Navigator Chrome Extension
 
-*The repository for the **Product Naviator** Chrome Extension. The extension removes digital nudges from search pages on Amazon UK.*
+![version](https://img.shields.io/badge/version-1.0.17-green)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-See confluence for documentation.
+
+> The repository for the **Product Naviator** Chrome Extension. The repository can be used for research purposes. The paper [Product Badges and Consumer Choice on Digital Platforms](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4935668) utilizes the extension to study the impact of badges on consumer choice on Amazon UK.
+
+The Product Navigator extension removes highlights and badges from search pages on Amazon UK. Through the extension, users can reduce information overload and potential biases in their decision-making. Anonymized data are collected to improve the extension behavior and analyze the user activities.
 
 ## Development
+
+The extension is developed using TypeScript and Webpack. TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. Webpack is a module bundler that takes modules with dependencies and generates static assets representing those modules.
 
 ### Installation
 
