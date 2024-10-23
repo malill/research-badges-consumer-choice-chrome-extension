@@ -1,3 +1,15 @@
+# v1.0.17 | 16.08.2024
+* Fix Amazon Prime for Group 1, badge was hidden since it is part of the delivery description (that is permanently hidden for this group)
+
+# v1.0.16 | 24.07.2024
+* Fix: Display badges on PDP
+
+# v1.0.15 | 24.07.2024
+* Show infos in search results: _badge 7, badge 10/11, badge 12, badge 17, Delivery info & eligible, "Bought Y the last month"_
+
+# v1.0.14 | 16.07.2024
+* Fix tracking *Badge 2 & 3*, Amazon changed into "deal" badge - not limited time deal only, e.g. also "Prime Day Deal"
+
 # v1.0.13 | 07.07.2024
 * Added `span[data-a-badge-type="deal"]` for *Badge 2 & 3* lightning deal badge
 * Do not display *Badge 10 & 11* (more buying choices) in control group, since this enables add to basket from search results

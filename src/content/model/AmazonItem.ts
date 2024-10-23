@@ -81,7 +81,8 @@ export class AmazonItem {
         } catch (error) { }
 
         try {
-            let platformBadgeEl = this.htmlElement.querySelector("span[data-a-badge-color='sx-lightning-deal-red']");
+            // let platformBadgeEl = this.htmlElement.querySelector("span[data-a-badge-color='sx-lightning-deal-red']");
+            let platformBadgeEl = this.htmlElement.querySelector("span[data-a-badge-type='deal']");
             let lightningDealText = platformBadgeEl.textContent;
             let lightningDealSavePercent = parseInt(lightningDealText.substring(lightningDealText.indexOf(" ") + 1, lightningDealText.indexOf("%")));
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
