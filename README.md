@@ -1,4 +1,4 @@
-![](docs\cws_global_screenshot_01.png)
+![](docs/cws_global_screenshot_01.png)
 
 # Wiki - Product Navigator Chrome Extension
 
