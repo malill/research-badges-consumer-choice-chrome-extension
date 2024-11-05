@@ -10,6 +10,8 @@ export const COOKIE_VALUE_TASK_ID_CONTROL = 'i7sM';
 export const COOKIE_VALUE_TASK_ID_TREATMENT = 'i7tM';
 export const COOKIE_VALUE_MISSING = 'none';
 
+// Badge placement
+export const CUSTOM_BADGE_MAX_POSITION = 5;
 
 // Cookie durability
 export const COOKIE_LIFETIME_1HOUR = 1;
