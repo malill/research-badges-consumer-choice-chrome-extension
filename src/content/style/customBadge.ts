@@ -6,7 +6,7 @@ export const bestsellerBadge = `
     <span
       data-component-type="s-status-badge-component ecm-badge"
       class="rush-component"
-      data-component-props='{"asin":"XXXXXXXXXX","badgeType":"best-seller"}'
+      data-component-props='{"asin":"XXXXXXXXXX","badgeType":"ecm-best-seller"}'
       data-version-id="v2pj4k4hggyykc2ct0d78isz8tt"
       data-render-id="r36y0io2s2p8sw2dip9doet7xzp"
       data-component-id="14"
@@ -45,7 +45,7 @@ export const amazonsChoiceBadge = `
     <span
       data-component-type="s-status-badge-component ecm-badge"
       class="rush-component"
-      data-component-props='{"asin":"XXXXXXXXXX","badgeType":"amazons-choice"}'
+      data-component-props='{"asin":"XXXXXXXXXX","badgeType":"ecm-amazons-choice"}'
       data-version-id="v2pj4k4hggyykc2ct0d78isz8tt"
       data-render-id="r36y0io2s2p8sw2dip9doet7xzp"
       data-component-id="14"

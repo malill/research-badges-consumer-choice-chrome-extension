@@ -73,7 +73,7 @@ export class AmazonItem {
     getBadges() {
         let badges = {};
         try {
-            let platformBadgeEl = this.htmlElement.querySelector("span.rush-component [data-component-type='s-status-badge-component']");
+            let platformBadgeEl = this.htmlElement.querySelector("span.rush-component [data-component-type*='s-status-badge-component']");
             let badgeCompProps = platformBadgeEl.getAttribute("data-component-props");
             let jsonProps = JSON.parse(badgeCompProps);
             let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;

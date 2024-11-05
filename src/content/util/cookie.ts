@@ -23,3 +23,12 @@ export function getCookie(cname: string) {
     }
     return "";
 }
+
+export function checkCookie(cname: string, cvalue: any, exhours: number) {
+    let cookie = getCookie(cname);
+    if (cookie != "") {
+        return cookie;
+    } else {
+        return setCookie(cname, cvalue.toString(), exhours);
+    }
+}

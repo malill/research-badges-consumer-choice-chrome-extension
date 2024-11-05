@@ -1,8 +1,9 @@
 
-import { COOKIE_VALUE_TASK_ID_CONTROL, CUSTOM_BADGE_MAX_POSITION } from "../../config/settings";
+import { COOKIE_LIFETIME_1DAY, COOKIE_VALUE_TASK_ID_CONTROL, CUSTOM_BADGE_MAX_POSITION } from "../../config/settings";
 import { ProductNavigatorData } from "../model/ProductNavigatorData";
 import { amazonsChoiceBadge } from "../style/customBadge";
-import { modCSS_02, modCSS_03, modCSS_04 } from "../style/modCSS";
+import { modCSS_04 } from "../style/modCSS";
+import { checkCookie } from "../util/cookie";
 import { injectCSS } from "../util/injectCSS";
 
 // Create the datalayer object, responsible for analytics
@@ -20,7 +21,8 @@ try {
 
     // Attach platform badge to a random search result
     // const randomSearchResult = searchResults[Math.floor(Math.random() * searchResults.length)];
-    const randomSearchResult = searchResults[Math.floor(Math.random() * CUSTOM_BADGE_MAX_POSITION)];
+    const customBadgePosition = checkCookie("custom-badge-position", Math.floor(Math.random() * CUSTOM_BADGE_MAX_POSITION), COOKIE_LIFETIME_1DAY);
+    const randomSearchResult = searchResults[customBadgePosition];
     const randomSearchResultInner = randomSearchResult.querySelector(`div[class="puisg-col-inner"]`);
     randomSearchResultInner.insertAdjacentHTML('afterbegin', amazonsChoiceBadge);
 
