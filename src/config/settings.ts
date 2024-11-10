@@ -6,8 +6,9 @@ export const COOKIE_NAME_USER_ID = 'pnUID';
 export const COOKIE_NAME_TASK_USER_ID = 'pnTaskUID';
 export const COOKIE_NAME_TASK_ID = 'pnTaskID';
 
-export const COOKIE_VALUE_TASK_ID_CONTROL = 'i7sM';
-export const COOKIE_VALUE_TASK_ID_TREATMENT = 'i7tM';
+export const COOKIE_VALUE_TASK_ID_GROUP_01 = 'i7sM';
+export const COOKIE_VALUE_TASK_ID_GROUP_02 = 'i7tM';
+export const COOKIE_VALUE_TASK_ID_GROUP_03 = 'i7uM';
 export const COOKIE_VALUE_MISSING = 'none';
 
 // Badge placement

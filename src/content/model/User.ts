@@ -1,4 +1,4 @@
-import { COOKIE_LIFETIME_1HOUR, COOKIE_LIFETIME_1YEAR, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID, COOKIE_NAME_USER_ID, COOKIE_VALUE_TASK_ID_CONTROL, COOKIE_VALUE_TASK_ID_TREATMENT } from "../../config/settings";
+import { COOKIE_LIFETIME_1HOUR, COOKIE_LIFETIME_1YEAR, COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID, COOKIE_NAME_USER_ID, COOKIE_VALUE_TASK_ID_GROUP_01, COOKIE_VALUE_TASK_ID_GROUP_02 } from "../../config/settings";
 import { getCookie, setCookie } from "../util/cookie";
 
 export class User {
@@ -68,7 +68,7 @@ export class User {
             // Neither a query nor a cookie value is present --> non-task user
             if (cookieName == COOKIE_NAME_TASK_ID) {
                 // Since this is the task ID
-                let group = Math.random() < 0.5 ? COOKIE_VALUE_TASK_ID_CONTROL : COOKIE_VALUE_TASK_ID_TREATMENT;
+                let group = Math.random() < 0.5 ? COOKIE_VALUE_TASK_ID_GROUP_01 : COOKIE_VALUE_TASK_ID_GROUP_02;
                 res = setCookie(cookieName, group, COOKIE_LIFETIME_1YEAR);
                 return res;
             }

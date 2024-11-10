@@ -1,4 +1,4 @@
-import { COOKIE_VALUE_TASK_ID_CONTROL } from "../../config/settings";
+import { COOKIE_VALUE_TASK_ID_GROUP_01 } from "../../config/settings";
 import { ProductNavigatorData } from "../model/ProductNavigatorData";
 import { Event } from "../model/Event";
 import { COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID } from "../../config/settings";
@@ -11,7 +11,7 @@ import { injectCSS } from "../util/injectCSS";
 const productNavigatorData = new ProductNavigatorData();
 
 // Check if user is in control group, if yes inject modified CSS
-if (productNavigatorData.user.user_task_id == COOKIE_VALUE_TASK_ID_CONTROL) {
+if (productNavigatorData.user.user_task_id == COOKIE_VALUE_TASK_ID_GROUP_01) {
     // Default styling is "blank" > inject platform style
     injectCSS(modCSS_PDP_03);
 }
