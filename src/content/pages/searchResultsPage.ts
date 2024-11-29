@@ -33,8 +33,11 @@ try {
 
         // Insert the custom badge to the search results
         customBadgeSearchResults.forEach(customBadgeSearchResult => {
-            const customBadgeSearchResultInner = customBadgeSearchResult.querySelector(`div[class="puisg-col-inner"]`);
-            customBadgeSearchResultInner.insertAdjacentHTML('afterbegin', amazonsChoiceBadge);
+            let customBadgeSearchResultInner = customBadgeSearchResult.querySelector(`div[class="puisg-col-inner"]`);
+            // Surround with try-catch to avoid errors when badge is already present
+            try {
+                customBadgeSearchResultInner.insertAdjacentHTML('afterbegin', amazonsChoiceBadge);
+            } catch (error) { }
         });
     }
 
