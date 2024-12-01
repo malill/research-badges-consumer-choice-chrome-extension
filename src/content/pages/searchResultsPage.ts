@@ -25,11 +25,9 @@ try {
     if (productNavigatorData.user.user_task_id == COOKIE_VALUE_TASK_ID_GROUP_02) {
         // Attach platform badge to a random search result
         const customBadgeASIN = checkCookie("custom-badge-asin", searchResults[Math.floor(Math.random() * searchResults.length)].getAttribute('data-asin'), COOKIE_LIFETIME_1DAY);
-        console.log(customBadgeASIN);
 
         // Find all search results with the custom badge ASIN
         const customBadgeSearchResults = document.querySelectorAll(`div[data-asin="${customBadgeASIN}"]`);
-        console.log(customBadgeSearchResults);
 
         // Insert the custom badge to the search results
         customBadgeSearchResults.forEach(customBadgeSearchResult => {
