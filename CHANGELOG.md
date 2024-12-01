@@ -1,3 +1,7 @@
+# v1.0.19 | 01.12.2024
+* Inject randomized Amazon's Choice badge on PDP
+* Fix: Display badges on PDP
+
 # v1.0.18 | 10.11.2024
 * Enable three experimental groups:
     * Group 1: Unaltered Amazon experience
