@@ -3,40 +3,7 @@
 /*Variants selector (e.g. "Size", "color")*/
 #twister_feature_div,
 /* Badge1 */
-#acBadge_feature_div,
-/*Badge2 & 3, red "Deal" sign*/
-#dealBadge_feature_div,
-/*Badge4 & 5, voucher*/
-#promoPriceBlockMessage_feature_div,
-/*Badge7, strike price "annotation" (e.g. "RRP:", "Was:")*/
-#a-section.a-spacing-small.aok-align-center,
-/*Badge13, Climate Pledge Friendly*/
-#climatePledgeFriendlyBadge,
-/*FREE Returns*/
-#creturns-policy-anchor-text,
-/*"Yes, I want FREE Delivery on this order with Amazon Prime"*/
-#bbop_feature_div,
-/*Consider a similar item*/
-.climatePledgeFriendlyATF,
-/* CAROUSELS */
-/*limited time deal*/
-.sponsored-products-deal-badge-generic.sponsored-products-deal-evergreen-badge,
-/*strike price*/
-.sponsored-products-deal-discount-text,
-/*"x% off Deal"*/
-._cDEzb_savingsBadgeWrapper_3DNjt,
-/*Amazon Prime*/
-.a-icon.a-icon-prime.a-icon-small,
-/*Strike Price*/
-.a-size-mini.a-color-base.aok-nowrap,
-/*Delivery Info*/
-.a-size-mini.a-color-base,
-/*Climate Pledege Friendly*/
-.a-size-small.aok-align-center,
-/*Climate Pledege Friendly*/
-.a-link-normal.cpfBadgeLogoID.a-text-normal,
-/*Badge4 & 5, voucher*/
-div:has(> span.couponLabel) {
+#acBadge_feature_div {
     display: none !important;
 }
 

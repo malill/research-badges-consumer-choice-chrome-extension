@@ -1,11 +1,12 @@
-import { COOKIE_VALUE_TASK_ID_GROUP_01 } from "../../config/settings";
+import { COOKIE_VALUE_TASK_ID_GROUP_01, COOKIE_VALUE_TASK_ID_GROUP_02 } from "../../config/settings";
 import { ProductNavigatorData } from "../model/ProductNavigatorData";
 import { Event } from "../model/Event";
 import { COOKIE_NAME_TASK_ID, COOKIE_NAME_TASK_USER_ID } from "../../config/settings";
-import { setCookie } from "../util/cookie";
+import { getCookie, setCookie } from "../util/cookie";
 import { AmazonItem } from "../model/AmazonItem";
 import { modCSS_PDP_03 } from "../style/modCSS";
 import { injectCSS } from "../util/injectCSS";
+import { amazonsChoiceBadgePDP } from "../style/customBadge";
 
 // Instantiate a new ProductNavigatorData object
 const productNavigatorData = new ProductNavigatorData();
@@ -14,6 +15,14 @@ const productNavigatorData = new ProductNavigatorData();
 if (productNavigatorData.user.user_task_id == COOKIE_VALUE_TASK_ID_GROUP_01) {
     // Default styling is "blank" > inject platform style
     injectCSS(modCSS_PDP_03);
+} else if (productNavigatorData.user.user_task_id == COOKIE_VALUE_TASK_ID_GROUP_02) {
+    // Inject the custom badge (when it is the randomized assigned product)
+    const cookie_custom_ac_asin = getCookie("custom-badge-asin");
+    const current_asin = document.getElementById("addToCart_feature_div").getAttribute("data-csa-c-asin");
+    if (cookie_custom_ac_asin == current_asin) {
+        let customerReviewElement = document.querySelector(`div[id="averageCustomerReviews_feature_div"]`)
+        customerReviewElement.insertAdjacentHTML('afterend', amazonsChoiceBadgePDP);
+    }
 }
 
 // Remove elements if user is part of a study
