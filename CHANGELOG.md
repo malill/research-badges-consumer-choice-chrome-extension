@@ -1,3 +1,13 @@
+# v1.0.19 | 01.12.2024
+* Inject randomized Amazon's Choice badge on PDP
+* Fix: Display badges on PDP
+
+# v1.0.18 | 10.11.2024
+* Enable three experimental groups:
+    * Group 1: Unaltered Amazon experience
+    * Group 2: Randomize Amazon's Choice badge
+    * Group 3: Remove Amazon's Choice badge
+
 # v1.0.17 | 16.08.2024
 * Fix Amazon Prime for Group 1, badge was hidden since it is part of the delivery description (that is permanently hidden for this group)
 

@@ -73,11 +73,14 @@ export class AmazonItem {
     getBadges() {
         let badges = {};
         try {
-            let platformBadgeEl = this.htmlElement.querySelector("span.rush-component [data-component-type='s-status-badge-component']");
-            let badgeCompProps = platformBadgeEl.getAttribute("data-component-props");
-            let jsonProps = JSON.parse(badgeCompProps);
-            let platformBadgeDisplayStyle = window.getComputedStyle(platformBadgeEl, null).display;
-            badges["b_01"] = jsonProps["badgeType"];
+            let platformBadgeEls = this.htmlElement.querySelectorAll("span.rush-component [data-component-type*='s-status-badge-component']");
+            badges["b_01"] = "";
+            for (let i = 0; i < platformBadgeEls.length; i++) {
+                let platformBadgeEl = platformBadgeEls[i];
+                let badgeCompProps = platformBadgeEl.getAttribute("data-component-props");
+                let jsonProps = JSON.parse(badgeCompProps);
+                badges["b_01"] += jsonProps["badgeType"];
+            }
         } catch (error) { }
 
         try {
