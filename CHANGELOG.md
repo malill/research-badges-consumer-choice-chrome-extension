@@ -1,3 +1,6 @@
+# v1.0.21 | 02.12.2024
+* Feat: Draw random ASIN for group 2 only from unique ASINs
+
 # v1.0.20 | 02.12.2024
 * Fix: Display AC badge in group 2 on PDP
 * Fix: try-catch block for `ProductNavigatorData.addSendAnalyticsListener`
