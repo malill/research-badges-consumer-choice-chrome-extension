@@ -1,3 +1,7 @@
+# v1.0.20 | 02.12.2024
+* Fix: Display AC badge in group 2 on PDP
+* Fix: try-catch block for `ProductNavigatorData.addSendAnalyticsListener`
+
 # v1.0.19 | 01.12.2024
 * Inject randomized Amazon's Choice badge on PDP
 * Fix: Display badges on PDP
