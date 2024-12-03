@@ -1,3 +1,6 @@
+# v1.0.22 | 03.12.2024
+* Feat: Limit product name storage to first 20 characters for search results
+
 # v1.0.21 | 02.12.2024
 * Feat: Draw random ASIN for group 2 only from unique ASINs
 
