@@ -1,7 +1,7 @@
 
 import { COOKIE_LIFETIME_1DAY, COOKIE_VALUE_TASK_ID_GROUP_01, COOKIE_VALUE_TASK_ID_GROUP_02, COOKIE_VALUE_TASK_ID_GROUP_03, CUSTOM_BADGE_MAX_POSITION } from "../../config/settings";
 import { ProductNavigatorData } from "../model/ProductNavigatorData";
-import { amazonsChoiceBadge } from "../style/customBadge";
+import { amazonsChoiceBadge, highestAvgRatingBadge, maxWeightedRatingBadge, mostRatingsBadge } from "../style/customBadge";
 import { modCSS_03, modCSS_04 } from "../style/modCSS";
 import { getCookie, setCookie } from "../util/cookie";
 import { injectCSS } from "../util/injectCSS";
@@ -48,6 +48,46 @@ try {
             } catch (error) { }
         });
     }
+
+    // Attach custom badges to search results
+    let maxNRatings = 0;
+    let maxNRatingsEl: Element | null = null;
+
+    let maxAvgRating = 0;
+    let highestAvgRatingEl: Element | null = null;
+
+    let maxWeightedRating = 0;
+    let maxWeightedRatingEl: Element | null = null;
+
+    searchResults.forEach((searchResult) => {
+        // Find and process number of ratings
+        const nRatingsEl = searchResult.querySelector(`span.a-size-base.s-underline-text`);
+        const nRatings = nRatingsEl ? parseInt(nRatingsEl.textContent.replace(",", ""), 10) : 0;
+        if (nRatings > maxNRatings) {
+            maxNRatings = nRatings;
+            maxNRatingsEl = searchResult;
+        }
+
+        // Find and process average rating
+        const avgRatingEl = searchResult.querySelector(`span.a-icon-alt`);
+        const avgRating = avgRatingEl ? parseFloat(avgRatingEl.textContent.split(" ")[0]) : 0;
+        if (avgRating > maxAvgRating) {
+            maxAvgRating = avgRating;
+            highestAvgRatingEl = searchResult;
+        }
+
+        // Calculate weighted rating
+        const weightedRating = nRatings * avgRating;
+        if (weightedRating > maxWeightedRating) {
+            maxWeightedRating = weightedRating;
+            maxWeightedRatingEl = searchResult;
+        }
+    });
+
+    // Attach badges to respective elements
+    maxNRatingsEl?.querySelector(`div.puisg-col-inner`)?.insertAdjacentHTML('afterbegin', mostRatingsBadge);
+    highestAvgRatingEl?.querySelector(`div.puisg-col-inner`)?.insertAdjacentHTML('afterbegin', highestAvgRatingBadge);
+    maxWeightedRatingEl?.querySelector(`div.puisg-col-inner`)?.insertAdjacentHTML('afterbegin', maxWeightedRatingBadge);
 
     productNavigatorData.eventHandlerSearchResults(searchResults);
 } catch (error) { }

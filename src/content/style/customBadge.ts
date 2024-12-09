@@ -95,3 +95,123 @@ export const amazonsChoiceBadgePDP = `
     <script type="a-state" data-a-state="{&quot;key&quot;:&quot;acState&quot;}">{"acAsin":"XXXXXXXXXX"}</script>
 </div>
 `
+
+export const mostRatingsBadge = `
+<div
+  class="a-section a-spacing-none aok-relative puis-status-badge-container s-list-status-badge-container"
+>
+  <div class="a-section a-spacing-none s-badge-spacing">
+    <span
+      data-component-type="s-status-badge-component ecm-badge"
+      class="rush-component"
+      data-component-props='{"asin":"XXXXXXXXXX","badgeType":"ecm-most-ratings"}'
+      data-version-id="v2pj4k4hggyykc2ct0d78isz8tt"
+      data-render-id="r36y0io2s2p8sw2dip9doet7xzp"
+      data-component-id="14"
+      ><div class="a-row a-badge-region">
+        <span
+          id="XXXXXXXXXX-most-ratings"
+          class="a-badge"
+          role="group"
+          aria-labelledby="XXXXXXXXXX-most-ratings-label XXXXXXXXXX-most-ratings-supplementary"
+          data-a-badge-supplementary-position="right"
+          tabindex="0"
+          data-a-badge-type="status"
+          ><span
+            id="XXXXXXXXXX-most-ratings-label"
+            class="a-badge-label"
+            data-a-badge-color="sx-orange"
+            aria-hidden="true"
+            style="background-color: #1eb392 !important; color: #1eb392 !important;"
+            ><span class="a-badge-label-inner a-text-ellipsis"
+              ><span class="a-badge-text" data-a-badge-color="sx-cloud"
+                >Most Ratings</span
+              ></span
+            ></span
+          ></span
+        >
+      </div></span
+    >
+  </div>
+</div>
+`
+
+export const highestAvgRatingBadge = `
+<div
+  class="a-section a-spacing-none aok-relative puis-status-badge-container s-list-status-badge-container"
+>
+  <div class="a-section a-spacing-none s-badge-spacing">
+    <span
+      data-component-type="s-status-badge-component ecm-badge"
+      class="rush-component"
+      data-component-props='{"asin":"XXXXXXXXXX","badgeType":"ecm-highest-avg-rating"}'
+      data-version-id="v2pj4k4hggyykc2ct0d78isz8tt"
+      data-render-id="r36y0io2s2p8sw2dip9doet7xzp"
+      data-component-id="14"
+      ><div class="a-row a-badge-region">
+        <span
+          id="XXXXXXXXXX-highest-avg-rating"
+          class="a-badge"
+          role="group"
+          aria-labelledby="XXXXXXXXXX-highest-avg-rating-label XXXXXXXXXX-highest-avg-rating-supplementary"
+          data-a-badge-supplementary-position="right"
+          tabindex="0"
+          data-a-badge-type="status"
+          ><span
+            id="XXXXXXXXXX-highest-avg-rating-label"
+            class="a-badge-label"
+            data-a-badge-color="sx-orange"
+            aria-hidden="true"
+            style="background-color: #b31e86 !important; color: #b31e86 !important;"
+            ><span class="a-badge-label-inner a-text-ellipsis"
+              ><span class="a-badge-text" data-a-badge-color="sx-cloud"
+                >Highest Rating</span
+              ></span
+            ></span
+          ></span
+        >
+      </div></span
+    >
+  </div>
+</div>
+`
+
+export const maxWeightedRatingBadge = `
+<div
+  class="a-section a-spacing-none aok-relative puis-status-badge-container s-list-status-badge-container"
+>
+  <div class="a-section a-spacing-none s-badge-spacing">
+    <span
+      data-component-type="s-status-badge-component ecm-badge"
+      class="rush-component"
+      data-component-props='{"asin":"XXXXXXXXXX","badgeType":"ecm-max-weighted-rating"}'
+      data-version-id="v2pj4k4hggyykc2ct0d78isz8tt"
+      data-render-id="r36y0io2s2p8sw2dip9doet7xzp"
+      data-component-id="14"
+      ><div class="a-row a-badge-region">
+        <span
+          id="XXXXXXXXXX-max-weighted-rating"
+          class="a-badge"
+          role="group"
+          aria-labelledby="XXXXXXXXXX-max-weighted-rating-label XXXXXXXXXX-max-weighted-rating-supplementary"
+          data-a-badge-supplementary-position="right"
+          tabindex="0"
+          data-a-badge-type="status"
+          ><span
+            id="XXXXXXXXXX-max-weighted-rating-label"
+            class="a-badge-label"
+            data-a-badge-color="sx-orange"
+            aria-hidden="true"
+            style="background-color: #1a219c !important; color: #1a219c !important;"
+            ><span class="a-badge-label-inner a-text-ellipsis"
+              ><span class="a-badge-text" data-a-badge-color="sx-cloud"
+                >Max Weighted Rating</span
+              ></span
+            ></span
+          ></span
+        >
+      </div></span
+    >
+  </div>
+</div>
+`
