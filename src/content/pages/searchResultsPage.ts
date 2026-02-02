@@ -3,7 +3,7 @@ import { COOKIE_LIFETIME_1DAY, COOKIE_VALUE_TASK_ID_GROUP_01, COOKIE_VALUE_TASK_
 import { ProductNavigatorData } from "../model/ProductNavigatorData";
 import { amazonsChoiceBadge } from "../style/customBadge";
 import { modCSS_03, modCSS_04 } from "../style/modCSS";
-import { checkCookie } from "../util/cookie";
+import { getCookie, setCookie } from "../util/cookie";
 import { injectCSS } from "../util/injectCSS";
 
 // Create the datalayer object, responsible for analytics
@@ -23,8 +23,18 @@ try {
     const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`)
 
     if (productNavigatorData.user.user_task_id == COOKIE_VALUE_TASK_ID_GROUP_02) {
-        // Attach platform badge to a random search result
-        const customBadgeASIN = checkCookie("custom-badge-asin", searchResults[Math.floor(Math.random() * searchResults.length)].getAttribute('data-asin'), COOKIE_LIFETIME_1DAY);
+        let customBadgeASIN = getCookie("custom-badge-asin");
+        if (customBadgeASIN == "") {
+            // Get all unique ASINs from the search results
+            let searchResultsASINs = [];
+            searchResults.forEach(searchResult => {
+                searchResultsASINs.push(searchResult.getAttribute('data-asin'));
+            });
+            searchResultsASINs = Array.from(new Set(searchResultsASINs));
+
+            // Set cookie with the random ASIN
+            customBadgeASIN = setCookie("custom-badge-asin", searchResultsASINs[Math.floor(Math.random() * searchResultsASINs.length)], COOKIE_LIFETIME_1DAY);
+        }
 
         // Find all search results with the custom badge ASIN
         const customBadgeSearchResults = document.querySelectorAll(`div[data-asin="${customBadgeASIN}"]`);

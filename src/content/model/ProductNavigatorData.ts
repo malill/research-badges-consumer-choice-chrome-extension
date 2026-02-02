@@ -138,21 +138,42 @@ export class ProductNavigatorData {
     }
 
     addSendAnalyticsListener() {
-        document.addEventListener("visibilitychange", () => {
-            if (document.visibilityState === "hidden") {
-                let taskEvents = [];
-                this.events.forEach((event) => {
-                    taskEvents.push(new TaskEvent(this, event));
-                });
-                if (this.log_level === "debug") {
-                    console.log(taskEvents);
-                }
-                navigator.sendBeacon(
+        const sendTaskEvents = () => {
+            let taskEvents = [];
+            this.events.forEach((event) => {
+                taskEvents.push(new TaskEvent(this, event));
+            });
+            if (this.log_level === "debug") {
+                console.log("Send analytics data:", taskEvents);
+            }
+
+            try {
+                const success = navigator.sendBeacon(
                     process.env.REST_API_URL,
                     new Blob([JSON.stringify(taskEvents)], { type: "application/json" })
                 );
-                this.resetEvents();
+                if (!success) {
+                    console.warn("Failed to send data with sendBeacon.");
+                    window.alert("Can not send study data. Please check your internet connection.");
+                    // Fallback: Store locally or try an alternative method
+                }
+            } catch (error) {
+                console.error("Error sending analytics data:", error);
+                window.alert("Can not send study data. Please check your internet connection.");
+                // Fallback logic here
+            }
+            this.resetEvents();
+        };
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "hidden") {
+                sendTaskEvents();
             }
         });
+
+        window.addEventListener("beforeunload", () => {
+            sendTaskEvents();
+        });
     }
+
 }

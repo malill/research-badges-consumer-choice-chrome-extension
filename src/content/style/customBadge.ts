@@ -81,7 +81,7 @@ export const amazonsChoiceBadgePDP = `
 <div id="acBadge_feature_div" class="celwidget" data-feature-name="acBadge" data-csa-c-type="widget"
     data-csa-c-content-id="acBadge" data-csa-c-slot-id="acBadge_feature_div" data-csa-c-asin="XXXXXXXXXX"
     data-csa-c-is-in-initial-active-row="false" data-csa-c-id="532kea-g8j25n-971l2j-k2p4k7"
-    data-cel-widget="acBadge_feature_div">
+    data-cel-widget="acBadge_feature_div" style="display: block !important">
     <div class="ac-badge-wrapper" cssclass="aok-float-left">
         <span class="a-declarative" data-action="a-popover" data-csa-c-type="widget"
             data-csa-c-func-deps="aui-da-a-popover"

@@ -31,6 +31,8 @@ export class AmazonItem {
         try {
             const nameEl = this.htmlElement.querySelector("h2");
             this.name = nameEl.textContent.trim();
+            // Get only first characters for DB storage optimization
+            this.name = this.name.substring(0, 20);
         } catch (error) {
             // Item name could not be found
         }
